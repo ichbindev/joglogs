@@ -1,29 +1,30 @@
-# Create React Express App
+# Jog Log
+## Jog Log dynamically generates customized race training plans for runners and seamlessly syncs the plan to your Google calendar.
 
-## About This Boilerplate
+## How to Use:
+1. Create an account or login to your account by entering your email and password.
+2. On the setup page, input the number of miles you currently run per week, the date and distance of your goal race, and the number of days per week you want to run.  Once all fields are filled out, hit submit.
+3. After your details are submitted, Jog Log will generate a dynamic training plan for your race that syncs with your Google calendar.  
+4. Follow along with your training plan and Jog Log will dynamically adjust your plan to suit your progress.  It's that easy, now it's time to run!
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## Wireframes:
+#### Home Page:
+![1](https://i.imgur.com/3S0oSf4.jpg)
+#### Input Page:
+![2](https://media.giphy.com/media/jofMjGKb6ukGN8oZx1/giphy.gif)
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+### Technologies to be Utilized:
+* Node.js
+* Express.js
+* MySQL
+* Sequelize ORM
+* Heroku
+* Google Calendar API
 
-## Starting the app locally
+### Contributors:
+* Aaron Phillips
+* Chris Mlinac
+* Perry Williams
+* Augusto Andres
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
 
-```
-npm install
-```
-
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
