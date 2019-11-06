@@ -6,7 +6,7 @@
  * if we're going to want to grab data ordered from the DB
  */
 module.exports = function(sequelize, DataTypes) {
-  var Plan = sequelize.define("Plan", {
+  let Plan = sequelize.define("Plan", {
     // a reference to the calendar created for this user with planned runs
     calendarRef: {
       type: DataTypes.STRING,
