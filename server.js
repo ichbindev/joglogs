@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-var syncOptions = { force: false };
+let syncOptions = { force: false };
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
