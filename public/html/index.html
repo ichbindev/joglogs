@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jog Log</title>
+  <!-- Links to bootstrap, ajax, google font, style sheet, jquery -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/eb7ce06b75.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+</head>
+
+<body>
+  <!-- Logo -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" text-center href="/">
+      <h1><strong>jog log</strong></h1>
+    </a>
+    <!-- Mini navbar -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <!-- The about page and blog are a feature in progress -->
+        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                    <button class="btn btn-default">About</button></a>
+                          </li>
+                          <li class="nav-item">
+                                <a class="nav-link" href="#"><button class="btn btn-default">Blog</button></a>
+                              </li> -->
+        <!-- Sign In modal -->
+        <li class="nav-item">
+          <a class="nav-link">
+            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                      <i class="fas fa-envelope prefix grey-text"></i>
+                      <input type="email" id="defaultForm-email" class="form-control validate">
+                      <label data-error="wrong" data-success="right" for="defaultForm-email">Your
+                        email</label>
+                    </div>
+                    <div class="md-form mb-4">
+                      <i class="fas fa-lock prefix grey-text"></i>
+                      <input type="password" id="defaultForm-pass" class="form-control validate">
+                      <label data-error="wrong" data-success="right" for="defaultForm-pass">Your
+                        password</label>
+                    </div>
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button id="login" class="btn btn-default">Login</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">
+                Sign In</a>
+            </div>
+          </a>
+        </li>
+        <!-- Sign Up modal -->
+        <li class="nav-item">
+          <a class="nav-link">
+            <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body mx-3">
+                    <!-- This is a feature in progress -->
+                    <!-- <div class="md-form mb-5">
+                                            <i class="fas fa-user prefix grey-text"></i>
+                                            <input type="text" id="orangeForm-name" class="form-control validate">
+                                            <label data-error="wrong" data-success="right" for="orangeForm-name">Your
+                                                name</label>
+                                        </div> -->
+                    <div class="md-form mb-5">
+                      <i class="fas fa-envelope prefix grey-text"></i>
+                      <input type="email" id="orangeForm-email" class="form-control validate">
+                      <label data-error="wrong" data-success="right" for="orangeForm-email">Your
+                        email</label>
+                    </div>
+
+                    <div class="md-form mb-4">
+                      <i class="fas fa-lock prefix grey-text"></i>
+                      <input type="password" id="orangeForm-pass" class="form-control validate">
+                      <label data-error="wrong" data-success="right" for="orangeForm-pass">Your
+                        password</label>
+                    </div>
+                    <div id="signupFail"></div>
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button id="sign-up" class="btn btn-deep-orange">Sign up</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">
+                Sign Up</a>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Video element -->
+  <div class="videocontainer">
+    <video autoplay muted loop id="myVideo" width="1300">
+      <source src="images/run.mp4" type="video/mp4">
+    </video>
+    <div class="overlayText">
+      Instant custom training plans that seamlessly sync to your calendar
+    </div>
+  </div>
+  <!-- First row of content -->
+  <div class="row">
+    <img src="images/run1.jpg">
+    <div class="textDiv">
+      <h2><strong>Custom</strong></h2>
+      <p>Whether you're going from couch to 5k or looking to set a Personal Record at your 10th marathon, every runner
+        is unique and has different training needs. Jog Log's algorithm creates a custom training plan to suit your
+        fitness level and schedule.
+      </p>
+    </div>
+  </div>
+  <!-- Second row of content -->
+  <div class="row">
+    <div class="textDiv">
+      <h2><strong>Instant</strong></h2>
+      <p>After your details are submitted, Jog Log instantly generates a dynamic training plan for your race. Less time
+        waiting, more time running.</p>
+    </div>
+    <img src="images/run2.jpg">
+  </div>
+  <!-- Third row of content -->
+  <div class="row">
+    <img src="images/run3.jpg">
+    <div class="textDiv">
+      <h2><strong>Easy Access</strong></h2>
+      <p>Jog Log easily syncs your training plan to your calendar so you don't have to go digging through spreadsheets,
+        combing your email, or surfing the web for that training plan you found once.</p>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer id="sticky-footer" class="py-4 text-white">
+    <div class="container">
+      <div id="footersection">
+        <br><br>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="footerlogo">
+              <strong>jog log</strong>
+            </div>
+            <br>
+            <a class="icon">
+              <i class="fa fa-facebook-f fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+  
+            <a class="icon">
+              <i class="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+  
+            <a class="icon">
+              <i class="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <br>
+            <h3>Navigation</h3>
+            About<br>
+            Blog<br>
+            JLRC<br>
+            Jobs
+          </div>
+          <div class="col-md-4">
+            <br>
+            <h3>Helpful Links</h3>
+            Privacy<br>
+            Terms<br>
+            Support<br>
+            Contact
+          </div>
+        </div>
+      </div>
+      <div class="container text-center text-white-50">
+        <div class="row">
+          <div class="col-md-12">
+            <small>Copyright &copy; 2019 Jog Log</small><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+<!-- Link to JS file -->
+<script type="text/javascript" src="js/index.js">
+</script>
+
+</html>

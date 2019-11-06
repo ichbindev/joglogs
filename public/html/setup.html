@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jog Log</title>
+  <!-- Links to bootstrap, ajax, google font, style sheet, jquery -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+</head>
+
+<body>
+  <!-- Nav bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" text-center href="/">
+      <h1><strong>jog log</strong></h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <!-- Feature in progress for blog and about pages -->
+        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                    <button class="btn btn-default">About</button></a>
+                          </li>
+                          <li class="nav-item">
+                                <a class="nav-link" href="#"><button class="btn btn-default">Blog</button></a>
+                              </li> -->
+
+                <li class="nav-item">
+                    <a class="nav-link">
+
+                        <div class="text-center">
+                            <a id="logout" href="/" class="btn btn-default btn-rounded mb-4">
+                                Log Out</a>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+
+  <!-- Hero element -->
+  <div class="hero-section">
+    <div class="hero-section-text">
+      <h1>Set Up</h1>
+      <h5>Every runner has different training needs. Fill out your information below. Once you hit submit, we'll
+        generate a custom training plan to suit your needs.</h5>
+    </div>
+  </div>
+  <br>
+  <!-- Form so users can submit details -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <form>
+          <div class="card">
+            <div class="card-header">
+              <strong>
+                <i class="fa fa-table"></i> Your Information</strong>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <h3>Current Fitness Level:</h3>
+                <label for="mpw">How many Miles Per Week (MPW) do you currently
+                  run?</label>
+                <select class="form-control" id="mpw" name="trainingStartMiles">
+                  <option>0</option>
+                  <option>5</option>
+                  <option>10</option>
+                  <option>15</option>
+                  <option>20</option>
+                  <option>25</option>
+                  <option>30</option>
+                  <option>35</option>
+                  <option>40</option>
+                  <option>45</option>
+                  <option>50</option>
+                  <option>55</option>
+                  <option>60</option>
+                  <option>60</option>
+                  <option>65</option>
+                  <option>70+</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <h3>Your Schedule:</h3>
+                <label for="exampleFormControlSelect1">What days of the week are you able to run
+                  on?</label><br>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Monday">
+                  <label class="form-check-label" for="inlineCheckbox1">Monday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Tuesday">
+                  <label class="form-check-label" for="inlineCheckbox1">Tuesday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Wednesday">
+                  <label class="form-check-label" for="inlineCheckbox1">Wednesday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Thursday">
+                  <label class="form-check-label" for="inlineCheckbox1">Thursday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Friday">
+                  <label class="form-check-label" for="inlineCheckbox1">Friday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Saturday">
+                  <label class="form-check-label" for="inlineCheckbox1">Saturday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Sunday">
+                  <label class="form-check-label" for="inlineCheckbox1">Sunday</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <h3>Long Run:</h3>
+                <label for="exampleFormControlSelect1">Which day of the week would you like to do your long run
+                  on?</label><br>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Monday">
+                  <label class="form-check-label" for="inlineCheckbox1">Monday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Tuesday">
+                  <label class="form-check-label" for="inlineCheckbox1">Tuesday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Wednesday">
+                  <label class="form-check-label" for="inlineCheckbox1">Wednesday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Thursday">
+                  <label class="form-check-label" for="inlineCheckbox1">Thursday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Friday">
+                  <label class="form-check-label" for="inlineCheckbox1">Friday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Saturday">
+                  <label class="form-check-label" for="inlineCheckbox1">Saturday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="daysPerWeek" id="inlineCheckbox1"
+                    value="Sunday">
+                  <label class="form-check-label" for="inlineCheckbox1">Sunday</label><br>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <div class="card">
+            <div class="card-header">
+              <strong>
+                <i class="fa fa-list-alt"></i>Your Goal</strong>
+            </div>
+            <!-- This is where the user inputs their goal -->
+            <div class="card-body">
+              <div class="form-group">
+                <h3>Goal Distance:</h3>
+
+                <label for="goal-distance">What is your goal distance?</label>
+                <select class="form-control" id="goal-distance" name="trainingEndMiles">
+                  <option value="3">3 miles (5k)</option>
+                  <option value="6">6 miles (10k)</option>
+                  <option value="13.1">13.1 miles (Half Marathon</option>
+                  <option value="26.2">26.2 miles (Marathon)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <h3>Race Name:</h3>
+                <label for="raceName">What is the name of your race?</label>
+                <input type="raceName" class="form-control" id="raceName" placeholder="Austin Marathon" name="raceName">
+                <input type="hidden" name="runnersGoogleEmail" value="perrywilliams@800appliance.com">
+              </div>
+              <h3>Race Date:</h3>
+              What is the date of your race? <br>
+              <input type="date" id="raceDate" name="trainingEndDate">
+            </div>
+          </div>
+
+          <!-- Loading modal that pops up after user clicks submit and waits until next page loads -->
+          <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Loading...</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+                  <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                      <br>
+                      <span class="sr-only">Loading...</span>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Submit button -->
+          <div class="text-center">
+            <br>
+            <button class="btn btn-dark" col-md-12 data-toggle="modal" data-target="#modalLoginForm" type="submit"
+              id="setup-submit">
+              Submit</button>
+          </div>  
+          <br>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+  </div>
+  <!-- Footer -->
+  <footer id="sticky-footer" class="py-4 text-white">
+      <div class="container">
+        <div id="footersection">
+          <br><br>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="footerlogo">
+                <strong>jog log</strong>
+              </div>
+              <br>
+              <a class="icon">
+                <i class="fa fa-facebook-f fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+    
+              <a class="icon">
+                <i class="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+    
+              <a class="icon">
+                <i class="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+            </div>
+            <div class="col-md-4">
+              <br>
+              <h3>Navigation</h3>
+              About<br>
+              Blog<br>
+              JLRC<br>
+              Jobs
+            </div>
+            <div class="col-md-4">
+              <br>
+              <h3>Helpful Links</h3>
+              Privacy<br>
+              Terms<br>
+              Support<br>
+              Contact
+            </div>
+          </div>
+        </div>
+        <div class="container text-center text-white-50">
+          <div class="row">
+            <div class="col-md-12">
+              <small>Copyright &copy; 2019 Jog Log</small><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+</body>
+<!-- Link to javascript file -->
+<script type="text/javascript" src="js/setup.js"></script>
+
+</html>
