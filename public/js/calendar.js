@@ -1,6 +1,6 @@
 $(function(){
   // load the calendar immediately when the page loads
-  var url = "/api/plans/";
+  let url = "/api/plans/";
   console.log(url);
   $.ajax({
     method: "GET",
@@ -8,7 +8,7 @@ $(function(){
   }).then(function(response) {
     console.log(response);
     // display the calendar once returned
-    var iframe =
+    let iframe =
       "https://calendar.google.com/calendar/embed?src=" +
       response +
       "&ctz=America%2FChicago";

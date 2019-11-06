@@ -1,10 +1,10 @@
 $(function() {
   // submit user and password on login
   $("#login").on("click", function() {
-    var username = $("#defaultForm-email").val();
-    var password = $("#defaultForm-pass").val();
+    let username = $("#defaultForm-email").val();
+    let password = $("#defaultForm-pass").val();
 
-    var login = {
+    let login = {
       username: username,
       password: password
     };
@@ -49,10 +49,10 @@ $(function() {
 
   // submit email and password for creating an account
   $("#sign-up").on("click", function() {
-    var username = $("#orangeForm-email").val();
-    var password = $("#orangeForm-pass").val();
+    let username = $("#orangeForm-email").val();
+    let password = $("#orangeForm-pass").val();
 
-    var signup = {
+    let signup = {
       username: username,
       password: password
     };
