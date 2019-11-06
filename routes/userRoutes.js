@@ -1,11 +1,11 @@
-var db = require("../models");
-var passport = require("../config/passport");
+const db = require("../models");
+const passport = require("../config/passport");
 
 module.exports = function (app) {
   // create a new user 
   app.post("/api/user/signup", function(req, res) {
-    var username = req.body.username;
-    var password = req.body.password;
+    let username = req.body.username;
+    let password = req.body.password;
     db.User.create({
       username,
       password

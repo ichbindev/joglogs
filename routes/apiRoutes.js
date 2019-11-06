@@ -1,6 +1,6 @@
-var db = require("../models");
+const db = require("../models");
 require("dotenv").config();
-var createCalendar=require("../logic/createCalendar");
+const createCalendar=require("../logic/createCalendar");
 
 module.exports = function (app) {
   // get the first plan found associated with the logged in user
@@ -30,8 +30,8 @@ module.exports = function (app) {
   // returned, it will make events for the calendar
   app.post("/api/calendar", function(req, res) {
     // grabbing the google account to use from the .env file
-    var googleCred = process.env.GOOGLEACCOUNT;
-    var calendarInfo = {
+    const googleCred = process.env.GOOGLEACCOUNT;
+    const calendarInfo = {
       summary: req.body.raceName,
       trainingStartDate: new Date(),
       trainingEndDate: req.body.endDate,
@@ -44,7 +44,7 @@ module.exports = function (app) {
     // this is where the large JS file with calendar logic is called
     createCalendar(calendarInfo, function(calendarId) {
       if (calendarId) {
-        var plan = {};
+        let plan = {};
         plan.calendarRef = calendarId;
         plan.UserID = req.user.id;
         // since we now have a calendar reference, save it in the database

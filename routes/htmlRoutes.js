@@ -1,5 +1,5 @@
-var db = require("../models");
-var path = require("path");
+const db = require("../models");
+const path = require("path");
 
 module.exports = function(app) {
   // Load index page
