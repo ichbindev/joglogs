@@ -3,9 +3,9 @@ $(function() {
     event.preventDefault();
 
     // collect all of the form data
-    var setup = {};
+    let setup = {};
     setup.mpw = $("#mpw").val();
-    var days = [];
+    // let days = [];
 
     // day of week functionality, this feature is a work in progress
     // $("input[type=checkbox]").each(function() {
@@ -41,6 +41,6 @@ $(function() {
       url: "/api/user/logout"
     }).then(function() {
       window.location.href("/");
-    })
+    });
   });
 });

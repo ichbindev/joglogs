@@ -10,7 +10,13 @@ const app = express();
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(session({ secret: process.env.SESSION_SECRET || "super secret string", resave: true, saveUninitialized: true }))
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "super secret string",
+    resave: true,
+    saveUninitialized: true
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 /* Uncomment this and comment out line 22 for React
@@ -40,7 +46,7 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-var syncOptions = { force: false };
+let syncOptions = { force: false };
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {

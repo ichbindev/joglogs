@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len:[6]
+        len: [6]
       }
     }
   });
@@ -30,12 +30,14 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
 
-  User.beforeSave(function(user){
-    if(!user.changed("password")){ return; }
+  User.beforeSave(function(user) {
+    if (!user.changed("password")) {
+      return;
+    }
     var salt = bcrypt.genSaltSync(12);
     var hash = bcrypt.hashSync(user.dataValues.password, salt);
     user.dataValues.password = hash;
-  })
+  });
 
   User.prototype.checkPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
