@@ -18,9 +18,7 @@ When a runner is training for a race, whether it's a 5k, 10k, Half Marathon, or 
 
 ## Wireframes:
 #### Home Page:
-![1](https://i.imgur.com/3S0oSf4.jpg)
-#### Input Page:
-![2](https://media.giphy.com/media/jofMjGKb6ukGN8oZx1/giphy.gif)
+![](https://i.imgur.com/k2veoWW.jpg)
 
 ### Technologies Utilized:
 * React.js
