@@ -14,7 +14,9 @@ When a runner is training for a race, whether it's a 5k, 10k, Half Marathon, or 
 * 11/18/19 - Demo Day
 
 ## Project Management Board:
+Link: https://github.com/users/cmlinac/projects/1
 ![](https://i.imgur.com/OHYxs2C.png)
+
 
 ## Wireframes:
 ![](https://i.imgur.com/k2veoWW.jpg)
