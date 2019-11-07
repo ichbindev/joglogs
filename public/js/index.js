@@ -21,8 +21,8 @@ $(function() {
         // check if the user already has a calendar
         success: hasCalendar,
         error: noCalendar
-      })
-    });  
+      });
+    });
   });
 
   // if they have a calendar, direct them to the calendar display page
@@ -41,7 +41,7 @@ $(function() {
     $("#loginFail").text("Incorrect Username or Password");
     $("#loginFail").attr("style", "color:red;");
   }
-    
+
   function signupFail() {
     $("#signupFail").text("This email has already signed up.");
     $("#signupFail").attr("style", "color:red;");
