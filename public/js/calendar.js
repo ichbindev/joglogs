@@ -1,6 +1,6 @@
-$(function(){
+$(function() {
   // load the calendar immediately when the page loads
-  var url = "/api/plans/";
+  let url = "/api/plans/";
   console.log(url);
   $.ajax({
     method: "GET",
@@ -8,11 +8,11 @@ $(function(){
   }).then(function(response) {
     console.log(response);
     // display the calendar once returned
-    var iframe =
+    let iframe =
       "https://calendar.google.com/calendar/embed?src=" +
       response +
       "&ctz=America%2FChicago";
-      console.log(iframe);
+    console.log(iframe);
     $("#calendar").attr("src", iframe);
   });
 
@@ -22,7 +22,6 @@ $(function(){
     $.ajax({
       method: "POST",
       url: "/api/user/logout"
-    })
+    });
   });
-
 });
