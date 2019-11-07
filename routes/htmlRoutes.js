@@ -19,7 +19,7 @@ module.exports = function(app) {
     // if (!req.isAuthenticated()) {
     //   return res.render("401");
     // }
-    res.sendFile(path.join(__dirname, "../public/html/calendar.html"));
+    res.sendFile(path.join(__dirname, "../public/html/calendar2.html"));
   });
 
   // Render 404 page for any unmatched routes
