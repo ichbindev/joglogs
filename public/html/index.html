@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,100 +34,86 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-        <!-- The about page and blog are a feature in progress -->
-        <!-- <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                    <button class="btn btn-default">About</button></a>
-                          </li>
-                          <li class="nav-item">
-                                <a class="nav-link" href="#"><button class="btn btn-default">Blog</button></a>
-                              </li> -->
+        <li class="nav-item active">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
         <!-- Sign In modal -->
         <li class="nav-item">
-          <a class="nav-link">
-            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+          <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+                  <div class="md-form mb-5">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    <input type="email" id="defaultForm-email" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="defaultForm-email">Your
+                      email</label>
                   </div>
-                  <div class="modal-body mx-3">
-                    <div class="md-form mb-5">
-                      <i class="fas fa-envelope prefix grey-text"></i>
-                      <input type="email" id="defaultForm-email" class="form-control validate">
-                      <label data-error="wrong" data-success="right" for="defaultForm-email">Your
-                        email</label>
-                    </div>
-                    <div class="md-form mb-4">
-                      <i class="fas fa-lock prefix grey-text"></i>
-                      <input type="password" id="defaultForm-pass" class="form-control validate">
-                      <label data-error="wrong" data-success="right" for="defaultForm-pass">Your
-                        password</label>
-                    </div>
+                  <div class="md-form mb-4">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <input type="password" id="defaultForm-pass" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Your
+                      password</label>
                   </div>
-                  <div class="modal-footer d-flex justify-content-center">
-                    <button id="login" class="btn btn-default">Login</button>
-                  </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button id="login" class="btn btn-default">Login</button>
                 </div>
               </div>
             </div>
-            <div class="text-center">
-              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">
-                Sign In</a>
-            </div>
-          </a>
+          </div>
+          <div class="text-center">
+            <a href="" class="nav-link active" data-toggle="modal" data-target="#modalLoginForm">
+              Sign In</a>
+          </div>
         </li>
         <!-- Sign Up modal -->
         <li class="nav-item">
-          <a class="nav-link">
-            <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+          <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+                  <div class="md-form mb-5">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    <input type="email" id="orangeForm-email" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="orangeForm-email">Your
+                      email</label>
                   </div>
-                  <div class="modal-body mx-3">
-                    <!-- This is a feature in progress -->
-                    <!-- <div class="md-form mb-5">
-                                            <i class="fas fa-user prefix grey-text"></i>
-                                            <input type="text" id="orangeForm-name" class="form-control validate">
-                                            <label data-error="wrong" data-success="right" for="orangeForm-name">Your
-                                                name</label>
-                                        </div> -->
-                    <div class="md-form mb-5">
-                      <i class="fas fa-envelope prefix grey-text"></i>
-                      <input type="email" id="orangeForm-email" class="form-control validate">
-                      <label data-error="wrong" data-success="right" for="orangeForm-email">Your
-                        email</label>
-                    </div>
-
-                    <div class="md-form mb-4">
-                      <i class="fas fa-lock prefix grey-text"></i>
-                      <input type="password" id="orangeForm-pass" class="form-control validate">
-                      <label data-error="wrong" data-success="right" for="orangeForm-pass">Your
-                        password</label>
-                    </div>
-                    <div id="signupFail"></div>
+                  <div class="md-form mb-4">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <input type="password" id="orangeForm-pass" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="orangeForm-pass">Your
+                      password</label>
                   </div>
-                  <div class="modal-footer d-flex justify-content-center">
-                    <button id="sign-up" class="btn btn-deep-orange">Sign up</button>
-                  </div>
+                  <div id="signupFail"></div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button id="sign-up" class="btn btn-deep-orange">Sign up</button>
                 </div>
               </div>
             </div>
-            <div class="text-center">
-              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">
-                Sign Up</a>
-            </div>
-          </a>
+          </div>
+          <div class="text-center">
+            <a href="" class="nav-link active" data-toggle="modal" data-target="#modalRegisterForm">
+              Sign Up</a>
+          </div>
         </li>
       </ul>
     </div>
@@ -184,11 +170,9 @@
             <a class="icon">
               <i class="fa fa-facebook-f fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
             </a>
-  
             <a class="icon">
               <i class="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
             </a>
-  
             <a class="icon">
               <i class="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
             </a>
@@ -224,5 +208,4 @@
 <!-- Link to JS file -->
 <script type="text/javascript" src="js/index.js">
 </script>
-
 </html>

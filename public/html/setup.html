@@ -27,38 +27,28 @@
     <a class="navbar-brand" text-center href="/">
       <h1><strong>jog log</strong></h1>
     </a>
+    <!-- Mini navbar -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-        <!-- Feature in progress for blog and about pages -->
-        <!-- <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                    <button class="btn btn-default">About</button></a>
-                          </li>
-                          <li class="nav-item">
-                                <a class="nav-link" href="#"><button class="btn btn-default">Blog</button></a>
-                              </li> -->
+        <li class="nav-item active">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+        <li class="nav-item active">
+          <a id="logout" href="/" class="nav-link">
+            Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-                <li class="nav-item">
-                    <a class="nav-link">
-
-                        <div class="text-center">
-                            <a id="logout" href="/" class="btn btn-default btn-rounded mb-4">
-                                Log Out</a>
-                        </div>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-    </nav>
-
-
-
-  <!-- Hero element -->
+<!-- Hero element -->
   <div class="hero-section">
     <div class="hero-section-text">
       <h1>Set Up</h1>
@@ -67,7 +57,7 @@
     </div>
   </div>
   <br>
-  <!-- Form so users can submit details -->
+<!-- Form so users can submit details -->
   <div class="container">
     <div class="row">
       <div class="col-lg-2"></div>
@@ -102,7 +92,6 @@
                   <option>70+</option>
                 </select>
               </div>
-              
               <div class="form-group">
                 <h3>Your Schedule:</h3>
                 <label for="exampleFormControlSelect1">What days of the week are you able to run
@@ -185,7 +174,6 @@
               </div>
             </div>
           </div>
-
           <br>
           <div class="card">
             <div class="card-header">
@@ -196,7 +184,6 @@
             <div class="card-body">
               <div class="form-group">
                 <h3>Goal Distance:</h3>
-
                 <label for="goal-distance">What is your goal distance?</label>
                 <select class="form-control" id="goal-distance" name="trainingEndMiles">
                   <option value="3">3 miles (5k)</option>
@@ -205,7 +192,6 @@
                   <option value="26.2">26.2 miles (Marathon)</option>
                 </select>
               </div>
-
               <div class="form-group">
                 <h3>Race Name:</h3>
                 <label for="raceName">What is the name of your race?</label>
@@ -218,7 +204,7 @@
             </div>
           </div>
 
-          <!-- Loading modal that pops up after user clicks submit and waits until next page loads -->
+<!-- Loading modal that pops up after user clicks submit and waits until next page loads -->
           <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -242,13 +228,13 @@
               </div>
             </div>
           </div>
-          <!-- Submit button -->
+<!-- Submit button -->
           <div class="text-center">
             <br>
             <button class="btn btn-dark" col-md-12 data-toggle="modal" data-target="#modalLoginForm" type="submit"
               id="setup-submit">
               Submit</button>
-          </div>  
+          </div>
           <br>
         </form>
       </div>
@@ -256,56 +242,54 @@
     <div class="col-lg-2"></div>
   </div>
   </div>
-  <!-- Footer -->
+<!-- Footer -->
   <footer id="sticky-footer" class="py-4 text-white">
-      <div class="container">
-        <div id="footersection">
-          <br><br>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="footerlogo">
-                <strong>jog log</strong>
-              </div>
-              <br>
-              <a class="icon">
-                <i class="fa fa-facebook-f fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
-              </a>
-    
-              <a class="icon">
-                <i class="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
-              </a>
-    
-              <a class="icon">
-                <i class="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
-              </a>
+    <div class="container">
+      <div id="footersection">
+        <br><br>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="footerlogo">
+              <strong>jog log</strong>
             </div>
-            <div class="col-md-4">
-              <br>
-              <h3>Navigation</h3>
-              About<br>
-              Blog<br>
-              JLRC<br>
-              Jobs
-            </div>
-            <div class="col-md-4">
-              <br>
-              <h3>Helpful Links</h3>
-              Privacy<br>
-              Terms<br>
-              Support<br>
-              Contact
-            </div>
+            <br>
+            <a class="icon">
+              <i class="fa fa-facebook-f fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a class="icon">
+              <i class="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a class="icon">
+              <i class="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
           </div>
-        </div>
-        <div class="container text-center text-white-50">
-          <div class="row">
-            <div class="col-md-12">
-              <small>Copyright &copy; 2019 Jog Log</small><br>
-            </div>
+          <div class="col-md-4">
+            <br>
+            <h3>Navigation</h3>
+            About<br>
+            Blog<br>
+            JLRC<br>
+            Jobs
+          </div>
+          <div class="col-md-4">
+            <br>
+            <h3>Helpful Links</h3>
+            Privacy<br>
+            Terms<br>
+            Support<br>
+            Contact
           </div>
         </div>
       </div>
-    </footer>
+      <div class="container text-center text-white-50">
+        <div class="row">
+          <div class="col-md-12">
+            <small>Copyright &copy; 2019 Jog Log</small><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 <!-- Link to javascript file -->
 <script type="text/javascript" src="js/setup.js"></script>
