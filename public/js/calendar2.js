@@ -1,11 +1,12 @@
+/* eslint-disable */
 /*
 | ------------------------------------------------------------------------------
 | Calendar plugin (rough draft)
 | ------------------------------------------------------------------------------
 */
 
-(function ($) {
-  var Calendar = function (elem, options) {
+(function($) {
+  var Calendar = function(elem, options) {
     this.elem = elem;
     this.options = $.extend({}, Calendar.DEFAULTS, options);
     this.init();
@@ -19,8 +20,8 @@
     view: undefined
   };
 
-  Calendar.prototype.init = function () {
-    if (!this.options.datetime || this.options.datetime == "now") {
+  Calendar.prototype.init = function() {
+    if (!this.options.datetime || this.options.datetime === "now") {
       this.options.datetime = moment();
     }
     if (!this.options.view) {
@@ -31,7 +32,7 @@
       .render();
   };
 
-  Calendar.prototype.initScaffold = function () {
+  Calendar.prototype.initScaffold = function() {
     var $elem = $(this.elem),
       $view = $elem.find(".calendar-view"),
       $currentDate = $elem.find(".calendar-current-date");
@@ -64,11 +65,11 @@
     return this;
   };
 
-  Calendar.prototype.initStyle = function () {
+  Calendar.prototype.initStyle = function() {
     return this;
   };
 
-  Calendar.prototype.render = function () {
+  Calendar.prototype.render = function() {
     switch (this.options.view) {
       case "day":
         this.renderDayView();
@@ -79,19 +80,20 @@
       case "month":
         this.renderMonthView();
         break;
-        befault: this.renderMonth();
+      default:
+        this.renderMonth();
     }
   };
 
-  Calendar.prototype.renderDayView = function () {
+  Calendar.prototype.renderDayView = function() {
     //$(this.elem).append('Day View');
   };
 
-  Calendar.prototype.renderWeekView = function () {
+  Calendar.prototype.renderWeekView = function() {
     //$(this.elem).append('Week View');
   };
 
-  Calendar.prototype.renderMonthView = function () {
+  Calendar.prototype.renderMonthView = function() {
     var datetime = this.options.datetime.clone(),
       month = datetime.month();
     datetime.startOf("month").startOf("week");
@@ -131,7 +133,7 @@
     }
   };
 
-  Calendar.prototype.next = function () {
+  Calendar.prototype.next = function() {
     switch (this.options.view) {
       case "day":
         this.options.datetime.add(1, "day");
@@ -150,7 +152,7 @@
     }
   };
 
-  Calendar.prototype.prev = function () {
+  Calendar.prototype.prev = function() {
     switch (this.options.view) {
       case "day":
         break;
@@ -165,13 +167,13 @@
     }
   };
 
-  Calendar.prototype.today = function () {
+  Calendar.prototype.today = function() {
     this.options.datetime = moment();
     this.render();
   };
 
   function Plugin(option) {
-    return this.each(function () {
+    return this.each(function() {
       var $this = $(this),
         data = $this.data("bs.calendar"),
         options = typeof option === "object" && option;
@@ -201,13 +203,13 @@
   $.fn.calendar = Plugin;
   $.fn.calendar.Constructor = Calendar;
 
-  $.fn.calendar.noConflict = function () {
+  $.fn.calendar.noConflict = function() {
     $.fn.calendar = noConflict;
     return this;
   };
 
   // Public data API.
-  $('[data-toggle="calendar"]').click(function () {
+  $('[data-toggle="calendar"]').click(function() {
     var $this = $(this),
       $elem = $this.parents(".calendar"),
       action = $this.data("action");
@@ -224,3 +226,4 @@
 */
 
 $("#calendar").calendar();
+/* eslint-enable */
