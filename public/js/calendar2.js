@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*
 | ------------------------------------------------------------------------------
 | Calendar plugin (rough draft)
@@ -225,3 +226,4 @@
 */
 
 $("#calendar").calendar();
+/* eslint-enable */
