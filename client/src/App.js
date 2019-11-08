@@ -1,21 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Calendar from "./pages/Calendar";
 import Home from "./pages/Home";
 import Setup from "./pages/Setup";
 import NotFound from "./pages/NotFound";
+import Navbar from './components/NavbarComponent';
+import Footer from  './components/Footer'
 
 function App() {
   return (
     <Router>
       <div>
+      <Navbar/>
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/setup" component={Setup}/>
           <Route exact path="/calendar" component={Calendar}/>
           <Route path="*" component={NotFound}/>
         </Switch>
+        <Footer/>
       </div>
     </Router>
   );
