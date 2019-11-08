@@ -33,7 +33,7 @@ function marathonSchedule(data) {
     );
     // setup sample data
     // sample Race date is today + ??? days
-    let sampleRaceDate = new Date().setDate(new Date().getDate() + 170);
+    let sampleRaceDate = new Date().setDate(new Date().getDate() + 100);
     sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
     //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
     let sampleData = [];
@@ -148,13 +148,8 @@ function marathonSchedule(data) {
   const dayDifference = timeDifference / (1000 * 3600 * 24);
   logthis("total days of training time = " + dayDifference);
   // calculate totalweeks to train
-  const weeksToTrain = 1 + Math.ceil(dayDifference / 7);
+  const weeksToTrain = 1 + parseInt(dayDifference / 7);
   logthis("total weeks of training time = " + weeksToTrain);
-
-  const weeksToIncrementMiles = Math.ceil((dayDifference / 7) * 0.666);
-  logthis(
-    "total weeks of incrementations (2/3 weeks) = " + weeksToIncrementMiles
-  );
 
   // calculate totalTrainingSessions
   const totalSessions = runsPerWeek * weeksToTrain;
@@ -166,12 +161,12 @@ function marathonSchedule(data) {
   let maxMilesPerWeek = 65;
   logthis("maxMilesPerWeek is = " + maxMilesPerWeek);
   if (
-    runnerData.startMilesPerWeek + (weeksToIncrementMiles+5) * weeklyIncrement >
+    runnerData.startMilesPerWeek + weeksToTrain * weeklyIncrement >
     maxMilesPerWeek
   ) {
     // Compute new weeklyIncrement to reach max miles per week in the number of weeks of training.
     weeklyIncrement =
-      (maxMilesPerWeek - runnerData.startMilesPerWeek) / (weeksToIncrementMiles+5);
+      (maxMilesPerWeek - runnerData.startMilesPerWeek) / weeksToTrain;
   }
   logthis(
     "weeklyIncrement adjusted down if runner exceeds maxMilesPerWeek = " +
@@ -238,94 +233,41 @@ function marathonSchedule(data) {
   );
   while (tempEventDate <= lastRegularTrainingDay) {
     weekNumber++;
-
-    // Create events for this week
     for (let i = 0; i < runDays.length; i++) {
       // get value of 1st runDays[] and multiply by days, then add to Sunday week start to get first event of week
       //(first event may be negative day to make long run the last day of the weeks events)
-
       tempEventDate =
         scheduleWeekStart +
         runDays[i] * dayOfMilliseconds +
         7 * weekNumber * dayOfMilliseconds;
+      //if( (tempEventDate >= runnerData.startDate) && (tempEventDate <= lastRegularTrainingDay) ){
+      eventCounter++;
+      event.number = eventCounter;
+      event.dateMSecs = tempEventDate;
+      event.date = new Date(event.dateMSecs);
+      event.description = day[i].description;
+      event.percentMilesPerWeek = day[i].percentMilesPerWeek;
+      event.milesToRunToday =
+        Math.round(
+          (runnerData.startMilesPerWeek + weeklyIncrement * weekNumber) *
+            (day[i].percentMilesPerWeek / 100) *
+            10
+        ) / 10;
+      event.mileTotalThisWeek =
+        Math.round(
+          (runnerData.startMilesPerWeek + weeklyIncrement * weekNumber) * 10
+        ) / 10;
 
-      // skip event if it is before runners start date or after last training date.
-      if (
-        tempEventDate >= runnerData.startDate &&
-        tempEventDate <= lastRegularTrainingDay
-      ) {
-        eventCounter++;
-        event.number = eventCounter;
-        event.dateMSecs = tempEventDate;
-        event.date = new Date(event.dateMSecs);
-        event.description = day[i].description;
-        event.percentMilesPerWeek = day[i].percentMilesPerWeek;
-        event.milesToRunToday =
-          Math.round(
-            (runnerData.startMilesPerWeek + weeklyIncrement * weekNumber) *
-              (day[i].percentMilesPerWeek / 100) *
-              10
-          ) / 10;
-        event.mileTotalThisWeek =
-          Math.round(
-            (runnerData.startMilesPerWeek + weeklyIncrement * weekNumber) * 10
-          ) / 10;
-
-        events.push(event);
-
-        event = [];
-      }
+      //logthis("event:");
+      //logthis(event);
+      //}
+      events.push(event);
+      event = [];
     }
 
-    // Create events for DOWN week (3rd of 3 weeks) *************************************************************************************************
-    if (weekNumber % 3 === 0) {
-      // increment the week number since we are adding the down week here
-      weekNumber++;
-      for (let i = 0; i < runDays.length; i++) {
-        // get value of 1st runDays[] and multiply by days, then add to Sunday week start to get first event of week
-        //(first event may be negative day to make long run the last day of the weeks events)
-        tempEventDate =
-          scheduleWeekStart +
-          runDays[i] * dayOfMilliseconds +
-          7 * weekNumber * dayOfMilliseconds;
-
-        // skip event if it is before runners start date or after last training date.
-        if (
-          tempEventDate >= runnerData.startDate &&
-          tempEventDate <= lastRegularTrainingDay
-        ) {
-          eventCounter++;
-          event.number = eventCounter;
-          event.dateMSecs = tempEventDate;
-          event.date = new Date(event.dateMSecs);
-          event.description = "(Recovery Week!) " + day[i].description;
-          event.percentMilesPerWeek = day[i].percentMilesPerWeek;
-          // Reduce MilesToRun to 85% of LAST weeks runs
-          event.milesToRunToday =
-            Math.round(
-              (runnerData.startMilesPerWeek +
-                weeklyIncrement * (weekNumber - 1)) *
-                (day[i].percentMilesPerWeek / 100) *
-                0.85 *
-                10
-            ) / 10;
-          event.mileTotalThisWeek =
-            Math.round(
-              (runnerData.startMilesPerWeek +
-                (weeklyIncrement * weekNumber - 1)) *
-                10 *
-                0.85
-            ) / 10;
-
-          events.push(event);
-          event = [];
-        }
-      }
-    }
     eventDay = tempEventDate;
   }
-
-  // logthis("\n\n\nevents:\n");
+  logthis("\n\n\nevents:\n");
   logthis(events);
   logthis("all Done");
 
