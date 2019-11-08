@@ -28,6 +28,9 @@ Link: https://github.com/users/cmlinac/projects/1
 * Sequelize ORM
 * Heroku
 * Google Calendar API
+* Sass
+* React-Big-Calendar
+* Reactstrap
 
 ### Contributors:
 * Aaron Phillips - UI/UX, Algorithm
