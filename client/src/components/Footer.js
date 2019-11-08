@@ -7,56 +7,56 @@ const Footer = (props) => {
       <Row>
         <Col>
           <strong><h1>jog log</h1></strong>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             facebook
           </a>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             twitter
           </a>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             instagram
           </a>
         </Col>
         <Col>
-          <br/>
+          <br />
           <h3>Navigation</h3>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             About
           </a>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             Blog
           </a>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             JLRC
           </a>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             Jobs
           </a>
         </Col>
         <Col>
-          <br/>
+          <br />
           <h3>Helpful Links</h3>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             Privacy
           </a>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             Terms
           </a>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             Support
           </a>
-          <br/>
-          <a>
+          <br />
+          <a href="/">
             Contact
           </a>
         </Col>
@@ -64,7 +64,7 @@ const Footer = (props) => {
       <Row>
         <Col>
           <small>Copyright &copy; 2019 Jog Log</small>
-          <br/>
+          <br />
         </Col>
       </Row>
     </Container>

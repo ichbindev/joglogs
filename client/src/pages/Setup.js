@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Form from '../components/Form';
+import { SIGN_UP } from '../utils/consts';
 
 class Setup extends Component {
   constructor(props) {
@@ -6,7 +8,9 @@ class Setup extends Component {
     this.state = {  }
   }
   render() { 
-    return ( <div>Setup Page</div> );
+    return ( <div>
+      <Form formType={SIGN_UP}/>
+    </div> );
   }
 }
  
