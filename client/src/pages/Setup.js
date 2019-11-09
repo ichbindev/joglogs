@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from '../components/Form';
-import { SIGN_UP } from '../utils/consts';
+import { START, GOAL } from '../utils/consts';
+import Hero from '../components/Hero';
 
 class Setup extends Component {
   constructor(props) {
@@ -9,7 +10,9 @@ class Setup extends Component {
   }
   render() { 
     return ( <div>
-      <Form formType={SIGN_UP}/>
+      <Hero/>
+      <Form formType={START}/>
+      <Form formType={GOAL}/>
     </div> );
   }
 }
