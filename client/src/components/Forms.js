@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardBody, Input, Form as RSForm, FormGroup, Label } from 'reactstrap';
+import { Card, CardTitle, CardBody, Input, Form, FormGroup, Label } from 'reactstrap';
 import { SIGN_UP, LOG_IN, START, GOAL } from '../utils/consts';
 
 class Forms extends Component {
@@ -41,7 +41,7 @@ const SignUpForm = () => {
     <div>
       <CardTitle id="sign-up-title">Sign Up</CardTitle>
       <CardBody id="sign-up-body">
-        <RSForm>
+        <Form>
           <FormGroup>
             <Label htmlFor="signupEmail">Email</Label>
             <Input type="email" name="signupEmail" id="signup-email" placeholder="Email Address" />
@@ -50,7 +50,7 @@ const SignUpForm = () => {
             <Label htmlFor="signup-password">Password</Label>
             <Input type="password" name="signupPassword" id="signupPassword" placeholder="Password" />
           </FormGroup>
-        </RSForm>
+        </Form>
       </CardBody> 
     </div>
   );
@@ -62,7 +62,7 @@ const LogInForm = () => {
     <div>
       <CardTitle id="login-title">Login</CardTitle>
       <CardBody id="login-body">
-        <RSForm>
+        <Form>
           <FormGroup>
             <Label htmlFor="loginEmail">Email</Label>
             <Input type="email" name="loginEmail" id="login-email" placeholder="Email Address" />
@@ -71,7 +71,7 @@ const LogInForm = () => {
             <Label htmlFor="login-password">Password</Label>
             <Input type="password" name="loginPassword" id="loginPassword" placeholder="Password" />
           </FormGroup>
-        </RSForm>
+        </Form>
       </CardBody> 
     </div>
   );
@@ -83,7 +83,7 @@ const StartForm = () => {
     <div>
       <CardTitle id="start-title">Your Information</CardTitle>
       <CardBody id="start-body">
-        <RSForm>
+        <Form>
           <FormGroup>
             <h3>Current Fitness Level:</h3>
             <Label htmlFor="mpw">How many Miles Per Week (MPW) do you currently
@@ -165,7 +165,7 @@ const StartForm = () => {
               <option value="Saturday">Saturday</option>
             </Input>
           </FormGroup>
-        </RSForm>
+        </Form>
       </CardBody> 
     </div>
   );
@@ -177,7 +177,7 @@ const GoalForm = () => {
     <div>
       <CardTitle id="goal-title">Your Goals</CardTitle>
       <CardBody id="goal-body">
-        <RSForm>
+        <Form>
           <FormGroup>
             <h3>Goal Distance:</h3>
             <Label htmlFor="goalDistance">What is your goal distance?</Label>
@@ -198,7 +198,7 @@ const GoalForm = () => {
             <label htmlFor="raceDate">What is the date of your race?</label><br/>
             <input type="date" name="raceDate" id="raceDate"/>
           </FormGroup>
-        </RSForm>
+        </Form>
       </CardBody> 
     </div>
   );
