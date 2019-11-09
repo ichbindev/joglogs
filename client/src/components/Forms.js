@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardTitle, CardBody, Input, Form as RSForm, FormGroup, Label } from 'reactstrap';
 import { SIGN_UP, LOG_IN, START, GOAL } from '../utils/consts';
 
-class Form extends Component {
+class Forms extends Component {
 
   chooseForm = (formType) => {
     switch (formType) {
@@ -34,7 +34,7 @@ class Form extends Component {
   };
 }
  
-export default Form;
+export default Forms;
 
 const SignUpForm = () => {
   return ( 

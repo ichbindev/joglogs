@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Form from '../components/Form';
+import Forms from '../components/Forms';
 import { START, GOAL } from '../utils/consts';
 import Hero from '../components/Hero';
 
@@ -11,8 +11,8 @@ class Setup extends Component {
   render() { 
     return ( <div>
       <Hero/>
-      <Form formType={START}/>
-      <Form formType={GOAL}/>
+      <Forms formType={START}/>
+      <Forms formType={GOAL}/>
     </div> );
   }
 }
