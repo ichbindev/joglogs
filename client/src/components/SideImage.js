@@ -6,7 +6,7 @@ import {
 const SideImage = (props) => {
   return (
     <div>
-      <CardImg src="https://via.placeholder.com/300" />
+      <CardImg src={props.image} />
     </div>
   );
 };

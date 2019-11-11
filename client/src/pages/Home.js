@@ -7,7 +7,7 @@ const Home = () => {
   return ( 
     <div>
       <Hero/>
-      <SideImage/>
+      <SideImage image={"https://via.placeholder.com/300"} />
       <SideText subtitle={"SAMPLE SUBTITLE"} text={"SAMPLE TEXT"} />
     </div>
   );
