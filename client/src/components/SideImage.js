@@ -1,7 +1,14 @@
 import React from 'react';
+import {
+  CardImg
+} from 'reactstrap';
 
 const SideImage = (props) => {
-  return ( <div>Side Image {props.toString()}</div> );
-}
- 
+  return (
+    <div>
+      <CardImg src="https://via.placeholder.com/300" />
+    </div>
+  );
+};
+
 export default SideImage;
