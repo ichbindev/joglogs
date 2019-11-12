@@ -8,9 +8,9 @@ class Forms extends Component {
   chooseForm = (props) => {
     switch (props.formType) {
       case SIGN_UP:
-        return <SignUpForm onClick={props.onClick} onChange={props.onChange}/>
+        return <SignUpForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue}/>
       case LOG_IN:
-        return <LogInForm onClick={props.onClick} onChange={props.onChange}/>
+        return <LogInForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue}/>
       case START:
         return <StartForm/>
       case GOAL:
@@ -43,14 +43,14 @@ const SignUpForm = (props) => {
         <Form>
           <FormGroup>
             <Label htmlFor="signupEmail">Email</Label>
-            <Input type="email" name="signupEmail" id="signup-email" onChange={() => props.onChange()} placeholder="Email Address" />
+            <Input type="email" name="signupEmail" id="signup-email" onChange={props.onChange} value={props.emailValue} placeholder="Email Address" />
           </FormGroup>
           <FormGroup>
             <Label htmlFor="signup-password">Password</Label>
-            <Input type="password" name="signupPassword" id="signupPassword" onChange={() => props.onChange()} placeholder="Password" />
+            <Input type="password" name="signupPassword" id="signupPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
         </Form>
-        <Button onClick={() => props.onClick()}>Sign Up</Button>
+        <Button onClick={props.onClick}>Sign Up</Button>
       </CardBody> 
     </div>
   );
@@ -64,14 +64,14 @@ const LogInForm = (props) => {
         <Form>
           <FormGroup>
             <Label htmlFor="loginEmail">Email</Label>
-            <Input type="email" name="loginEmail" id="login-email" onChange={() => props.onChange()} placeholder="Email Address" />
+            <Input type="email" name="loginEmail" id="login-email" onChange={props.onChange} value={props.emailValue} placeholder="Email Address" />
           </FormGroup>
           <FormGroup>
             <Label htmlFor="login-password">Password</Label>
-            <Input type="password" name="loginPassword" id="loginPassword" onChange={() => props.onChange()} placeholder="Password" />
+            <Input type="password" name="loginPassword" id="loginPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
         </Form>
-        <Button onClick={() => props.onClick()}>Login</Button>
+        <Button onClick={props.onClick}>Login</Button>
       </CardBody> 
     </div>
   );
