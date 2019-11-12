@@ -465,6 +465,7 @@ const CalendarComponent = (props) => {
             endAccessor="end"
             defaultDate={moment().toDate()}
             localizer={localizer}
+            views={['month', 'agenda']}
           />
         </div>
       </Card>
