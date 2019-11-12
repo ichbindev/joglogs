@@ -36,14 +36,15 @@ module.exports = function(app) {
     const calendarInfo = {
       summary: req.body.raceName,
       trainingStartDate: new Date(),
-      trainingEndDate: req.body.endDate,
+      trainingEndDate: req.body.raceDate,
       trainingStartMiles: parseFloat(req.body.mpw),
       trainingEndMiles: parseFloat(req.body.goalDistance),
-      trainingSessionsPerWeek: 4,
+      trainingSessionsPerWeek: req.body.days.length,
       runnersGoogleEmail: req.user.username,
       whichGoogleAccountInteger: googleCred
     };
     // this is where the large JS file with calendar logic is called
+    // TODO: in 2.0 this needs to be changed to store above data
     createCalendar(calendarInfo, function(calendarId) {
       if (calendarId) {
         let plan = {};

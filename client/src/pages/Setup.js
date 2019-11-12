@@ -43,7 +43,7 @@ class Setup extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     const calendarData = this.state;
-    API.addCalendar(calendarData);
+    API.createCalendar(calendarData);
     // todo: redirect to calendar page?
   }
 
