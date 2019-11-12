@@ -3,6 +3,7 @@ import Forms from '../components/Forms';
 import { START, GOAL } from '../utils/consts';
 import Hero from '../components/Hero';
 import Button from '../components/Button';
+import API from '../utils/API';
 
 class Setup extends Component {
   constructor(props) {
@@ -41,8 +42,9 @@ class Setup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const submission = this.state;
-    console.log(submission);
+    const calendarData = this.state;
+    API.addCalendar(calendarData);
+    // todo: redirect to calendar page?
   }
 
   render() { 
@@ -50,7 +52,7 @@ class Setup extends Component {
       <Hero/>
       <Forms formType={START} onChange={this.handleInputChange}/>
       <Forms formType={GOAL} onChange={this.handleInputChange}/>
-      <Button>Submit onClick={this.handleFormSubmit}</Button>
+      <Button onClick={this.handleFormSubmit}>Submit</Button>
     </div> );
   }
 }

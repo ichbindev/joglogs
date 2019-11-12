@@ -12,5 +12,8 @@ export default {
   // Logs a user out
   logout: function() {
     return axios.post("/api/user/logout");
+  },
+  createCalendar: function(calendarData) {
+    return axios.post("/api/calendar", calendarData);
   }
 };
