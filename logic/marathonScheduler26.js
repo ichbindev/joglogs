@@ -1,3 +1,6 @@
+// call marathonScheduler26();
+module.exports = marathonScheduler26;
+
 showLogs = true; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
 function logthis(stuff) {
   if (showLogs || stuff.includes("ERROR")) {
@@ -18,7 +21,7 @@ function logthis(stuff) {
 // raceDate: "2021-01-01"
 // maybe startDate for the first day of training??
 
-function marathonSchedule(data) {
+function marathonScheduler26(data) {
   //set trainingStartDate as tomorrow in format "2019-11-30"
   let calculateStartDate = new Date().setDate(new Date().getDate() + 1);
   calculateStartDate =
@@ -33,13 +36,13 @@ function marathonSchedule(data) {
     );
     // setup sample data
     // sample Race date is today + ??? days *********************************************************************
-    let sampleRaceDate = new Date().setDate(new Date().getDate() + 155);
+    let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
     sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
     //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
     let sampleData = [];
 
     sampleData = {
-      startMilesPerWeek: "45",
+      startMilesPerWeek: "15",
       raceMiles: "26.2",
       // runMonday: true,
       runTuesday: true,
@@ -206,83 +209,99 @@ function marathonSchedule(data) {
   if (runDays.length === 3) {
     day[0] = {
       percentMilesPerWeek: 25,
-      description: "Run Day 1, 1/4th of your weekly Run"
+      description:
+        "Speed Development.  Developing speed will set you up for success on race day.  They serve as both physical and mental conditioning. Speed workouts should be executed at harder effort than race pace."
     };
     day[1] = {
       percentMilesPerWeek: 25,
-      description: "Run Day 2, 25% of Total Week Run"
+      description:
+        "Easy Effort.  Easy runs should be executed at a relaxed effort where breathing is comfortable.  They will help you recover from your other runs."
     };
     day[2] = {
       percentMilesPerWeek: 50,
-      description: "Long Run Day, 50% of Total Week Run"
+      description:
+        "Long Run.  Long runs are your most crucial run of the week.  They will help build physical and mental endurance for race day.  Long run efforts should be executed at your targeted race pace or slower."
     };
   }
-
   if (runDays.length === 4) {
     day[0] = {
       percentMilesPerWeek: 12.5,
-      description: "Easy Run Day, 1/8th of your weekly Run"
+      description:
+        "Easy Effort.  Easy runs should be executed at a relaxed effort where breathing is comfortable.  They will help you recover from your other runs."
     };
     day[1] = {
       percentMilesPerWeek: 25,
-      description: "Medium Run Day, 25% of Total Week Run"
+      description:
+        "Speed Development.  Developing speed will set you up for success on race day.  They serve as both physical and mental conditioning. Speed workouts should be executed at harder effort than race pace."
     };
     day[2] = {
       percentMilesPerWeek: 12.5,
-      description: "Easy Run Day, 1/8th of your weekly Run"
+      description:
+        "Hill Workout.  Run for the hills!  Find a hilly route or run hill repeats.  Running hills will pay dividends on race day.  Hill conditioning will make running on a relatively flat course seem easy."
     };
     day[3] = {
       percentMilesPerWeek: 50,
-      description: "Long Run Day, 50% of Total Week Run"
+      description:
+        "Long Run.  Long runs are your most crucial run of the week.  They will help build physical and mental endurance for race day.  Long run efforts should be executed at your targeted race pace or slower."
     };
   }
-
   if (runDays.length === 5) {
     day[0] = {
       percentMilesPerWeek: 8.3,
-      description: "Easy Run Day, about 8% of your weekly Run"
+      description:
+        "Easy Effort.  Easy runs should be executed at a relaxed effort where breathing is comfortable.  They will help you recover from your other runs."
     };
     day[1] = {
       percentMilesPerWeek: 25,
-      description: "Medium Run Day, 25% of Total Week Run"
+      description:
+        "Speed Development.  Developing speed will set you up for success on race day.  They serve as both physical and mental conditioning. Speed workouts should be executed at harder effort than race pace."
     };
     day[2] = {
       percentMilesPerWeek: 8.4,
-      description: "Easy Run Day, about 8% of your weekly Run"
+      description:
+        "Easy Effort.  Easy runs should be executed at a relaxed effort where breathing is comfortable.  They will help you recover from your other runs."
     };
     day[3] = {
       percentMilesPerWeek: 8.3,
-      description: "Easy Run Day, about 8% of your weekly Run"
+      description:
+        "Hill Workout.  Run for the hills!  Find a hilly route or run hill repeats.  Running hills will pay dividends on race day.  Hill conditioning will make running on a relatively flat course seem easy."
     };
     day[4] = {
       percentMilesPerWeek: 50,
-      description: "Long Run Day, 50% of Total Week Run"
+      description:
+        "Long Run.  Long runs are your most crucial run of the week.  They will help build physical and mental endurance for race day.  Long run efforts should be executed at your targeted race pace or slower."
     };
   }
   if (runDays.length === 6) {
     day[0] = {
       percentMilesPerWeek: 6.25,
-      description: "Easy Run Day, about 6% of your weekly Run"
+      description:
+        "Easy Effort.  Easy runs should be executed at a relaxed effort where breathing is comfortable.  They will help you recover from your other runs."
     };
     day[1] = {
       percentMilesPerWeek: 6.25,
-      description: "Easy Run Day, about 6% of your weekly Run"
+      description:
+        "Speed Development.  Developing speed will set you up for success on race day.  They serve as both physical and mental conditioning. Speed workouts should be executed at harder effort than race pace."
     };
     day[2] = {
       percentMilesPerWeek: 25,
-      description: "Easy Run Day, about 25% of your weekly Run"
+      description:
+        "Easy Effort.  Easy runs should be executed at a relaxed effort where breathing is comfortable.  They will help you recover from your other runs."
     };
     day[3] = {
       percentMilesPerWeek: 6.25,
-      description: "Easy Run Day, about 6% of your weekly Run"
+      description:
+        "Hill Workout.  Run for the hills!  Find a hilly route or run hill repeats.  Running hills will pay dividends on race day.  Hill conditioning will make running on a relatively flat course seem easy."
     };
     day[4] = {
       percentMilesPerWeek: 6.25,
-      description: "Easy Run Day, about 6% of your weekly Run"
+      description:
+        "Easy Effort.  Easy runs should be executed at a relaxed effort where breathing is comfortable.  They will help you recover from your other runs."
     };
     day[5] = {
       percentMilesPerWeek: 50,
-      description: "Long Run Day, 50% of Total Week Run"
+      description:
+        "Long Run.  Long runs are your most crucial run of the week.  They will help build physical and mental endurance for race day.  Long run efforts should be executed at your targeted race pace or slower."
     };
   }
 
@@ -323,12 +342,12 @@ function marathonSchedule(data) {
       new Date(scheduleWeekStart)
   );
   let tempEventDate = new Date().getTime();
-  let weekMilesAddedUp = 0;
+
   // ************************** Start creating Events *********************************************
   // ************************** Start creating Events *********************************************
 
   while (tempEventDate < runnerData.raceDate) {
-    weekMilesAddedUp = 0;
+    weekMilesAddedUp = -1;
     weekNumber++;
 
     // for uptick training weeks, calculate new miles per week after incrementing the value of weekToIncrementNumber
@@ -444,12 +463,16 @@ function marathonSchedule(data) {
         event.number = eventCounter;
         event.date = new Date(tempEventDate);
         event.percentMilesPerWeek = mileTest[i].percentMilesPerWeek;
-
-        event.milesToRunToday =
-          Math.round(
-            milesThisWeek * (mileTest[i].percentMilesPerWeek / 100) * 10
-          ) / 10;
-        event.mileTotalThisWeek = Math.round(milesThisWeek * 10) / 10;
+        event.milesToRunToday = Math.ceil(
+          milesThisWeek * (mileTest[i].percentMilesPerWeek / 100)
+        );
+        event.mileTotalThisWeek = Math.ceil(milesThisWeek);
+        // Math.ceil replaced the miles Math.round to nearest 10th of a mile.
+        // event.milesToRunToday =
+        //   Math.round(
+        //     milesThisWeek * (mileTest[i].percentMilesPerWeek / 100) * 10
+        //   ) / 10;
+        // event.mileTotalThisWeek = Math.round(milesThisWeek * 10) / 10;
         // Create title for event
         event.title =
           event.milesToRunToday +
@@ -459,22 +482,6 @@ function marathonSchedule(data) {
           specialComment;
         event.description = specialComment + mileTest[i].description;
         events.push(event);
-        //logthis(event);
-        // logthis(
-        //   event.date +
-        //     " " +
-        //     event.description +
-        //     " increment = " +
-        //     weeklyIncrement +
-        //     ", WeekIncrementNumber = " +
-        //     weekToIncrementNumber +
-        //     ", milesThisWeek = " +
-        //     milesThisWeek +
-        //     " startdate = " +
-        //     new Date(runnerData.startDate).toISOString().substr(0, 10) +
-        //     " lastdate = " +
-        //     new Date(lastRegularTrainingDay).toISOString().substr(0, 10)
-        // );
         event = [];
       }
     }
@@ -482,6 +489,7 @@ function marathonSchedule(data) {
     eventDay = tempEventDate;
   }
 
+  // Special add on event for Race Day *************
   eventCounter++;
   event.number = eventCounter;
   event.date = new Date(runnerData.raceDate);
@@ -494,8 +502,25 @@ function marathonSchedule(data) {
   // logthis(event);
 
   logthis("\nAll Done With Regular Training");
-  logthis("\n\n\n\n\n");
+
+  let eventsArr = [];
+  for (let i = 0; i < events.length; i++) {
+    let eventObj = {
+      title: events[i].title,
+      start: events[i].date.toISOString().substr(0, 10),
+      end: events[i].date.toISOString().substr(0, 10),
+      allDay: true
+    };
+    eventsArr.push(eventObj);
+  }
+
+  logthis("\n\nEventArray:\n\n");
   logthis(events);
+
+  logthis("\n\nEventObject:\n\n");
+  logthis(eventsArr);
+
+  return eventsArr;
 }
 
-marathonSchedule();
+//marathonScheduler26();
