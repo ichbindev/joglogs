@@ -12,9 +12,9 @@ class Forms extends Component {
       case LOG_IN:
         return <LogInForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue}/>
       case START:
-        return <StartForm/>
+        return <StartForm onChange={props.onChange}/>
       case GOAL:
-        return <GoalForm/>
+        return <GoalForm onChange={props.onChange}/>
       default:
         return (
           <div>
@@ -78,7 +78,7 @@ const LogInForm = (props) => {
 }
  
 
-const StartForm = () => {
+const StartForm = (props) => {
   return ( 
     <div>
       <CardTitle id="start-title">Your Information</CardTitle>
@@ -88,7 +88,7 @@ const StartForm = () => {
             <h3>Current Fitness Level:</h3>
             <Label htmlFor="mpw">How many Miles Per Week (MPW) do you currently
                   run?</Label>
-            <Input type="select" name="mpw">
+            <Input  onChange={props.onChange} type="select" name="mpw">
               <option value="0">0</option>
               <option value="5">5</option>
               <option value="10">10</option>
@@ -111,43 +111,43 @@ const StartForm = () => {
             <legend>What days of the week are you able to run?</legend>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox" name="days" value="Sunday"/>{' '}
                 Sunday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox" name="days" value="Monday" />{' '}
                 Monday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Tuesday"/>{' '}
                 Tuesday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Wednesday"/>{' '}
                 Wednesday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Thursday"/>{' '}
                 Thursday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Friday"/>{' '}
                 Friday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Saturday"/>{' '}
                 Saturday
               </Label>
             </FormGroup>
@@ -155,7 +155,7 @@ const StartForm = () => {
           <FormGroup>
             <h3>Long Run:</h3>
             <Label htmlFor="days-of-week">Which day of the week would you like to do your long run?</Label>
-            <Input type="select" name="days-of-week">
+            <Input  onChange={props.onChange} type="select" name="longRun">
               <option value="Sunday">Sunday</option>
               <option value="Monday">Monday</option>
               <option value="Tuesday">Tuesday</option>
@@ -172,7 +172,7 @@ const StartForm = () => {
 }
  
 
-const GoalForm = () => {
+const GoalForm = (props) => {
   return ( 
     <div>
       <CardTitle id="goal-title">Your Goals</CardTitle>
@@ -181,7 +181,7 @@ const GoalForm = () => {
           <FormGroup>
             <h3>Goal Distance:</h3>
             <Label htmlFor="goalDistance">What is your goal distance?</Label>
-            <Input type="select" name="goalDistance" id="goalDistance">
+            <Input  onChange={props.onChange} type="select" name="goalDistance" id="goalDistance">
               <option value="3.1">5k (3.1 Miles)</option>
               <option value="6.2">10k (6.2 Miles)</option>
               <option value="13.1">Half Marathons (13.1 mile)</option>
@@ -191,12 +191,12 @@ const GoalForm = () => {
           <FormGroup>
             <h3>Race Name:</h3>
             <label htmlFor="raceName">What is the name of your race?</label><br/>
-            <input type="text" name="raceName" id="raceName" placeholder="Austin Marathon"/>
+            <Input  onChange={props.onChange} type="text" name="raceName" id="raceName" placeholder="Austin Marathon"/>
           </FormGroup>
           <FormGroup>
             <h3>Race Date:</h3>
             <label htmlFor="raceDate">What is the date of your race?</label><br/>
-            <input type="date" name="raceDate" id="raceDate"/>
+            <Input  onChange={props.onChange} type="date" name="raceDate" id="raceDate"/>
           </FormGroup>
         </Form>
       </CardBody> 
