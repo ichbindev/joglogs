@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardBody, Input, Form, FormGroup, Label } from 'reactstrap';
 import { SIGN_UP, LOG_IN, START, GOAL } from '../utils/consts';
+import Button from './Button';
 
 class Forms extends Component {
 
-  chooseForm = (formType) => {
-    switch (formType) {
+  chooseForm = (props) => {
+    switch (props.formType) {
       case SIGN_UP:
-        return <SignUpForm/>
+        return <SignUpForm onClick={props.onClick} onChange={props.onChange}/>
       case LOG_IN:
-        return <LogInForm/>
+        return <LogInForm onClick={props.onClick} onChange={props.onChange}/>
       case START:
         return <StartForm/>
       case GOAL:
@@ -17,7 +18,6 @@ class Forms extends Component {
       default:
         return (
           <div>
-            <CardTitle>Error</CardTitle>
             <CardBody>There was an issue, please try again.</CardBody>
           </div>
         );
@@ -27,7 +27,7 @@ class Forms extends Component {
   render() { return(
       <div>
         <Card>        
-          {this.chooseForm(this.props.formType)}
+          {this.chooseForm(this.props)}
         </Card>
       </div>
     );
@@ -36,42 +36,42 @@ class Forms extends Component {
  
 export default Forms;
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
   return ( 
     <div>
-      <CardTitle id="sign-up-title">Sign Up</CardTitle>
       <CardBody id="sign-up-body">
         <Form>
           <FormGroup>
             <Label htmlFor="signupEmail">Email</Label>
-            <Input type="email" name="signupEmail" id="signup-email" placeholder="Email Address" />
+            <Input type="email" name="signupEmail" id="signup-email" onChange={() => props.onChange()} placeholder="Email Address" />
           </FormGroup>
           <FormGroup>
             <Label htmlFor="signup-password">Password</Label>
-            <Input type="password" name="signupPassword" id="signupPassword" placeholder="Password" />
+            <Input type="password" name="signupPassword" id="signupPassword" onChange={() => props.onChange()} placeholder="Password" />
           </FormGroup>
         </Form>
+        <Button onClick={() => props.onClick()}>Sign Up</Button>
       </CardBody> 
     </div>
   );
 }
  
 
-const LogInForm = () => {
+const LogInForm = (props) => {
   return ( 
     <div>
-      <CardTitle id="login-title">Login</CardTitle>
       <CardBody id="login-body">
         <Form>
           <FormGroup>
             <Label htmlFor="loginEmail">Email</Label>
-            <Input type="email" name="loginEmail" id="login-email" placeholder="Email Address" />
+            <Input type="email" name="loginEmail" id="login-email" onChange={() => props.onChange()} placeholder="Email Address" />
           </FormGroup>
           <FormGroup>
             <Label htmlFor="login-password">Password</Label>
-            <Input type="password" name="loginPassword" id="loginPassword" placeholder="Password" />
+            <Input type="password" name="loginPassword" id="loginPassword" onChange={() => props.onChange()} placeholder="Password" />
           </FormGroup>
         </Form>
+        <Button onClick={() => props.onClick()}>Login</Button>
       </CardBody> 
     </div>
   );
