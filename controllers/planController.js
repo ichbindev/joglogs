@@ -24,7 +24,7 @@ module.exports = {
           e.PlanId = newPlan.id;
         });
         // save in db
-        console.log(JSON.stringify(events))
+        console.log(JSON.stringify(events));
         db.Event.bulkCreate(events, { returning: true }).then(function() {
           res.json(true);
         });
@@ -43,17 +43,43 @@ module.exports = {
         UserId: req.user.id
       }
     })
+      .then(function(planData) {
+        if (!planData) {
+          // nothing found
+          return res.status(404).json(false);
+        }
+        const PlanId = planData.id;
+        db.Event.findAll({ where: { PlanId } }).then(function(eventData) {
+          const result = {
+            name: planData.raceName,
+            events: eventData
+          };
+          console.log("******RESULT*****" + result.name)
+          return res.json(result);
+        });
+      })
+      .catch(function(err) {
+        console.log(err);
+        return res.status(404).json(false);
+      });
+  },
+  hasPlan: function(req, res) {
+    db.Plan.findOne({
+      where: {
+        UserId: req.user.id
+      }
+    })
       .then(function(data) {
         if (!data) {
           // nothing found
           return res.status(404).json(false);
         }
         // return the calendar reference
-        res.json(data.calendarRef);
+        res.json(true);
       })
       .catch(function(err) {
         console.log(err);
-        return res.status(404).json(false);
+        return res.status(500).json(false);
       });
   },
   updatePlan: function(req, res) {
