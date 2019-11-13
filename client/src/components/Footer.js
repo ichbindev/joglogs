@@ -25,7 +25,7 @@ const Footer = (props) => {
           <a href="/">
             About
           </a>
-          
+          <br />
           <a href="/">
             Blog
           </a>
