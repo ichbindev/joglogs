@@ -14,7 +14,6 @@ const CalendarComponent = (props) => {
         <div style={{ height: '100%' }}>
           <Calendar
             events={props.events}
-            // events={events} //       USE THIS FOR TESTING ONLY
             startAccessor="start"
             endAccessor="end"
             defaultDate={moment().toDate()}
