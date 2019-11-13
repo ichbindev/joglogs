@@ -454,13 +454,10 @@ const CalendarComponent = (props) => {
   return (
     <div>
       <Card style={{ height: '500pt', paddingBottom: '40px' }}>
-        {/* <p>
-          A test for the React Big Calendar.
-        </p> */}
         <div style={{ height: '100%' }}>
           <Calendar
-            // events={props.events} USE THIS FOR DYNAMIC
-            events={events} //       USE THIS FOR TESTING ONLY
+            events={props.events}
+            // events={events} //       USE THIS FOR TESTING ONLY
             startAccessor="start"
             endAccessor="end"
             defaultDate={moment().toDate()}

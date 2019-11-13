@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CalendarComponent from '../components/CalendarComponent';
 
 class Calendar extends Component {
   constructor(props) {
@@ -6,7 +7,9 @@ class Calendar extends Component {
     this.state = {  }
   }
   render() { 
-    return ( <div>Calendar Page</div> );
+    return ( <div>
+      <CalendarComponent events={}/>
+    </div> );
   }
 }
  
