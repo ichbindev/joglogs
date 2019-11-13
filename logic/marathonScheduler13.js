@@ -41,7 +41,7 @@ function marathonScheduler13(data) {
     let sampleData = [];
 
     sampleData = {
-      startMilesPerWeek: "5",
+      startMilesPerWeek: "10",
       raceMiles: "13.1",
       // runMonday: true,
       runTuesday: true,
@@ -509,4 +509,4 @@ function marathonScheduler13(data) {
   return eventsArr;
 }
 
-//marathonScheduler13()
+marathonScheduler13()
