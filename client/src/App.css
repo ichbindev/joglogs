@@ -1,5 +1,10 @@
 /* All our CSS is gonna go here */
 
+
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -23,4 +28,31 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.video-container {
+  position: relative;
+}
+
+video {
+  height: auto;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.overlayText {
+  background: rgba(0,0,0,0);
+  position: absolute;
+  top: 35%; right: 15%; bottom: 20%; left: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 35px;
+}
+
+@media (max-width: 640px) {
+  .overlayText {
+  display: none;
+}
 }

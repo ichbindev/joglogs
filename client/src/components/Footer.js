@@ -6,28 +6,26 @@ const Footer = (props) => {
     <Container>
       <Row>
         <Col>
-          <strong><h1>jog log</h1></strong>
-          <br />
-          <a href="/">
-            facebook
+          <strong><h3>jog log</h3></strong>
+          
+          <a class="icon" href="/">
+          <i class="fa fa-facebook fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
           </a>
           <br />
-          <a href="/">
-            twitter
+          <a class="icon" href="/">
+          <i class="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
           </a>
           <br />
-          <a href="/">
-            instagram
+          <a class="icon" href="/">
+          <i class="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
           </a>
         </Col>
         <Col>
-          <br />
           <h3>Navigation</h3>
-          <br />
           <a href="/">
             About
           </a>
-          <br />
+          
           <a href="/">
             Blog
           </a>
@@ -41,9 +39,8 @@ const Footer = (props) => {
           </a>
         </Col>
         <Col>
-          <br />
           <h3>Helpful Links</h3>
-          <br />
+          
           <a href="/">
             Privacy
           </a>

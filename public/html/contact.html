@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jog Log</title>
+  <!-- Links to bootstrap, ajax, google font, style sheet, jquery -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+  <!-- Nav bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" text-center href="/">
+      <h1><strong>jog log</strong></h1>
+    </a>
+    <!-- Mini navbar -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+        <li class="nav-item active">
+          <a id="logout" href="/" class="nav-link">
+            Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="hero-section">
+    <div class="hero-section-text">
+      <h1>Contact</h1>
+      <h5>Send us a message! We want to hear from you.</h5>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">Contact</div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Your Name</label>
+                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Subject</label>
+                <input type="subject" class="form-control" id="exampleFormControlInput1" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+              </div>
+            </form>
+            <form action="?" method="POST">
+              <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+              <br />
+              <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <!-- Footer -->
+  <footer id="sticky-footer" class="py-4 text-white">
+    <div class="container">
+      <div id="footersection">
+        <br><br>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="footerlogo">
+              <strong>jog log</strong>
+            </div>
+            <br>
+            <a class="icon">
+              <i class="fa fa-facebook-f fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+
+            <a class="icon">
+              <i class="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+
+            <a class="icon">
+              <i class="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <br>
+            <h3>Navigation</h3>
+            About<br>
+            Blog<br>
+            JLRC<br>
+            Jobs
+          </div>
+          <div class="col-md-4">
+            <br>
+            <h3>Helpful Links</h3>
+            Privacy<br>
+            Terms<br>
+            Support<br>
+            Contact
+          </div>
+        </div>
+      </div>
+      <div class="container text-center text-white-50">
+        <div class="row">
+          <div class="col-md-12">
+            <small>Copyright &copy; 2019 Jog Log</small><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+<!-- Link to JS -->
+<script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+<script src='https://momentjs.com/downloads/moment.min.js'></script>
+<script src="../js/calendar2.js"></script>
+<!-- <script type="text/javascript" src="js/calendar.js"></script> -->
+
+</html>
