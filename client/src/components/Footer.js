@@ -11,7 +11,7 @@ const Footer = (props) => {
       <Row>
         <Col>
         <div class="footerLogo">
-          <strong>jog log</strong>
+          <strong>jog logs</strong>
         </div>
         <br />
           <a class="icon" href="/">

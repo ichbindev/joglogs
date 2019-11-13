@@ -8,7 +8,7 @@ class Calendar extends Component {
   }
   render() { 
     return ( <div>
-      <CalendarComponent events={}/>
+      <CalendarComponent events={""}/>
     </div> );
   }
 }

@@ -107,6 +107,27 @@ a:hover, a:visited {
   border-radius: none;
 }
 
-.btn {
-  
+.heroSection {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run5.jpg") 50% no-repeat;
+  background-size: cover;
+  height: 60vh;
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.heroSection .heroSectionText {
+  color: #fefefe;
+  padding: 200px;
+}
+
+.card {
+  box-shadow: 2px 2px 4px lightgrey;
 }
