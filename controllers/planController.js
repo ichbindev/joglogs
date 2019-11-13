@@ -48,14 +48,16 @@ module.exports = {
           // nothing found
           return res.status(404).json(false);
         }
-        const PlanId = planData.id;
         db.Event.findAll({
           where: {
             PlanId: planData.id
           }
         }).then(function(events) {
-          console.log(events.length);
-          res.json(events);
+          const result = {
+            name: planData.raceName,
+            events: events
+          };
+          res.json(result);
         });
       })
       .catch(function(err) {

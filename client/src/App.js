@@ -19,7 +19,7 @@ function App() {
           <Route exact path="/calendar" component={Calendar}/>
           <Route path="*" component={NotFound}/>
         </Switch>
-        <Footer/>
+        {/* <Footer/> */}
       </div>
     </Router>
   );
