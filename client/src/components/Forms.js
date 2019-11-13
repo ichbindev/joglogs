@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardBody, Input, Form, FormGroup, Label } from 'reactstrap';
 import { SIGN_UP, LOG_IN, START, GOAL } from '../utils/consts';
+import Button from './Button';
 
 class Forms extends Component {
 
-  chooseForm = (formType) => {
-    switch (formType) {
+  chooseForm = (props) => {
+    switch (props.formType) {
       case SIGN_UP:
-        return <SignUpForm/>
+        return <SignUpForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue}/>
       case LOG_IN:
-        return <LogInForm/>
+        return <LogInForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue}/>
       case START:
-        return <StartForm/>
+        return <StartForm onChange={props.onChange}/>
       case GOAL:
-        return <GoalForm/>
+        return <GoalForm onChange={props.onChange}/>
       default:
         return (
           <div>
-            <CardTitle>Error</CardTitle>
             <CardBody>There was an issue, please try again.</CardBody>
           </div>
         );
@@ -27,7 +27,7 @@ class Forms extends Component {
   render() { return(
       <div>
         <Card>        
-          {this.chooseForm(this.props.formType)}
+          {this.chooseForm(this.props)}
         </Card>
       </div>
     );
@@ -36,49 +36,49 @@ class Forms extends Component {
  
 export default Forms;
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
   return ( 
     <div>
-      <CardTitle id="sign-up-title">Sign Up</CardTitle>
       <CardBody id="sign-up-body">
         <Form>
           <FormGroup>
             <Label htmlFor="signupEmail">Email</Label>
-            <Input type="email" name="signupEmail" id="signup-email" placeholder="Email Address" />
+            <Input type="email" name="signupEmail" id="signup-email" onChange={props.onChange} value={props.emailValue} placeholder="Email Address" />
           </FormGroup>
           <FormGroup>
             <Label htmlFor="signup-password">Password</Label>
-            <Input type="password" name="signupPassword" id="signupPassword" placeholder="Password" />
+            <Input type="password" name="signupPassword" id="signupPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
         </Form>
+        <Button onClick={props.onClick}>Sign Up</Button>
       </CardBody> 
     </div>
   );
 }
  
 
-const LogInForm = () => {
+const LogInForm = (props) => {
   return ( 
     <div>
-      <CardTitle id="login-title">Login</CardTitle>
       <CardBody id="login-body">
         <Form>
           <FormGroup>
             <Label htmlFor="loginEmail">Email</Label>
-            <Input type="email" name="loginEmail" id="login-email" placeholder="Email Address" />
+            <Input type="email" name="loginEmail" id="login-email" onChange={props.onChange} value={props.emailValue} placeholder="Email Address" />
           </FormGroup>
           <FormGroup>
             <Label htmlFor="login-password">Password</Label>
-            <Input type="password" name="loginPassword" id="loginPassword" placeholder="Password" />
+            <Input type="password" name="loginPassword" id="loginPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
         </Form>
+        <Button onClick={props.onClick}>Login</Button>
       </CardBody> 
     </div>
   );
 }
  
 
-const StartForm = () => {
+const StartForm = (props) => {
   return ( 
     <div>
       <CardTitle id="start-title">Your Information</CardTitle>
@@ -88,7 +88,7 @@ const StartForm = () => {
             <h3>Current Fitness Level:</h3>
             <Label htmlFor="mpw">How many Miles Per Week (MPW) do you currently
                   run?</Label>
-            <Input type="select" name="mpw">
+            <Input  onChange={props.onChange} type="select" name="mpw">
               <option value="0">0</option>
               <option value="5">5</option>
               <option value="10">10</option>
@@ -111,43 +111,43 @@ const StartForm = () => {
             <legend>What days of the week are you able to run?</legend>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox" name="days" value="Sunday"/>{' '}
                 Sunday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox" name="days" value="Monday" />{' '}
                 Monday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Tuesday"/>{' '}
                 Tuesday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Wednesday"/>{' '}
                 Wednesday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Thursday"/>{' '}
                 Thursday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Friday"/>{' '}
                 Friday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Saturday"/>{' '}
                 Saturday
               </Label>
             </FormGroup>
@@ -155,7 +155,7 @@ const StartForm = () => {
           <FormGroup>
             <h3>Long Run:</h3>
             <Label htmlFor="days-of-week">Which day of the week would you like to do your long run?</Label>
-            <Input type="select" name="days-of-week">
+            <Input  onChange={props.onChange} type="select" name="longRun">
               <option value="Sunday">Sunday</option>
               <option value="Monday">Monday</option>
               <option value="Tuesday">Tuesday</option>
@@ -172,7 +172,7 @@ const StartForm = () => {
 }
  
 
-const GoalForm = () => {
+const GoalForm = (props) => {
   return ( 
     <div>
       <CardTitle id="goal-title">Your Goals</CardTitle>
@@ -181,7 +181,7 @@ const GoalForm = () => {
           <FormGroup>
             <h3>Goal Distance:</h3>
             <Label htmlFor="goalDistance">What is your goal distance?</Label>
-            <Input type="select" name="goalDistance" id="goalDistance">
+            <Input  onChange={props.onChange} type="select" name="goalDistance" id="goalDistance">
               <option value="3.1">5k (3.1 Miles)</option>
               <option value="6.2">10k (6.2 Miles)</option>
               <option value="13.1">Half Marathons (13.1 mile)</option>
@@ -191,12 +191,12 @@ const GoalForm = () => {
           <FormGroup>
             <h3>Race Name:</h3>
             <label htmlFor="raceName">What is the name of your race?</label><br/>
-            <input type="text" name="raceName" id="raceName" placeholder="Austin Marathon"/>
+            <Input  onChange={props.onChange} type="text" name="raceName" id="raceName" placeholder="Austin Marathon"/>
           </FormGroup>
           <FormGroup>
             <h3>Race Date:</h3>
             <label htmlFor="raceDate">What is the date of your race?</label><br/>
-            <input type="date" name="raceDate" id="raceDate"/>
+            <Input  onChange={props.onChange} type="date" name="raceDate" id="raceDate"/>
           </FormGroup>
         </Form>
       </CardBody> 

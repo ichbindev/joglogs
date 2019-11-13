@@ -11,6 +11,7 @@ module.exports = function(app) {
       password
     })
       .then(function(data) {
+        console.log("Signed up " + username);
         res.json(data.username);
       })
       .catch(function(err) {
@@ -24,6 +25,7 @@ module.exports = function(app) {
     req,
     res
   ) {
+    console.log("Logged in " + req.body.username);
     res.json(true);
   });
 
