@@ -7,12 +7,12 @@ import {
 const SideText = (props) => {
   return (
     <div>
-      <Card>
-        <CardBody>
-          <CardSubtitle>{props.subtitle}</CardSubtitle>
-          <CardText>{props.text}</CardText>
+      
+        <CardBody className="textCard">
+          <CardSubtitle className="subtitle">{props.subtitle}</CardSubtitle>
+          <CardText className="text">{props.text}</CardText>
         </CardBody>
-      </Card>
+      
     </div>
   );
 };

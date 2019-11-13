@@ -6,7 +6,7 @@ import {
 const SideImage = (props) => {
   return (
     <div>
-      <CardImg src={props.image} />
+      <CardImg className="sideImage" src={props.image} />
     </div>
   );
 };

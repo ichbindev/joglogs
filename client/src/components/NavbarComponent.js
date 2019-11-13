@@ -60,10 +60,10 @@ class NavbarComponent extends Component {
           <Collapse isOpen={true} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="#">About</NavLink>
+                <NavLink className="active" href="#">About</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Blog</NavLink>
+                <NavLink className="active" href="#">Blog</NavLink>
               </NavItem>
               {/* Only display these two if user is not logged in */}
               <NavItem>

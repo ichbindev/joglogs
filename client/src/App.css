@@ -56,3 +56,57 @@ video {
   display: none;
 }
 }
+
+footer {
+  background-color: rgb(19, 19, 19);
+  font: white;
+  padding: 100px;
+}
+
+.footerLogo {
+ font: grey;
+ font-size: 65px;
+ text-align: left;
+}
+
+.icon {
+ align: left;
+}
+
+#footersection {
+ height: 260px;
+}
+
+a { 
+  color: white; 
+}
+
+a:hover, a:visited { 
+  color: white; 
+}
+
+.subtitle {
+  font-size: 40px;
+  text-align: center;
+  margin: 200px 100px 0px 100px;
+  font-weight: bold;
+  border-radius: none;
+}
+
+.text {
+  text-align: center;
+  margin: 10px 100px 100px 100px;
+  border-radius: none;
+}
+
+.sideImage {
+  border-radius: 0px;
+}
+
+.textCard {
+  border-radius: none;
+}
+
+.btn {
+  
+}
