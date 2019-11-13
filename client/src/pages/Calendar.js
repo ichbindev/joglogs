@@ -9,14 +9,6 @@ class Calendar extends Component {
     
   }
 
-  displayCalendar = () => {
-    if (this.state.events) {
-      return <CalendarComponent events={this.state.events}/>;
-    } else {
-      return "";
-    }
-  }
-
   getPlan = () => {
     API.getPlan().then(result => {
       const events = result.data.events.map(e => ({title: "Run", start: e.dateTime, end: e.dateTime, allDay: true}));
@@ -31,7 +23,6 @@ class Calendar extends Component {
 
   render() { 
     return ( <div>
-      {/* {this.displayCalendar()} */}
       <CalendarComponent events={this.state.events}/>
       </div>);
   }
