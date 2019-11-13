@@ -49,13 +49,13 @@ module.exports = {
           return res.status(404).json(false);
         }
         const PlanId = planData.id;
-        db.Event.findAll({ where: { PlanId } }).then(function(eventData) {
-          const result = {
-            name: planData.raceName,
-            events: eventData
-          };
-          console.log("******RESULT*****" + result.name)
-          return res.json(result);
+        db.Event.findAll({
+          where: {
+            PlanId: planData.id
+          }
+        }).then(function(events) {
+          console.log(events.length);
+          res.json(events);
         });
       })
       .catch(function(err) {

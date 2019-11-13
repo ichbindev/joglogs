@@ -5,18 +5,25 @@ import API from '../utils/API';
 class Calendar extends Component {
   constructor(props) {
     super(props);
-    this.state = { events: [] }
+    this.state = { events: [  {
+      title:
+        '0.3 mile run today. 17 weeks til Marathon. Recovery Week : ',
+      start: '2019-11-13',
+      end: '2019-11-13',
+      allDay: true
+    }] }
     
   }
 
   getPlan = () => {
-    API.getPlan().then(function(response) {
-      console.log("****** RESPONSE *******" , response);
-      // this.setState({ events: plan.events });
+    API.getPlan().then(plan => {
+      console.log(plan.data.events.length)
+      this.setState({ events: plan.data.events });
     });
   }
 
   componentDidMount() {
+    console.log("cdm")
     this.getPlan();
   }
 
