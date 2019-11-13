@@ -19,19 +19,15 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-/* Uncomment this and comment out line 22 for React
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-*/
-
-app.use(express.static("public"));
 
 // Define API routes here
 // Routes
 require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
 require("./routes/userRoutes")(app);
 
 // Send every other request to the React app
