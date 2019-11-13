@@ -1,5 +1,5 @@
 import React from 'react';
-import Hero from '../components/Hero';
+// import Hero from '../components/Hero';
 import SideImage from '../components/SideImage';
 import SideText from '../components/SideText';
 import '../App.css'
