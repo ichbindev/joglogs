@@ -111,43 +111,43 @@ const StartForm = (props) => {
             <legend>What days of the week are you able to run?</legend>
             <FormGroup check>
               <Label check>
-                <Input  onChange={props.onChange} type="checkbox" name="days" value="Sunday"/>{' '}
+                <Input  onChange={props.onChange} type="checkbox" name="days" value="0"/>{' '}
                 Sunday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input  onChange={props.onChange} type="checkbox" name="days" value="Monday" />{' '}
+                <Input  onChange={props.onChange} type="checkbox" name="days" value="1" />{' '}
                 Monday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Tuesday"/>{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="2"/>{' '}
                 Tuesday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Wednesday"/>{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="3"/>{' '}
                 Wednesday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Thursday"/>{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="4"/>{' '}
                 Thursday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Friday"/>{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="5"/>{' '}
                 Friday
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input  onChange={props.onChange} type="checkbox"  name="days" value="Saturday"/>{' '}
+                <Input  onChange={props.onChange} type="checkbox"  name="days" value="6"/>{' '}
                 Saturday
               </Label>
             </FormGroup>
@@ -156,13 +156,13 @@ const StartForm = (props) => {
             <h3>Long Run:</h3>
             <Label htmlFor="days-of-week">Which day of the week would you like to do your long run?</Label>
             <Input  onChange={props.onChange} type="select" name="longRun">
-              <option value="Sunday">Sunday</option>
-              <option value="Monday">Monday</option>
-              <option value="Tuesday">Tuesday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Thursday">Thursday</option>
-              <option value="Friday">Friday</option>
-              <option value="Saturday">Saturday</option>
+              <option value="0">Sunday</option>
+              <option value="1">Monday</option>
+              <option value="2">Tuesday</option>
+              <option value="3">Wednesday</option>
+              <option value="4">Thursday</option>
+              <option value="5">Friday</option>
+              <option value="6">Saturday</option>
             </Input>
           </FormGroup>
         </Form>
