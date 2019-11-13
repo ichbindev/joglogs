@@ -14,7 +14,6 @@ function scheduler(data, cb) {
   if (parseFloat(data.goalDistance) === 13.1) {
     return marathonScheduler13(data);
   }
-
   if (parseFloat(data.goalDistance) === 6.2) {
     return marathonScheduler10(data);
   }

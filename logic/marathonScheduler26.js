@@ -16,7 +16,7 @@ tester = {
   raceName: "Fun Run",
   raceDate: "2020-01-01"
 };
-marathonScheduler26(tester);
+//marathonScheduler26(tester);
 
 function marathonScheduler26(data) {
   //set trainingStartDate as tomorrow in format "2019-11-30"
@@ -33,9 +33,9 @@ function marathonScheduler26(data) {
     );
     // setup sample data
     // sample Race date is today + ??? days *********************************************************************
-    let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
-    sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
-    //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
+    // let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
+    // sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
+    // //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
     let sampleData = [];
 
     sampleData = {
@@ -174,7 +174,7 @@ function marathonScheduler26(data) {
     logthis(
       "ERROR--- Only " +
         runDays.length +
-        " Run Days Chosen.. This Must be between 3 and 6. Continuing with assumed 4 days: Mon, Tue, Wed, Thu, Sat"
+        " Run Days Chosen.. This Must be between 3 and 6. Continuing with assumed 4 days: Mon, Tue, Thu, Sat"
     );
     runDays.push(1);
     runDays.push(2);
@@ -468,6 +468,7 @@ function marathonScheduler26(data) {
   // Special add on event for Race Day *************
   eventCounter++;
   event.number = eventCounter;
+  event.raceName = runnerData.raceName;
   event.date = new Date(runnerData.raceDate);
   event.percentMilesPerWeek = 100;
   event.milesToRunToday = runnerData.raceMiles;
@@ -484,10 +485,11 @@ function marathonScheduler26(data) {
   for (let i = 0; i < events.length; i++) {
     let eventObj = {
       number: events[i].number,
-      date: events[i].date.toISOString().substr(0, 10),
+      raceName: runnerData.raceName,
+      dateTime: events[i].date.toISOString().substr(0, 10),
       percentMilesPerWeek: events[i].percentMilesPerWeek,
       mileTotalThisWeek: events[i].mileTotalThisWeek,
-      milesToRunToday: events[i].milesToRunToday,
+      runDistance: events[i].milesToRunToday,
       title: events[i].title,
       description: events[i].description
     };
