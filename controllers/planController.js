@@ -1,47 +1,38 @@
 const db = require("../models");
-const createCalendar = require("../logic/createCalendar");
+const schedule = require("../logic/scheduler");
 
 // Defining methods for the booksController
 module.exports = {
   createPlan: function(req, res) {
-    // grabbing the google account to use from the .env file
-    const googleCred = process.env.GOOGLEACCOUNT;
-    const calendarInfo = {
-      summary: req.body.raceName,
-      trainingStartDate: new Date(),
-      trainingEndDate: req.body.raceDate,
-      trainingStartMiles: parseFloat(req.body.mpw),
-      trainingEndMiles: parseFloat(req.body.goalDistance),
-      trainingSessionsPerWeek: req.body.days.length,
-      runnersGoogleEmail: req.user.username,
-      whichGoogleAccountInteger: googleCred
+    const { mpw, goalDistance, raceDate, longRun, days, raceName } = req.body;
+    const plan = {
+      UserId: req.user.id,
+      startDistance: mpw,
+      startDate: new Date().setDate(new Date().getDate() + 1),
+      longRunDay: longRun,
+      runDays: JSON.stringify(days),
+      raceDistance: goalDistance,
+      raceDate,
+      raceName
     };
-    // this is where the large JS file with calendar logic is called
-    // TODO: in 2.0 this needs to be changed to store above data
-    createCalendar(calendarInfo, function(calendarId) {
-      if (calendarId) {
-        let plan = {};
-        plan.calendarRef = calendarId;
-        plan.UserID = req.user.id;
-        // since we now have a calendar reference, save it in the database
-        db.Plan.create({
-          calendarRef: calendarId,
-          credentialRef: googleCred,
-          UserId: req.user.id
-        })
-          .then(function() {
-            return res.json(true);
-          })
-          .catch(function(err) {
-            if (err) {
-              console.log(err);
-              return res.status(500).end();
-            }
-          });
-      } else {
-        return res.status(429).end();
-      }
-    });
+    db.Plan.create(plan)
+      .then(function(newPlan) {
+        // create events
+        const events = schedule(req.body);
+        // give it the plan ID
+        events.forEach(e => {
+          e.PlanId = newPlan.id;
+        });
+        // save in db
+        console.log(JSON.stringify(events))
+        db.Event.bulkCreate(events, { returning: true }).then(function() {
+          res.json(true);
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+        return res.status(500).end();
+      });
   },
   getPlan: function(req, res) {
     if (!req.isAuthenticated()) {
@@ -49,7 +40,7 @@ module.exports = {
     }
     db.Plan.findOne({
       where: {
-        UserID: req.user.id
+        UserId: req.user.id
       }
     })
       .then(function(data) {

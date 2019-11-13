@@ -14,6 +14,7 @@ export default {
     return axios.post("/api/user/logout");
   },
   createCalendar: function(calendarData) {
+    console.log(calendarData)
     return axios.post("/api/calendar", calendarData);
   }
 };
