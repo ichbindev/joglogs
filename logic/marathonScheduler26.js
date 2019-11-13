@@ -8,15 +8,15 @@ function logthis(stuff) {
   }
 }
 
-tester = {
-  mpw: 10,
-  days: ["1", "3", "4", "6"],
-  longRun: "6",
-  goalDistance: 26.2,
-  raceName: "Fun Run",
-  raceDate: "2020-01-01"
-};
-marathonScheduler26(tester);
+// tester = {
+//   mpw: 10,
+//   days: ["1", "3", "4", "6"],
+//   longRun: "6",
+//   goalDistance: 26.2,
+//   raceName: "Fun Run",
+//   raceDate: "2020-01-01"
+// };
+// marathonScheduler26(tester);
 
 function marathonScheduler26(data) {
   //set trainingStartDate as tomorrow in format "2019-11-30"
@@ -33,8 +33,8 @@ function marathonScheduler26(data) {
     );
     // setup sample data
     // sample Race date is today + ??? days *********************************************************************
-    let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
-    sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
+    // let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
+    // sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
     //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
     let sampleData = [];
 
@@ -484,10 +484,10 @@ function marathonScheduler26(data) {
   for (let i = 0; i < events.length; i++) {
     let eventObj = {
       number: events[i].number,
-      date: events[i].date.toISOString().substr(0, 10),
+      dateTime: events[i].date.toISOString().substr(0, 10),
       percentMilesPerWeek: events[i].percentMilesPerWeek,
       mileTotalThisWeek: events[i].mileTotalThisWeek,
-      milesToRunToday: events[i].milesToRunToday,
+      runDistance: events[i].milesToRunToday,
       title: events[i].title,
       description: events[i].description
     };
