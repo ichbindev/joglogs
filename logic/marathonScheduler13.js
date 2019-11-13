@@ -155,13 +155,13 @@ function marathonScheduler13(data) {
   // figure out if we are going to exceed max miles per week with default weeklyIncrement miles per week increase..********************************************
   // If we exceed peak, then adjust the weeklyIncrement downward to meet peak goal.
   let weeklyIncrement = 3;
-  // maxMilesPerWeek limited to 60 if only training 3 days per week.
+  // maxMilesPerWeek limited to 30 if only training 3 days per week.
   let maxMilesPerWeek;
   if (runDays.length < 4) {
     // maxMilesPerWeek limited to 60 if only training 3 days per week.
-    maxMilesPerWeek = 35;
+    maxMilesPerWeek = 25;
   } else {
-    maxMilesPerWeek = 65;
+    maxMilesPerWeek = 45;
   }
   logthis(
     "maxMilesPerWeek Goal is = " +

@@ -8,6 +8,13 @@ function logthis(stuff) {
   }
 }
 
+//Settings:
+let maxWeeklyMiles = 65;
+let maxMilesPerRun = 20;
+let taperDaysBeforeRace = 14;
+let every3rdWeekDropPercent = 15;
+let maxWeeklyMileIncrease = 3;
+
 // This function returns the running schedule for a 26.2 mile marathon.
 // it expects the following data array:
 // startMilesPerWeek: "7",
@@ -111,11 +118,11 @@ function marathonScheduler26(data) {
   logthis("runDays.length = " + runDays.length);
   // Calculate how many weeks of training:
 
-  // Take off Last 14 days for pre-marathon taper (only 26.2 mile marathons have 2 week taper)
+  // Take off Last days for pre-marathon taper  # of Days = taperDaysBeforeRace
   // milliseconds in one day = 24hrs X 60 minutes X 60 Seconds X 1,000 milliseconds
   let lastRegularTrainingDay =
     new Date(runnerData.raceDate + "T12:00:00").getTime() -
-    24 * 60 * 60 * 1000 * 14; //= 14 days
+    24 * 60 * 60 * 1000 * taperDaysBeforeRace; //= # taperDaysBeforeRace
   logthis(
     "lastRegularTrainingDay (before taper) = " +
       new Date(lastRegularTrainingDay).toJSON().substr(0, 10)
@@ -158,29 +165,29 @@ function marathonScheduler26(data) {
 
   // figure out if we are going to exceed max miles per week with default weeklyIncrement miles per week increase..********************************************
   // If we exceed peak, then adjust the weeklyIncrement downward to meet peak goal.
-  let weeklyIncrement = 3;
-  // maxMilesPerWeek limited to 60 if only training 3 days per week.
-  let maxMilesPerWeek;
-  if (runDays.length < 4) {
-    // maxMilesPerWeek limited to 60 if only training 3 days per week.
-    maxMilesPerWeek = 60;
+  let weeklyIncrement = maxWeeklyMileIncrease;
+
+  // maxMilesPerWeek adjusted if not enough days per week to vary the day runs lengths.
+  if (maxWeeklyMiles / runDays.length > maxMilesPerRun * 0.8) {
+    maxMilesPerWeek = maxMilesPerRun * runDays.length * 0.8;
   } else {
-    maxMilesPerWeek = 65;
+    maxMilesPerWeek = maxWeeklyMiles;
   }
 
   logthis(
     "maxMilesPerWeek Goal is = " +
       maxMilesPerWeek +
       ",THIS schedule will reach: " +
-      maxMilesPerWeek * weeksToIncrementMiles +
-      runnerData.startMilesPerWeek
+      weeklyIncrement * weeksToIncrementMiles +
+      runnerData.startMilesPerWeek +
+      " Miles."
   );
 
   if (
     weeksToIncrementMiles * weeklyIncrement + runnerData.startMilesPerWeek >
     maxMilesPerWeek
   ) {
-    // Compute new weeklyIncrement to reach max miles per week in the number of weeks of training.
+    // reCompute new weeklyIncrement to not exceed max miles per week in the number of weeks of training.
     weeklyIncrement =
       (maxMilesPerWeek - runnerData.startMilesPerWeek) / weeksToIncrementMiles;
   }
@@ -359,11 +366,11 @@ function marathonScheduler26(data) {
       specialComment = "";
     } else {
       // for every 3rd week, the 'Recovery weeks', Miles drop 15% and we do not increment the weekToIncrementNumber (not an uptick week)
-      milesThisWeek = 0.85 * milesThisWeek;
+      milesThisWeek = (100 - every3rdWeekDropPercent) * milesThisWeek;
       specialComment = "Recovery Week : ";
     }
 
-    // If any run is over 20 miles, we must redistribute the extra miles onto easier days.
+    // If any run is over maxMilesPerRun, we must redistribute the extra miles onto easier days.
 
     // create mileTest Array slice in a duplicate of the day array
     let mileTest = day.slice(0);
@@ -375,7 +382,7 @@ function marathonScheduler26(data) {
     mileTest.sort((a, b) => a.percentMilesPerWeek - b.percentMilesPerWeek);
     // declare remainder variable for overflow miles
     let remainder = 0;
-    //Loop through run, and if any run exceeds 20 miles, spread remainder over the remaining shorter runs
+    //Loop through run, and if any run exceeds maxMilesPerRun, spread remainder over the remaining shorter runs
     for (i = mileTest.length - 1; i >= 0; i--) {
       // eslint-disable-next-line prettier/prettier
       logthis("i = " + i + " milesThisWeek = " + milesThisWeek + " mileTest[i].percentMilesPerWeek = " + mileTest[i].percentMilesPerWeek );
@@ -391,19 +398,18 @@ function marathonScheduler26(data) {
       logthis(
         "with portion of remainder if applicable =" + calcRunPlusRemainder
       );
-      // if THIS run ends up longer than 20 miles, reduce to 20, and toss the rest into remainder variable
-      if (calcRunPlusRemainder > 20) {
-        // put miles over 20 into remainder
-        remainder = calcRunPlusRemainder - 20 + remainder;
-        // Since it was over 20, set miles to 20
-        calcMilesToRun = 20;
+      // if THIS run ends up longer than maxMilesPerRun miles, reduce to maxMilesPerRun, and toss the rest into remainder variable
+      if (calcRunPlusRemainder > maxMilesPerRun) {
+        // put miles over maxMilesPerRun into remainder
+        remainder = calcRunPlusRemainder - maxMilesPerRun + remainder;
+        // Since it was over maxMilesPerRun, set miles to maxMilesPerRun
+        calcMilesToRun = maxMilesPerRun;
       } else {
-        // since calcuRunPlusRemainder was under 20, use it for todays miles to run.
+        // since calcuRunPlusRemainder was under maxMilesPerRun, use it for todays miles to run.
         calcMilesToRun = calcRunPlusRemainder;
       }
       // Reset percentage of week due to change
-      mileTest[i].percentMilesPerWeek =
-        Math.round((calcMilesToRun / milesThisWeek) * 1000) / 10;
+      mileTest[i].percentMilesPerWeek = Math.round((calcMilesToRun / milesThisWeek) * 1000);
       // set todays calcMilesToRun in the milesTest array for use on event builder
       mileTest[i].calcMilesToRun = calcMilesToRun;
 
@@ -429,11 +435,11 @@ function marathonScheduler26(data) {
         (runnerData.raceDate - tempEventDate) / (24 * 60 * 60 * 1000)
       );
 
-      // if we have entered 2 week taper, drop 25%, then 50%
-      if (daysTillRaceDay < 15) {
+      // if we have entered 2 week taper, drop 25% if more than 7 days away, drop 50% if race is less than a week away
+      if (daysTillRaceDay < taperDaysBeforeRace) {
         // use peakMiles unless its over 40, then use 40.
-        if (peakMiles > 40) {
-          taperMilesPerWeek = 40;
+        if (peakMiles > maxMilesPerRun * 2) {
+          taperMilesPerWeek = maxMilesPerRun * 2;
         } else {
           taperMilesPerWeek = peakMiles;
         }
@@ -524,4 +530,4 @@ function marathonScheduler26(data) {
   return eventsArr;
 }
 
-//marathonScheduler26()
+marathonScheduler26();
