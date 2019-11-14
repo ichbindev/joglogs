@@ -1,5 +1,4 @@
 import React from 'react';
-import Hero from '../components/Hero';
 import SideImage from '../components/SideImage';
 import SideText from '../components/SideText';
 import '../App.css'
@@ -7,11 +6,11 @@ import '../App.css'
 const Home = () => {
   return (
     <div>
-      <div class="videocontainer">
+      <div className="videocontainer">
         <video autoPlay muted loop id="myVideo" width="1300">
           <source src="run.mp4" type="video/mp4" />
         </video>
-        <div class="overlayText">
+        <div className="overlayText">
           Instant custom training plans that seamlessly sync to your calendar
             </div>
       </div>

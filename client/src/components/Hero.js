@@ -1,5 +1,4 @@
 import React from 'react';
-import { Jumbotron, Container } from 'reactstrap';
 // import bgimage from "";
 // style={{ backgroundImage: `url(${bgimage})`, backgroundSize: 'cover' }}
 

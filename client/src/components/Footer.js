@@ -3,27 +3,27 @@ import { Container, Row, Col } from 'reactstrap';
 
 const Footer = (props) => {
   return (
-    <footer id="sticky-footer" class="py-4 text-white">
+    <footer id="sticky-footer" className="py-4 text-white">
     <Container>
     
       
         <div id="footersection">
       <Row>
         <Col>
-        <div class="footerLogo">
+        <div className="footerLogo">
           <strong>jog logs</strong>
         </div>
         <br />
-          <a class="icon" href="/">
-          <i class="fa fa-facebook fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+          <a className="icon" href="/">
+          <i className="fa fa-facebook fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
           </a>
           
-          <a class="icon" href="/">
-          <i class="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+          <a className="icon" href="/">
+          <i className="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
           </a>
           
-          <a class="icon" href="/">
-          <i class="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
+          <a className="icon" href="/">
+          <i className="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
           </a>
         </Col>
         <Col>
@@ -68,9 +68,9 @@ const Footer = (props) => {
       </Row>
       <Row>
         <Col>
-        <div class="container text-center text-white-50">
-        <div class="row">
-          <div class="col-md-12">
+        <div className="container text-center text-white-50">
+        <div className="row">
+          <div className="col-md-12">
           <small>Copyright &copy; 2019 Jog Log</small>
           </div>
           </div>
