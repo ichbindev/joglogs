@@ -1,5 +1,5 @@
 const passport = require("../config/passport");
-const userController = "../controllers/userController";
+const userController = require("../controllers/userController");
 
 module.exports = function(app) {
   // create a new user
