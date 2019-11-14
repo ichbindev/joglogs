@@ -60,7 +60,7 @@ class Setup extends Component {
       <Forms formType={GOAL} onChange={this.handleInputChange}/>
       <br />
       <div className="text-center">
-      <button className="btn btn-dark">
+      <button className="btn btn-secondary btn-lg btn-block">
       <Button onClick={this.handleFormSubmit}>Submit</Button>
       </button>
       </div>
