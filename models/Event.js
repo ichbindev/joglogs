@@ -18,6 +18,14 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    // description of the event, contains run type
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
     // allow the user to save comments about their run
     comments: {
       type: DataTypes.TEXT,
