@@ -24,7 +24,6 @@ module.exports = {
           e.PlanId = newPlan.id;
         });
         // save in db
-        console.log(JSON.stringify(events));
         db.Event.bulkCreate(events, { returning: true }).then(function() {
           res.json(true);
         });
@@ -34,6 +33,7 @@ module.exports = {
         return res.status(500).end();
       });
   },
+  // TODO: change findOne to findAll to deal with multiple plans
   getPlan: function(req, res) {
     if (!req.isAuthenticated()) {
       return res.status(401).json(false);
