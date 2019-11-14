@@ -1,55 +1,74 @@
 const db = require("../models");
-const createCalendar = require("../logic/createCalendar");
+const schedule = require("../logic/scheduler");
 
 // Defining methods for the booksController
 module.exports = {
   createPlan: function(req, res) {
-    // grabbing the google account to use from the .env file
-    const googleCred = process.env.GOOGLEACCOUNT;
-    const calendarInfo = {
-      summary: req.body.raceName,
-      trainingStartDate: new Date(),
-      trainingEndDate: req.body.raceDate,
-      trainingStartMiles: parseFloat(req.body.mpw),
-      trainingEndMiles: parseFloat(req.body.goalDistance),
-      trainingSessionsPerWeek: req.body.days.length,
-      runnersGoogleEmail: req.user.username,
-      whichGoogleAccountInteger: googleCred
+    const { mpw, goalDistance, raceDate, longRun, days, raceName } = req.body;
+    const plan = {
+      UserId: req.user.id,
+      startDistance: mpw,
+      startDate: new Date().setDate(new Date().getDate() + 1),
+      longRunDay: longRun,
+      runDays: JSON.stringify(days),
+      raceDistance: goalDistance,
+      raceDate,
+      raceName
     };
-    // this is where the large JS file with calendar logic is called
-    // TODO: in 2.0 this needs to be changed to store above data
-    createCalendar(calendarInfo, function(calendarId) {
-      if (calendarId) {
-        let plan = {};
-        plan.calendarRef = calendarId;
-        plan.UserID = req.user.id;
-        // since we now have a calendar reference, save it in the database
-        db.Plan.create({
-          calendarRef: calendarId,
-          credentialRef: googleCred,
-          UserId: req.user.id
-        })
-          .then(function() {
-            return res.json(true);
-          })
-          .catch(function(err) {
-            if (err) {
-              console.log(err);
-              return res.status(500).end();
-            }
-          });
-      } else {
-        return res.status(429).end();
-      }
-    });
+    db.Plan.create(plan)
+      .then(function(newPlan) {
+        // create events
+        const events = schedule(req.body);
+        // give it the plan ID
+        events.forEach(e => {
+          e.PlanId = newPlan.id;
+        });
+        // save in db
+        db.Event.bulkCreate(events, { returning: true }).then(function() {
+          res.json(true);
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+        return res.status(500).end();
+      });
   },
+  // TODO: change findOne to findAll to deal with multiple plans
   getPlan: function(req, res) {
     if (!req.isAuthenticated()) {
       return res.status(401).json(false);
     }
     db.Plan.findOne({
       where: {
-        UserID: req.user.id
+        UserId: req.user.id
+      }
+    })
+      .then(function(planData) {
+        if (!planData) {
+          // nothing found
+          return res.status(404).json(false);
+        }
+        db.Event.findAll({
+          where: {
+            PlanId: planData.id
+          }
+        }).then(function(events) {
+          const result = {
+            name: planData.raceName,
+            events: events
+          };
+          res.json(result);
+        });
+      })
+      .catch(function(err) {
+        console.log(err);
+        return res.status(404).json(false);
+      });
+  },
+  hasPlan: function(req, res) {
+    db.Plan.findOne({
+      where: {
+        UserId: req.user.id
       }
     })
       .then(function(data) {
@@ -58,11 +77,11 @@ module.exports = {
           return res.status(404).json(false);
         }
         // return the calendar reference
-        res.json(data.calendarRef);
+        res.json(true);
       })
       .catch(function(err) {
         console.log(err);
-        return res.status(404).json(false);
+        return res.status(500).json(false);
       });
   },
   updatePlan: function(req, res) {

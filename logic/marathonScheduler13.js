@@ -1,24 +1,21 @@
 module.exports = marathonScheduler13;
 
-showLogs = true; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
+showLogs = false; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
 function logthis(stuff) {
   if (showLogs || stuff.includes("ERROR")) {
     console.log(stuff);
   }
 }
 
-// This function returns the running schedule for a 13.1 mile marathon.
-// it expects the following data array:
-// startMilesPerWeek: "7",
-// raceMiles: "13.1",
-// runTuesday: true,
-// runThursday: true,
-// runSaturday: true,
-// runSunday: true,
-// longRunDay: "4", (4=Thursday)
-// raceName: "Austin Marathon",
-// raceDate: "2021-01-01"
-// maybe startDate for the first day of training??
+// tester = {
+//   mpw: 5,
+//   days: ["1", "3", "4", "6"],
+//   longRun: "6",
+//   goalDistance: 13.1,
+//   raceName: "Tester13.1 " + Date.now(),
+//   raceDate: "2020-01-01"
+// };
+// marathonScheduler13(tester);
 
 function marathonScheduler13(data) {
   //set trainingStartDate as tomorrow in format "2019-11-30"
@@ -35,22 +32,18 @@ function marathonScheduler13(data) {
     );
     // setup sample data
     // sample Race date is today + ??? days *********************************************************************
-    let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
-    sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
+    //let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
+    //sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
     //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
     let sampleData = [];
 
     sampleData = {
-      startMilesPerWeek: "10",
-      raceMiles: "13.1",
-      // runMonday: true,
-      runTuesday: true,
-      runThursday: true,
-      runSaturday: true,
-      runSunday: true,
-      longRunDay: "4",
-      raceName: "No Data sent. used Sample Race Data " + Date.now(),
-      raceDate: sampleRaceDate
+      mpw: 5,
+      days: ["1", "3", "4", "6"],
+      longRun: "6",
+      goalDistance: 13.1,
+      raceName: "sample13",
+      raceDate: "2020-01-01"
     };
     // use sampleDate
 
@@ -61,41 +54,41 @@ function marathonScheduler13(data) {
   // add trainingStartDate in anticipation of this being an option in future, currently starts "tomorrow"
   runnerData.startDate = calculateStartDate;
   logthis("runnerData = " + JSON.stringify(runnerData));
-
   // convert incoming number strings to numbers:
-  runnerData.startMilesPerWeek = parseFloat(runnerData.startMilesPerWeek);
-  runnerData.raceMiles = parseFloat(runnerData.raceMiles);
-  runnerData.longRunDay = parseInt(runnerData.longRunDay);
+  runnerData.startMilesPerWeek = parseFloat(runnerData.mpw);
+  runnerData.raceMiles = parseFloat(runnerData.goalDistance);
+  runnerData.longRunDay = parseInt(runnerData.longRun);
+  if (runnerData.raceName === "") {
+    runnerData.raceName =
+      "Run Calendar Created " + new Date().toISOString().substr(0, 15);
+  }
 
   // Time for some calculations!! What Fun!
 
   //Calculate running days per week from runnerdata:
-  let runDays = [];
-  if (runnerData.runSunday) {
-    runDays.push(0);
+  for (let i = 0; i < runnerData.days.length; i++) {
+    runnerData.days[i] = parseInt(runnerData.days[i]);
   }
-  if (runnerData.runMonday) {
-    runDays.push(1);
-  }
-  if (runnerData.runTuesday) {
-    runDays.push(2);
-  }
-  if (runnerData.runWednesday) {
-    runDays.push(3);
-  }
-  if (runnerData.runThursday) {
-    runDays.push(4);
-  }
-  if (runnerData.runFriday) {
-    runDays.push(5);
-  }
-  if (runnerData.runSaturday) {
-    runDays.push(6);
+
+  //Check to make sure the "longRunDay" is one of their run days, if not, change it to last of their running days
+  if (runnerData.days.includes(runnerData.longRunDay)) {
+    // Yay! they picked a long run date that also is on there running days list!
+  } else {
+    // choose last of there running days as longest run day since they chose longRunDay that wasn't in their days list
+    logthis(
+      "ERROR: user chose longRunDay = " +
+        runnerData.longRunDay +
+        ", but they didn't include that in their days for running. adding longRunDay to list of run days."
+    );
+    runnerData.days.push(runnerData.longRunDay);
+    runnerData.days.sort();
   }
 
   // put runDays in order, ending with their chosen longRunDay.. (make the longRunDay the last day of schedule week.)
+  let runDays = runnerData.days;
   runDays.sort();
 
+  //shift the longRunDay to the end of the 'week' of runs by moving later days to beginning (day -7) of the week array (runnderData.days[]).
   while (runDays[runDays.length - 1] > runnerData.longRunDay) {
     runDays[runDays.length - 1] = runDays[runDays.length - 1] - 7;
     runDays.sort();
@@ -163,11 +156,13 @@ function marathonScheduler13(data) {
   } else {
     maxMilesPerWeek = 45;
   }
+
   logthis(
     "maxMilesPerWeek Goal is = " +
       maxMilesPerWeek +
       ",THIS schedule will reach: " +
-      maxMilesPerWeek * weeksToTrain
+      maxMilesPerWeek * weeksToIncrementMiles +
+      runnerData.startMilesPerWeek
   );
 
   if (
@@ -342,7 +337,7 @@ function marathonScheduler13(data) {
   // ************************** Start creating Events *********************************************
 
   while (tempEventDate < runnerData.raceDate) {
-    weekMilesAddedUp = 0;
+    weekMilesAddedUp = -1;
     weekNumber++;
 
     // for uptick training weeks, calculate new miles per week after incrementing the value of weekToIncrementNumber
@@ -458,8 +453,8 @@ function marathonScheduler13(data) {
         event.milesToRunToday = Math.ceil(
           milesThisWeek * (mileTest[i].percentMilesPerWeek / 100)
         );
+
         event.mileTotalThisWeek = Math.ceil(milesThisWeek);
-        // Create title for event
         event.title =
           event.milesToRunToday +
           " mile run today. " +
@@ -479,6 +474,7 @@ function marathonScheduler13(data) {
   eventCounter++;
   event.number = eventCounter;
   event.date = new Date(runnerData.raceDate);
+  event.percentMilesPerWeek = 100;
   event.milesToRunToday = runnerData.raceMiles;
   event.mileTotalThisWeek = runnerData.raceMiles;
   event.title = "Race Day! Great Job, you are ready for this! Good Luck!";
@@ -492,16 +488,20 @@ function marathonScheduler13(data) {
   let eventsArr = [];
   for (let i = 0; i < events.length; i++) {
     let eventObj = {
+      number: events[i].number,
+      raceName: runnerData.raceName,
+      dateTime: events[i].date.toISOString().substr(0, 10),
+      percentMilesPerWeek: events[i].percentMilesPerWeek,
+      mileTotalThisWeek: events[i].mileTotalThisWeek,
+      runDistance: events[i].milesToRunToday,
       title: events[i].title,
-      start: events[i].date.toISOString().substr(0, 10),
-      end: events[i].date.toISOString().substr(0, 10),
-      allDay: true
+      description: events[i].description
     };
     eventsArr.push(eventObj);
   }
 
-  logthis("\n\nEventArray:\n\n");
-  logthis(events);
+  //logthis("\n\nEventArray:\n\n");
+  //logthis(events);
 
   logthis("\n\nEventObject:\n\n");
   logthis(eventsArr);
@@ -509,4 +509,4 @@ function marathonScheduler13(data) {
   return eventsArr;
 }
 
-marathonScheduler13()
+// marathonScheduler13();

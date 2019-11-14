@@ -1,22 +1,21 @@
-// call marathonScheduler26();
 module.exports = marathonScheduler26;
 
-showLogs = true; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
+showLogs = false; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
 function logthis(stuff) {
   if (showLogs || stuff.includes("ERROR")) {
     console.log(stuff);
   }
 }
 
-tester = {
-  mpw: 10,
-  days: ["1", "3", "4", "6"],
-  longRun: "6",
-  goalDistance: 26.2,
-  raceName: "Fun Run",
-  raceDate: "2020-01-01"
-};
-marathonScheduler26(tester);
+// tester = {
+//   mpw: 10,
+//   days: ["1", "3", "4", "6"],
+//   longRun: "6",
+//   goalDistance: 26.2,
+//   raceName: "Fun Run",
+//   raceDate: "2020-01-01"
+// };
+// marathonScheduler26(tester);
 
 function marathonScheduler26(data) {
   //set trainingStartDate as tomorrow in format "2019-11-30"
@@ -33,8 +32,8 @@ function marathonScheduler26(data) {
     );
     // setup sample data
     // sample Race date is today + ??? days *********************************************************************
-    let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
-    sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
+    // let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
+    // sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
     //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
     let sampleData = [];
 
@@ -43,7 +42,7 @@ function marathonScheduler26(data) {
       days: ["1", "3", "4", "6"],
       longRun: "6",
       goalDistance: 26.2,
-      raceName: "Fun Run",
+      raceName: "sample26",
       raceDate: "2020-01-01"
     };
     // use sampleDate
@@ -55,11 +54,14 @@ function marathonScheduler26(data) {
   // add trainingStartDate in anticipation of this being an option in future, currently starts "tomorrow"
   runnerData.startDate = calculateStartDate;
   logthis("runnerData = " + JSON.stringify(runnerData));
-
   // convert incoming number strings to numbers:
   runnerData.startMilesPerWeek = parseFloat(runnerData.mpw);
   runnerData.raceMiles = parseFloat(runnerData.goalDistance);
   runnerData.longRunDay = parseInt(runnerData.longRun);
+  if (runnerData.raceName === "") {
+    runnerData.raceName =
+      "Run Calendar Created " + new Date().toISOString().substr(0, 15);
+  }
 
   // Time for some calculations!! What Fun!
 
@@ -68,13 +70,25 @@ function marathonScheduler26(data) {
     runnerData.days[i] = parseInt(runnerData.days[i]);
   }
 
+  //Check to make sure the "longRunDay" is one of their run days, if not, change it to last of their running days
+  if (runnerData.days.includes(runnerData.longRunDay)) {
+    // Yay! they picked a long run date that also is on there running days list!
+  } else {
+    // choose last of there running days as longest run day since they chose longRunDay that wasn't in their days list
+    logthis(
+      "ERROR: user chose longRunDay = " +
+        runnerData.longRunDay +
+        ", but they didn't include that in their days for running. adding longRunDay to list of run days."
+    );
+    runnerData.days.push(runnerData.longRunDay);
+    runnerData.days.sort();
+  }
+
   // put runDays in order, ending with their chosen longRunDay.. (make the longRunDay the last day of schedule week.)
   let runDays = runnerData.days;
   runDays.sort();
-  // while (runDays[runDays.length - 1] > runnerData.longRunDay) {
-  //     runDays.unshift(runDays.pop());
-  // }
 
+  //shift the longRunDay to the end of the 'week' of runs by moving later days to beginning (day -7) of the week array (runnderData.days[]).
   while (runDays[runDays.length - 1] > runnerData.longRunDay) {
     runDays[runDays.length - 1] = runDays[runDays.length - 1] - 7;
     runDays.sort();
@@ -174,7 +188,7 @@ function marathonScheduler26(data) {
     logthis(
       "ERROR--- Only " +
         runDays.length +
-        " Run Days Chosen.. This Must be between 3 and 6. Continuing with assumed 4 days: Mon, Tue, Wed, Thu, Sat"
+        " Run Days Chosen.. This Must be between 3 and 6. Continuing with assumed 4 days: Mon, Tue, Thu, Sat"
     );
     runDays.push(1);
     runDays.push(2);
@@ -338,7 +352,8 @@ function marathonScheduler26(data) {
       specialComment = "Recovery Week : ";
     }
 
-    // If any run is over 20 miles, we must redistribute the extra miles onto easier days.
+    const maxMilesPerDay = 20;
+    // If any run is over maxMilesPerDay miles, we must redistribute the extra miles onto easier days.
 
     // create mileTest Array slice in a duplicate of the day array
     let mileTest = day.slice(0);
@@ -350,7 +365,7 @@ function marathonScheduler26(data) {
     mileTest.sort((a, b) => a.percentMilesPerWeek - b.percentMilesPerWeek);
     // declare remainder variable for overflow miles
     let remainder = 0;
-    //Loop through run, and if any run exceeds 20 miles, spread remainder over the remaining shorter runs
+    //Loop through run, and if any run exceeds maxMilesPerDay miles, spread remainder over the remaining shorter runs
     for (i = mileTest.length - 1; i >= 0; i--) {
       // eslint-disable-next-line prettier/prettier
       logthis("i = " + i + " milesThisWeek = " + milesThisWeek + " mileTest[i].percentMilesPerWeek = " + mileTest[i].percentMilesPerWeek );
@@ -366,14 +381,14 @@ function marathonScheduler26(data) {
       logthis(
         "with portion of remainder if applicable =" + calcRunPlusRemainder
       );
-      // if THIS run ends up longer than 20 miles, reduce to 20, and toss the rest into remainder variable
-      if (calcRunPlusRemainder > 20) {
-        // put miles over 20 into remainder
-        remainder = calcRunPlusRemainder - 20 + remainder;
-        // Since it was over 20, set miles to 20
-        calcMilesToRun = 20;
+      // if THIS run ends up longer than maxMilesPerDay miles, reduce to maxMilesPerDay, and toss the rest into remainder variable
+      if (calcRunPlusRemainder > maxMilesPerDay) {
+        // put miles over maxMilesPerDay into remainder
+        remainder = calcRunPlusRemainder - maxMilesPerDay + remainder;
+        // Since it was over maxMilesPerDay, set miles to maxMilesPerDay
+        calcMilesToRun = maxMilesPerDay;
       } else {
-        // since calcuRunPlusRemainder was under 20, use it for todays miles to run.
+        // since calcuRunPlusRemainder was under maxMilesPerDay, use it for todays miles to run.
         calcMilesToRun = calcRunPlusRemainder;
       }
       // Reset percentage of week due to change
@@ -442,14 +457,8 @@ function marathonScheduler26(data) {
         event.milesToRunToday = Math.ceil(
           milesThisWeek * (mileTest[i].percentMilesPerWeek / 100)
         );
+
         event.mileTotalThisWeek = Math.ceil(milesThisWeek);
-        // Math.ceil replaced the miles Math.round to nearest 10th of a mile.
-        // event.milesToRunToday =
-        //   Math.round(
-        //     milesThisWeek * (mileTest[i].percentMilesPerWeek / 100) * 10
-        //   ) / 10;
-        // event.mileTotalThisWeek = Math.round(milesThisWeek * 10) / 10;
-        // Create title for event
         event.title =
           event.milesToRunToday +
           " mile run today. " +
@@ -468,6 +477,7 @@ function marathonScheduler26(data) {
   // Special add on event for Race Day *************
   eventCounter++;
   event.number = eventCounter;
+  event.raceName = runnerData.raceName;
   event.date = new Date(runnerData.raceDate);
   event.percentMilesPerWeek = 100;
   event.milesToRunToday = runnerData.raceMiles;
@@ -484,10 +494,11 @@ function marathonScheduler26(data) {
   for (let i = 0; i < events.length; i++) {
     let eventObj = {
       number: events[i].number,
-      date: events[i].date.toISOString().substr(0, 10),
+      raceName: runnerData.raceName,
+      dateTime: events[i].date.toISOString().substr(0, 10),
       percentMilesPerWeek: events[i].percentMilesPerWeek,
       mileTotalThisWeek: events[i].mileTotalThisWeek,
-      milesToRunToday: events[i].milesToRunToday,
+      runDistance: events[i].milesToRunToday,
       title: events[i].title,
       description: events[i].description
     };

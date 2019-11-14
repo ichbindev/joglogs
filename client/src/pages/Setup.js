@@ -13,12 +13,13 @@ class Setup extends Component {
       longRun: "Sunday",
       goalDistance: 3.1,
       raceName: "",
-      raceDate: "2025-01-01"
+      raceDate: "2020-01-01"
      }
   }
 
   // Handles the start and goal forms
   handleInputChange = event => {
+    // TODO: don't let them choose a long run on a day they're not running
     const { name, value } = event.target;
     // if the changed item is the days they can run...
     if (name === "days") {
@@ -40,10 +41,11 @@ class Setup extends Component {
   };
 
   handleFormSubmit = event => {
+    console.log("about to call API")
     event.preventDefault();
     const calendarData = this.state;
-    API.createCalendar(calendarData);
-    // todo: redirect to calendar page?
+    API.createCalendar(calendarData)
+      .then(() => window.location.href="/calendar");
   }
 
   render() { 
