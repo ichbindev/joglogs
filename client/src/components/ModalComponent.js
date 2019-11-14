@@ -14,7 +14,7 @@ const ModalComponent = (props) => {
 
   return (
     <div>
-      <a class="nav-link active" onClick={toggle}>{buttonLabel}</a>
+      <a className="nav-link active" onClick={toggle}>{buttonLabel}</a>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>{props.title}</ModalHeader>
         {props.children}
@@ -24,3 +24,4 @@ const ModalComponent = (props) => {
 }
 
 export default ModalComponent;
+

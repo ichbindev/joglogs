@@ -61,7 +61,7 @@ class Setup extends Component {
       <br />
       <div className="text-center">
       <button className="btn btn-secondary btn-lg btn-block">
-      <Button classnameonClick={this.handleFormSubmit}>Submit</Button>
+      <Button onClick={this.handleFormSubmit}>Submit</Button>
       </button>
       </div>
       <br />
