@@ -4,6 +4,8 @@ import { START, GOAL } from '../utils/consts';
 import Hero from '../components/Hero';
 import Button from '../components/Button';
 import API from '../utils/API';
+import { Redirect } from 'react-router-dom';
+import { CALENDAR, NO } from '../utils/consts';
 
 class Setup extends Component {
   constructor(props) {
@@ -14,8 +16,25 @@ class Setup extends Component {
       longRun: "Sunday",
       goalDistance: 3.1,
       raceName: "",
-      raceDate: "2020-01-01"
+      raceDate: "2020-01-01",
+      redirect: NO
      }
+  }
+
+  setRedirect = (type) => {
+    this.setState({
+      redirect: type
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect !== NO) {
+      if (this.state.redirect === CALENDAR) {
+        return <Redirect to='/calendar' />;
+      } else if (this.state.redirect === CALENDAR) {
+        return <Redirect to='/setup' />;
+      }
+    }
   }
 
   // Handles the start and goal forms
@@ -46,11 +65,12 @@ class Setup extends Component {
     event.preventDefault();
     const calendarData = this.state;
     API.createCalendar(calendarData)
-      .then(() => window.location.href="/calendar");
+      .then(this.setRedirect(CALENDAR));
   }
 
   render() { 
     return ( <div>
+      {this.renderRedirect()}
       <Hero/>
       <br />
       <div className="container">

@@ -15,6 +15,8 @@ import ModalComponent from './ModalComponent';
 import Forms from './Forms';
 import { LOG_IN, SIGN_UP } from '../utils/consts';
 import API from '../utils/API';
+import { Redirect } from 'react-router-dom'
+import { SETUP, CALENDAR, NO } from '../utils/consts';
 
 class NavbarComponent extends Component {
   state = {
@@ -25,6 +27,21 @@ class NavbarComponent extends Component {
     // loggedIn: how do I tell?
   }
   
+  setRedirect = (type) => {
+    this.setState({
+      redirect: type
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect !== NO) {
+      if (this.state.redirect === CALENDAR) {
+        return <Redirect to='/calendar' />;
+      } else if (this.state.redirect === CALENDAR) {
+        return <Redirect to='/setup' />;
+      }
+    }
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -42,11 +59,10 @@ class NavbarComponent extends Component {
       .then(() => API.hasPlan())
         .then(plan => {
           if (plan) {
-            // if they do, show them
-            window.location.href="/calendar"
+            this.setRedirect(CALENDAR);
           } else {
             // if not, have them create one
-            window.location.href="/setup"
+            this.setRedirect(SETUP);
           }
         });
   };
@@ -58,7 +74,7 @@ class NavbarComponent extends Component {
     API.signUp(user)
       .then(() => API.login(user))
         // new users don't have calendars, so send to setup page
-        .then(() => window.location.href="/setup");
+        .then(() => this.setRedirect(SETUP));
   };
 
   handleLogout = () => {
@@ -69,6 +85,7 @@ class NavbarComponent extends Component {
   render() {
     return (
       <div>
+        {this.renderRedirect()}
         <Navbar color="light" light expand="md">
           <NavbarBrand href="/"><h1><strong>jog logs</strong></h1></NavbarBrand>
           <Collapse isOpen={true} navbar>
