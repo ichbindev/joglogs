@@ -1,7 +1,6 @@
-// call marathonScheduler26();
 module.exports = marathonScheduler26;
 
-showLogs = true; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
+showLogs = false; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
 function logthis(stuff) {
   if (showLogs || stuff.includes("ERROR")) {
     console.log(stuff);
@@ -43,7 +42,7 @@ function marathonScheduler26(data) {
       days: ["1", "3", "4", "6"],
       longRun: "6",
       goalDistance: 26.2,
-      raceName: "sample",
+      raceName: "sample26",
       raceDate: "2020-01-01"
     };
     // use sampleDate
@@ -55,17 +54,33 @@ function marathonScheduler26(data) {
   // add trainingStartDate in anticipation of this being an option in future, currently starts "tomorrow"
   runnerData.startDate = calculateStartDate;
   logthis("runnerData = " + JSON.stringify(runnerData));
-
   // convert incoming number strings to numbers:
   runnerData.startMilesPerWeek = parseFloat(runnerData.mpw);
   runnerData.raceMiles = parseFloat(runnerData.goalDistance);
   runnerData.longRunDay = parseInt(runnerData.longRun);
+  if (runnerData.raceName === "") {
+    runnerData.raceName =
+      "Run Calendar Created " + new Date().toISOString().substr(0, 15);
+  }
 
   // Time for some calculations!! What Fun!
 
   //Calculate running days per week from runnerdata:
   for (let i = 0; i < runnerData.days.length; i++) {
     runnerData.days[i] = parseInt(runnerData.days[i]);
+  }
+
+  //Check to make sure the "longRunDay" is one of their run days, if not, change it to last of their running days
+  if (runnerData.days.includes(runnerData.longRunDay)) {
+    // Yay! they picked a long run date that also is on there running days list!
+  } else {
+    // choose last of there running days as longest run day since they chose longRunDay that wasn't in their days list
+    logthis(
+      "ERROR: user chose longRunDay = " +
+        runnerData.longRunDay +
+        ", but they didn't include that in their days for running. Changed to longRunDay to match last of run days for them."
+    );
+    runnerData.longRunDay = runnerData.days[runnerData.days.length - 1];
   }
 
   // put runDays in order, ending with their chosen longRunDay.. (make the longRunDay the last day of schedule week.)
