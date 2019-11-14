@@ -37,14 +37,28 @@ class NavbarComponent extends Component {
     event.preventDefault();
     const { loginEmail: username, loginPassword: password } = this.state;
     const user = {username, password};
-    API.login(user);
+    API.login(user)
+      // check if user has any plans
+      .then(() => API.hasPlan())
+        .then(plan => {
+          if (plan) {
+            // if they do, show them
+            window.location.href="/calendar"
+          } else {
+            // if not, have them create one
+            window.location.href="/setup"
+          }
+        });
   };
 
   handleSignupFormSubmit = event => {
     event.preventDefault();
     const { signupEmail: username, signupPassword: password } = this.state;
     const user = {username, password};
-    API.signUp(user).then(() => API.login(user));
+    API.signUp(user)
+      .then(() => API.login(user))
+        // new users don't have calendars, so send to setup page
+        .then(() => window.location.href="/setup");
   };
 
   handleLogout = () => {

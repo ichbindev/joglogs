@@ -34,6 +34,7 @@ module.exports = {
         return res.status(500).end();
       });
   },
+  // TODO: change findOne to findAll to deal with multiple plans
   getPlan: function(req, res) {
     if (!req.isAuthenticated()) {
       return res.status(401).json(false);

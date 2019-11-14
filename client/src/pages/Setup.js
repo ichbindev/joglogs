@@ -44,7 +44,7 @@ class Setup extends Component {
     event.preventDefault();
     const calendarData = this.state;
     API.createCalendar(calendarData);
-    // todo: redirect to calendar page?
+    window.location.href="/calendar"
   }
 
   render() { 
