@@ -32,6 +32,11 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    // the user-entered name for the race
+    raceName: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     // which day of the week the user wants to do their longest run
     longRunDay: {
       type: DataTypes.STRING,
@@ -51,7 +56,7 @@ module.exports = function(sequelize, DataTypes) {
     // a reference to the calendar created for this user with planned runs
     calendarRef: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1]
       }
@@ -59,7 +64,7 @@ module.exports = function(sequelize, DataTypes) {
     // a reference to the calendar created for this user with planned runs
     credentialRef: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1]
       }
