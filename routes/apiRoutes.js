@@ -3,7 +3,7 @@ const planController = require("../controllers/planController");
 
 module.exports = function(app) {
   // get the first plan found associated with the logged in user
-  app.get("/api/plans/", function(req, res) {
+  app.get("/api/plans", function(req, res) {
     return planController.getPlan(req, res);
   });
 

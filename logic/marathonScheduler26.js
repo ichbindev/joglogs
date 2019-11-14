@@ -8,15 +8,15 @@ function logthis(stuff) {
   }
 }
 
-tester = {
-  mpw: 10,
-  days: ["1", "3", "4", "6"],
-  longRun: "6",
-  goalDistance: 26.2,
-  raceName: "Tester26.2 " + Date.now(),
-  raceDate: "2020-01-01"
-};
-//marathonScheduler26(tester);
+// tester = {
+//   mpw: 10,
+//   days: ["1", "3", "4", "6"],
+//   longRun: "6",
+//   goalDistance: 26.2,
+//   raceName: "Fun Run",
+//   raceDate: "2020-01-01"
+// };
+// marathonScheduler26(tester);
 
 function marathonScheduler26(data) {
   //set trainingStartDate as tomorrow in format "2019-11-30"
@@ -35,7 +35,7 @@ function marathonScheduler26(data) {
     // sample Race date is today + ??? days *********************************************************************
     // let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
     // sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
-    // //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
+    //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
     let sampleData = [];
 
     sampleData = {

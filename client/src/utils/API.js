@@ -15,5 +15,8 @@ export default {
   },
   createCalendar: function(calendarData) {
     return axios.post("/api/calendar", calendarData);
+  },
+  getPlan: function() {
+    return axios.get("/api/plans");
   }
 };

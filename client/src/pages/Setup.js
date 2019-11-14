@@ -14,7 +14,7 @@ class Setup extends Component {
       longRun: "Sunday",
       goalDistance: 3.1,
       raceName: "",
-      raceDate: "2025-01-01"
+      raceDate: "2020-01-01"
      }
   }
 
@@ -50,9 +50,25 @@ class Setup extends Component {
   render() { 
     return ( <div>
       <Hero/>
+      <br />
+      <div className="container">
+        <div className="row">
+      <div className="col-md-2"></div>
+      <div className="col-md-8">
       <Forms formType={START} onChange={this.handleInputChange}/>
+      <br />
       <Forms formType={GOAL} onChange={this.handleInputChange}/>
+      <br />
+      <div className="text-center">
+      <button className="btn btn-dark">
       <Button onClick={this.handleFormSubmit}>Submit</Button>
+      </button>
+      </div>
+      <br />
+      </div>
+      <div className="col-md-2"></div>
+      </div>
+      </div>
     </div> );
   }
 }

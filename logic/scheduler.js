@@ -1,13 +1,11 @@
-module.exports = scheduler.js;
+module.exports = scheduler;
 require("dotenv").config();
-require("./marathonScheduler26");
-require("./marathonScheduler13");
-require("./marathonScheduler10");
-require("./marathonScheduler5");
+const marathonScheduler26 = require("./marathonScheduler26");
+const marathonScheduler13 = require("./marathonScheduler13");
+const marathonScheduler10 = require("./marathonScheduler10k");
+const marathonScheduler5 = require("./marathonScheduler5k");
 
-function scheduler(data, cb) {
-  respond = cb;
-
+function scheduler(data) {
   if (parseFloat(data.goalDistance) === 26.2) {
     return marathonScheduler26(data);
   }

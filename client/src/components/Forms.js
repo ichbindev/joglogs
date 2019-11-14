@@ -80,8 +80,11 @@ const LogInForm = (props) => {
 
 const StartForm = (props) => {
   return ( 
-    <div>
+    <div className="card">
+      <div className="card-header">
       <CardTitle id="start-title">Your Information</CardTitle>
+      </div>
+      <div className="card-body">
       <CardBody id="start-body">
         <Form>
           <FormGroup>
@@ -108,7 +111,7 @@ const StartForm = (props) => {
           </FormGroup>
           <FormGroup>
             <h3>Your Schedule:</h3>
-            <legend>What days of the week are you able to run?</legend>
+            <Label htmlFor="sched">What days of the week are you able to run?</Label>
             <FormGroup check>
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox" name="days" value="0"/>{' '}
@@ -167,6 +170,7 @@ const StartForm = (props) => {
           </FormGroup>
         </Form>
       </CardBody> 
+      </div>
     </div>
   );
 }
@@ -174,8 +178,11 @@ const StartForm = (props) => {
 
 const GoalForm = (props) => {
   return ( 
-    <div>
+    <div className="card">
+      <div className="card-header">
       <CardTitle id="goal-title">Your Goals</CardTitle>
+      </div>
+      <div className="card-body">
       <CardBody id="goal-body">
         <Form>
           <FormGroup>
@@ -200,6 +207,7 @@ const GoalForm = (props) => {
           </FormGroup>
         </Form>
       </CardBody> 
+      </div>
     </div>
   );
 }

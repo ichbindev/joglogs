@@ -7,15 +7,15 @@ function logthis(stuff) {
   }
 }
 
-tester = {
-  mpw: 2,
-  days: ["1", "3", "4", "6"],
-  longRun: "6",
-  goalDistance: 6.2,
-  raceName: "Tester6.2 " + Date.now(),
-  raceDate: "2020-01-01"
-};
-marathonScheduler10(tester);
+// tester = {
+//   mpw: 2,
+//   days: ["1", "3", "4", "6"],
+//   longRun: "6",
+//   goalDistance: 6.2,
+//   raceName: "Tester6.2 " + Date.now(),
+//   raceDate: "2020-01-01"
+// };
+//marathonScheduler10(tester);
 
 function marathonScheduler10(data) {
   //set trainingStartDate as tomorrow in format "2019-11-30"
@@ -500,3 +500,5 @@ function marathonScheduler10(data) {
 
   return eventsArr;
 }
+
+// marathonScheduler10();
