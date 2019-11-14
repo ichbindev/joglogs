@@ -33,7 +33,7 @@ function marathonScheduler13(data) {
     // setup sample data
     // sample Race date is today + ??? days *********************************************************************
     //let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
-    sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
+    //sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
     //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
     let sampleData = [];
 
