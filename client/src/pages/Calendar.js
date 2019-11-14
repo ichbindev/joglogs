@@ -11,8 +11,7 @@ class Calendar extends Component {
 
   getPlan = () => {
     API.getPlan().then(result => {
-      const events = result.data.events.map(e => ({title: "Run", start: e.dateTime, end: e.dateTime, allDay: true}));
-      console.log(events[0]);
+      const events = result.data.events.map(e => ({title: e.runDistance + " Mile " +  e.description.split(" ")[0] + " Run", start: e.dateTime, end: e.dateTime, allDay: true}));
       this.setState({ events });
     });
   }
