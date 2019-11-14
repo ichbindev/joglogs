@@ -19,7 +19,6 @@ function logthis(stuff) {
 // marathonScheduler26(tester);
 
 function marathonScheduler26(data) {
-
   //set trainingStartDate as tomorrow in format "2019-11-30"
   let calculateStartDate = new Date().setDate(new Date().getDate() + 1);
   calculateStartDate =
