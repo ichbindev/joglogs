@@ -19,13 +19,11 @@ module.exports = {
       .then(function(newPlan) {
         // create events
         const events = schedule(req.body);
-        console.log(events);
         // give it the plan ID
         events.forEach(e => {
           e.PlanId = newPlan.id;
         });
         // save in db
-        console.log(JSON.stringify(events));
         db.Event.bulkCreate(events, { returning: true }).then(function() {
           res.json(true);
         });
