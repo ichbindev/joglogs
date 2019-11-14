@@ -19,6 +19,7 @@ module.exports = {
       .then(function(newPlan) {
         // create events
         const events = schedule(req.body);
+        console.log(events);
         // give it the plan ID
         events.forEach(e => {
           e.PlanId = newPlan.id;

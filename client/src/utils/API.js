@@ -16,6 +16,7 @@ export default {
   // creates a plan
   // TODO: refactor out legacy name
   createCalendar: function(calendarData) {
+    console.log("create with", calendarData)
     return axios.post("/api/calendar", calendarData);
   },
   // get the users first plan with hydrated events
