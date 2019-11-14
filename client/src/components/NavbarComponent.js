@@ -56,7 +56,7 @@ class NavbarComponent extends Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/"><h1><strong>jog logs</strong></h1></NavbarBrand>
+          <NavbarBrand href="/"><h1><strong>the run plan</strong></h1></NavbarBrand>
           <Collapse isOpen={true} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>

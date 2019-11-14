@@ -50,7 +50,7 @@ const SignUpForm = (props) => {
             <Input type="password" name="signupPassword" id="signupPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
         </Form>
-        <Button onClick={props.onClick}>Sign Up</Button>
+        <button type="button" class="btn btn-secondary" onClick={props.onClick}>Sign Up</button>
       </CardBody> 
     </div>
   );
@@ -71,7 +71,7 @@ const LogInForm = (props) => {
             <Input type="password" name="loginPassword" id="loginPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
         </Form>
-        <Button onClick={props.onClick}>Login</Button>
+        <button onClick={props.onClick}>Login</button>
       </CardBody> 
     </div>
   );

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Forms from '../components/Forms';
 import { START, GOAL } from '../utils/consts';
 import Hero from '../components/Hero';
-import Button from '../components/Button';
 import API from '../utils/API';
 
 class Setup extends Component {
@@ -60,8 +59,8 @@ class Setup extends Component {
       <Forms formType={GOAL} onChange={this.handleInputChange}/>
       <br />
       <div className="text-center">
-      <button className="btn btn-secondary btn-lg btn-block">
-      <Button onClick={this.handleFormSubmit}>Submit</Button>
+      <button className="btn btn-secondary btn-lg btn-block" onClick={this.handleFormSubmit}>
+     Submit
       </button>
       </div>
       <br />
