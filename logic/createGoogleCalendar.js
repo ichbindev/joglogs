@@ -9,53 +9,53 @@ function logthis(stuff) {
   }
 }
 
-// //sample data:
-// let events = [];
-// events.push(
-//   {
-//     number: "4",
-//     dateTime: "2019-11-24",
-//     percentMilesPerWeek: "50",
-//     mileTotalThisWeek: "13",
-//     runDistance: "7",
-//     title: "7 mile run today. 5 weeks til Marathon. ",
-//     description:
-//       "Long Run.  Long runs are your most crucial run of the week.  They will help build physical and mental endurance for race day.  Long run efforts should be executed at your targeted race pace or slower."
-//   },
-//   {
-//     number: "5",
-//     dateTime: "2019-11-26",
-//     percentMilesPerWeek: "12.5",
-//     mileTotalThisWeek: "16",
-//     runDistance: "2",
-//     title: "2 mile run today. 5 weeks til Marathon. ",
-//     description:
-//       "Easy Effort.  Easy runs should be executed at a relaxed effort where breathing is comfortable.  They will help you recover from your other runs."
-//   },
-//   {
-//     number: "6",
-//     dateTime: "2019-11-28",
-//     percentMilesPerWeek: "25",
-//     mileTotalThisWeek: "16",
-//     runDistance: "4",
-//     title: "4 mile run today. 4 weeks til Marathon. ",
-//     description:
-//       "Speed Development.  Developing speed will set you up for success on race day.  They serve as both physical and mental conditioning. Speed workouts should be executed at harder effort than race pace."
-//   }
-// );
+//sample data:
+let events = [];
+events.push(
+  {
+    number: "4",
+    dateTime: "2019-11-24",
+    percentMilesPerWeek: "50",
+    mileTotalThisWeek: "13",
+    runDistance: "7",
+    title: "7 mile run today. 5 weeks til Marathon. ",
+    description:
+      "Long Run.  Long runs are your most crucial run of the week.  They will help build physical and mental endurance for race day.  Long run efforts should be executed at your targeted race pace or slower."
+  },
+  {
+    number: "5",
+    dateTime: "2019-11-26",
+    percentMilesPerWeek: "12.5",
+    mileTotalThisWeek: "16",
+    runDistance: "2",
+    title: "2 mile run today. 5 weeks til Marathon. ",
+    description:
+      "Easy Effort.  Easy runs should be executed at a relaxed effort where breathing is comfortable.  They will help you recover from your other runs."
+  },
+  {
+    number: "6",
+    dateTime: "2019-11-28",
+    percentMilesPerWeek: "25",
+    mileTotalThisWeek: "16",
+    runDistance: "4",
+    title: "4 mile run today. 4 weeks til Marathon. ",
+    description:
+      "Speed Development.  Developing speed will set you up for success on race day.  They serve as both physical and mental conditioning. Speed workouts should be executed at harder effort than race pace."
+  }
+);
 
-// //test data:
-// let gmailAddress; // = "perrywilliams@800appliance.com";
-// let eventData = [];
-// eventData.gmailAddress = "perrywilliams@800appliance.com";
-// eventData.raceName = "Test Race " + Date.now();
-// eventData.events = events;
-// //logthis("Test eventData:");
-// //logthis(eventData);
+//test data:
+//let gmailAddress; // = "perrywilliams@800appliance.com";
+let eventData = [];
+eventData.gmailAddress = "perrywilliams@800appliance.com";
+eventData.raceName = "Test Race " + Date.now();
+eventData.events = events;
+//logthis("Test eventData:");
+//logthis(eventData);
 
-// createGoogleCalendar(gmailAddress, eventData);
+//createGoogleCalendar(eventData);
 
-function createGoogleCalendar(gmailAddress, eventData, cb) {
+function createGoogleCalendar(eventData, cb) {
   respond = cb;
   let calendar = "";
   let auth = "";

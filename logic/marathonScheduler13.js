@@ -78,18 +78,17 @@ function marathonScheduler13(data) {
     logthis(
       "ERROR: user chose longRunDay = " +
         runnerData.longRunDay +
-        ", but they didn't include that in their days for running. Changed to longRunDay to match last of run days for them."
+        ", but they didn't include that in their days for running. adding longRunDay to list of run days."
     );
-    runnerData.longRunDay = runnerData.days[runnerData.days.length - 1];
+    runnerData.days.push(runnerData.longRunDay);
+    runnerData.days.sort();
   }
 
   // put runDays in order, ending with their chosen longRunDay.. (make the longRunDay the last day of schedule week.)
   let runDays = runnerData.days;
   runDays.sort();
-  // while (runDays[runDays.length - 1] > runnerData.longRunDay) {
-  //     runDays.unshift(runDays.pop());
-  // }
 
+  //shift the longRunDay to the end of the 'week' of runs by moving later days to beginning (day -7) of the week array (runnderData.days[]).
   while (runDays[runDays.length - 1] > runnerData.longRunDay) {
     runDays[runDays.length - 1] = runDays[runDays.length - 1] - 7;
     runDays.sort();
@@ -454,14 +453,8 @@ function marathonScheduler13(data) {
         event.milesToRunToday = Math.ceil(
           milesThisWeek * (mileTest[i].percentMilesPerWeek / 100)
         );
+
         event.mileTotalThisWeek = Math.ceil(milesThisWeek);
-        // Math.ceil replaced the miles Math.round to nearest 10th of a mile.
-        // event.milesToRunToday =
-        //   Math.round(
-        //     milesThisWeek * (mileTest[i].percentMilesPerWeek / 100) * 10
-        //   ) / 10;
-        // event.mileTotalThisWeek = Math.round(milesThisWeek * 10) / 10;
-        // Create title for event
         event.title =
           event.milesToRunToday +
           " mile run today. " +
