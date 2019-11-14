@@ -8,7 +8,6 @@ const Footer = (props) => {
 
 
         <div id="footersection">
-<<<<<<< HEAD
           <Row>
             <Col>
               <div className="footerLogo">
@@ -32,31 +31,6 @@ const Footer = (props) => {
               <h3>Navigation</h3>
               <a href="/">
                 About
-=======
-      <Row>
-        <Col>
-        <div className="footerLogo">
-          <strong>the run plan</strong>
-        </div>
-        <br />
-          <a className="icon" href="/">
-          <i className="fa fa-facebook fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          
-          <a className="icon" href="/">
-          <i className="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          
-          <a className="icon" href="/">
-          <i className="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-        </Col>
-        <Col>
-        <br />
-          <h3>Navigation</h3>
-          <a href="/">
-            About
->>>>>>> master
           </a>
               <br />
               <a href="/">
