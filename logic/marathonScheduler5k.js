@@ -94,7 +94,6 @@ function marathonScheduler5(data) {
     runDays.sort();
   }
 
-
   logthis("runDays ordered with long run last = " + runDays);
   logthis("\nCalculated Data Using runnerData:");
   logthis("runDays =" + runDays);
