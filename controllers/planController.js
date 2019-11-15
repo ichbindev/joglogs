@@ -30,13 +30,19 @@ module.exports = {
       })
       .catch(function(error) {
         console.log(error);
-        return res.status(500).end();
+        return res
+          .status(500)
+          .json(
+            "The server encountered an error. Please try again in a few minutes."
+          );
       });
   },
   // TODO: change findOne to findAll to deal with multiple plans
   getPlan: function(req, res) {
     if (!req.isAuthenticated()) {
-      return res.status(401).json(false);
+      return res
+        .status(401)
+        .json("You are not logged in, please log in and try again.");
     }
     db.Plan.findOne({
       where: {
@@ -46,7 +52,11 @@ module.exports = {
       .then(function(planData) {
         if (!planData) {
           // nothing found
-          return res.status(404).json(false);
+          return res
+            .status(404)
+            .json(
+              "No plan was found matching your account. Please create a plan at /setup."
+            );
         }
         db.Event.findAll({
           where: {
@@ -62,7 +72,11 @@ module.exports = {
       })
       .catch(function(err) {
         console.log(err);
-        return res.status(404).json(false);
+        return res
+          .status(500)
+          .json(
+            "The server encountered an error. Please try again in a few minutes."
+          );
       });
   },
   hasPlan: function(req, res) {
@@ -74,14 +88,22 @@ module.exports = {
       .then(function(data) {
         if (!data) {
           // nothing found
-          return res.status(404).json(false);
+          return res
+            .status(404)
+            .json(
+              "No plan found matching your account. Please create a plan at /setup."
+            );
         }
         // return the calendar reference
         res.json(true);
       })
       .catch(function(err) {
         console.log(err);
-        return res.status(500).json(false);
+        return res
+          .status(500)
+          .json(
+            "The server encountered an error. Please try again in a few minutes."
+          );
       });
   },
   updatePlan: function(req, res) {
