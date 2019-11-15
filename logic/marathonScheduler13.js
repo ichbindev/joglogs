@@ -54,8 +54,8 @@ function marathonScheduler13(data) {
   // add trainingStartDate in anticipation of this being an option in future, currently starts "tomorrow"
   runnerData.startDate = calculateStartDate;
   logthis("runnerData = " + JSON.stringify(runnerData));
-  // convert incoming number strings to numbers:
-  runnerData.startMilesPerWeek = parseFloat(runnerData.mpw);
+  // convert incoming number strings to numbers: added .001 to stop divide by zero error if zero start miles
+  runnerData.startMilesPerWeek = parseFloat(runnerData.mpw + 0.001);
   runnerData.raceMiles = parseFloat(runnerData.goalDistance);
   runnerData.longRunDay = parseInt(runnerData.longRun);
   if (runnerData.raceName === "") {

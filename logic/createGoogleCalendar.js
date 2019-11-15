@@ -48,7 +48,7 @@ eventData.gmailAddress = "perrywilliams@800appliance.com";
 eventData.raceName = "Test Race " + Date.now();
 eventData.events = events;
 
-createGoogleCalendar(eventData);
+//createGoogleCalendar(eventData);
 
 function createGoogleCalendar(eventData, cb) {
   respond = cb;
