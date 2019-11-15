@@ -5,38 +5,28 @@ let respond;
 showLogs = true; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
 function logthis(stuff) {
   if (showLogs || stuff.includes("ERROR")) {
-    logthis(stuff);
+    console.log(stuff);
   }
 }
-
 //sample data:
 let events = [];
 events.push(
   {
-    number: "4",
     dateTime: "2019-11-24",
-    percentMilesPerWeek: "50",
-    mileTotalThisWeek: "13",
     runDistance: "7",
     title: "7 mile run today. 5 weeks til Marathon. ",
     description:
       "Long Run.  Long runs are your most crucial run of the week.  They will help build physical and mental endurance for race day.  Long run efforts should be executed at your targeted race pace or slower."
   },
   {
-    number: "5",
     dateTime: "2019-11-26",
-    percentMilesPerWeek: "12.5",
-    mileTotalThisWeek: "16",
     runDistance: "2",
     title: "2 mile run today. 5 weeks til Marathon. ",
     description:
       "Easy Effort.  Easy runs should be executed at a relaxed effort where breathing is comfortable.  They will help you recover from your other runs."
   },
   {
-    number: "6",
     dateTime: "2019-11-28",
-    percentMilesPerWeek: "25",
-    mileTotalThisWeek: "16",
     runDistance: "4",
     title: "4 mile run today. 4 weeks til Marathon. ",
     description:
@@ -231,7 +221,7 @@ function createGoogleCalendar(eventData, cb) {
         function(err, event) {
           if (err) {
             logthis(
-              "calender.events.insert failed in Calendar service: " + err
+              "calender.events.insert failed in createGoogleCalendar js: " + err
             );
             reject(err);
           }
