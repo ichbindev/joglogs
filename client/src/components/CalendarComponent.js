@@ -10,7 +10,7 @@ const CalendarComponent = (props) => {
 
   return (
     <div>
-      <Card style={{ height: '500pt', paddingBottom: '40px' }}>
+      <div style={{ height: '500pt', paddingBottom: '40px' }}>
         <div style={{ height: '100%' }}>
           <Calendar
             events={props.events}
@@ -21,7 +21,7 @@ const CalendarComponent = (props) => {
             views={['month', 'agenda']}
           />
         </div>
-      </Card>
+      </div>
     </div>
   );
 };

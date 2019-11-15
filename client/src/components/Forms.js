@@ -48,6 +48,14 @@ const SignUpForm = (props) => {
             <Label htmlFor="signup-password">Password</Label>
             <Input type="password" name="signupPassword" id="signupPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
+          
+          <FormGroup check className="form-check-inline">
+              <Label check>
+                <Input  onChange={props.onChange} type="checkbox" name="terms" value="1" />{' '}
+                By checking this box, I agree to our terms and conditions
+              </Label>
+            </FormGroup>
+          
         </Form>
         <button type="button" class="btn btn-dark" onClick={props.onClick}>Sign Up</button>
       

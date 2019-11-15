@@ -25,10 +25,10 @@ class Calendar extends Component {
     return (
     <div>
       <Hero />
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="calendarcontainer">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="calendarcontainer">
               <CalendarComponent events={this.state.events} />
             </div>
           </div>
