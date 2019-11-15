@@ -69,15 +69,15 @@ class NavbarComponent extends Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/"><h1><strong>jog logs</strong></h1></NavbarBrand>
+        <Navbar className="bignav" color="light" light expand="md">
+          <NavbarBrand href="/"><h1><strong>run method</strong></h1></NavbarBrand>
           <Collapse isOpen={true} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink className="active" href="/about">About</NavLink>
+                <NavLink className="active" href="/about"><strong>About</strong></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink className="active" href="#">Blog</NavLink>
+                <NavLink className="active" href="#"><strong>Blog</strong></NavLink>
               </NavItem>
               {/* Only display these two if user is not logged in */}
               <NavItem>
