@@ -55,7 +55,7 @@ function marathonScheduler5(data) {
   runnerData.startDate = calculateStartDate;
   logthis("runnerData = " + JSON.stringify(runnerData));
   // beginning mpw must not === 0, start with min 1 mile, to stop divide by zero error.
-  if (parseFloat(runnderData.mpw) < 1) {
+  if (parseFloat(runnerData.mpw) < 1) {
     runnerData.startMilesPerWeek = 1;
   } else {
     runnerData.startMilesPerWeek = parseFloat(runnerData.mpw);
@@ -92,7 +92,7 @@ function marathonScheduler5(data) {
   let runDays = runnerData.days;
   runDays.sort();
 
-  //shift the longRunDay to the end of the 'week' of runs by moving later days to beginning (day -7) of the week array (runnderData.days[]).
+  //shift the longRunDay to the end of the 'week' of runs by moving later days to beginning (day -7) of the week array (runnerData.days[]).
   while (runDays[runDays.length - 1] > runnerData.longRunDay) {
     runDays[runDays.length - 1] = runDays[runDays.length - 1] - 7;
     runDays.sort();
