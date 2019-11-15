@@ -154,6 +154,48 @@ a:hover, a:visited {
   padding: 200px;
 }
 
+.heroSection3 {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run6.jpg") 50% no-repeat;
+  background-size: cover;
+  height: 60vh;
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.heroSection3 .heroSectionText3 {
+  color: #fefefe;
+  padding: 200px;
+}
+
+.heroSection4 {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run7.jpg") 50% no-repeat;
+  background-size: cover;
+  height: 60vh;
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.heroSection4 .heroSectionText4 {
+  color: #fefefe;
+  padding: 200px;
+}
+
 .calendarcontainer {
   margin: 20px;
   padding: 20px;
@@ -167,3 +209,15 @@ a:hover, a:visited {
   text-align: center;
 }
 
+.aboutcontainer {
+  margin: 50px;
+}
+
+.abouttitle {
+  margin: 0px 50px 50px 50px;
+}
+
+.card-header {
+  font-weight: bold;
+  font-size: 25px;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CardBody, Input, Form, FormGroup, Label } from 'reactstrap';
-import { SIGN_UP, LOG_IN, START, GOAL } from '../utils/consts';
+import { SIGN_UP, LOG_IN, START, GOAL, CONTACT } from '../utils/consts';
 
 class Forms extends Component {
 
@@ -14,6 +14,8 @@ class Forms extends Component {
         return <StartForm onChange={props.onChange}/>
       case GOAL:
         return <GoalForm onChange={props.onChange}/>
+      case CONTACT:
+        return <ContactForm onChange={props.onChange}/>
       default:
         return (
           <div>
@@ -206,4 +208,33 @@ const GoalForm = (props) => {
     </div>
   );
 }
- 
+const ContactForm = (props) => {
+  return ( 
+    <div class="card">
+          <div class="card-header">Contact</div>
+          <div class="card-body">
+            <Form>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Your Name</label>
+                <Input type="name" class="form-control" id="exampleFormControlInput1" placeholder=""></Input>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <Input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></Input>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Subject</label>
+                <Input type="subject" class="form-control" id="exampleFormControlInput1" placeholder=""></Input>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+              </div>
+            </Form>
+             
+              <button type="submit" class="btn btn-dark" value="Submit">Submit</button>
+            
+          </div>
+        </div>
+  );
+}
