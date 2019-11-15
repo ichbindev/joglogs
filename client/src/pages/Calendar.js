@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CalendarComponent from '../components/CalendarComponent';
+import Hero from '../components/Hero2';
 import API from '../utils/API';
 
 class Calendar extends Component {
@@ -22,7 +23,18 @@ class Calendar extends Component {
 
   render() { 
     return ( <div>
+      <Hero/>
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <div class="calendarcontainer">
       <CalendarComponent events={this.state.events}/>
+      </div>
+      </div>
+      
+      </div>
+      </div>
       </div>);
   }
 }

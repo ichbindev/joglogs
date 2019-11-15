@@ -81,10 +81,10 @@ class NavbarComponent extends Component {
               </NavItem>
               {/* Only display these two if user is not logged in */}
               <NavItem>
-                <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword}/></ModalComponent>
+                <ModalComponent type="button" class="btn btn-dark" buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword}/></ModalComponent>
               </NavItem>
               <NavItem>
-              <ModalComponent buttonLabel="Sign Up" title="Sign Up"><Forms formType={SIGN_UP} onChange={this.handleInputChange} onClick={this.handleSignupFormSubmit}emailValue={this.state.signupEmail} passwordValue={this.state.signupPassword}/></ModalComponent>
+              <ModalComponent type="button" class="btn btn-dark" buttonLabel="Sign Up" title="Sign Up"><Forms formType={SIGN_UP} onChange={this.handleInputChange} onClick={this.handleSignupFormSubmit}emailValue={this.state.signupEmail} passwordValue={this.state.signupPassword}/></ModalComponent>
               </NavItem>
               {/* Log out button goes here! Display only if user is logged in */}
             </Nav>

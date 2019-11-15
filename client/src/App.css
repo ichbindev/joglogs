@@ -1,6 +1,8 @@
 /* All our CSS is gonna go here */
 
-
+h1 {
+  font-family: 'Roboto Slab', serif;
+}
 body {
   font-family: 'DM Sans', sans-serif;
 }
@@ -60,13 +62,14 @@ video {
 footer {
   background-color: rgb(19, 19, 19);
   font: white;
-  padding: 100px;
+  /* padding: 100px; */
 }
 
 .footerLogo {
- font: grey;
- font-size: 65px;
- text-align: left;
+  font-family: 'Roboto Slab', serif;
+  font: grey;
+  font-size: 32px;
+  text-align: left;
 }
 
 .icon {
@@ -74,10 +77,11 @@ footer {
 }
 
 #footersection {
- height: 260px;
+ padding: 50px 20px 50px 20px;
 }
 
 a { 
+  cursor: pointer;
   color: white; 
 }
 
@@ -86,6 +90,7 @@ a:hover, a:visited {
 }
 
 .subtitle {
+  font-family: 'Roboto Slab', serif;
   font-size: 40px;
   text-align: center;
   margin: 200px 100px 0px 100px;
@@ -128,6 +133,37 @@ a:hover, a:visited {
   padding: 200px;
 }
 
-.card {
-  box-shadow: 2px 2px 4px lightgrey;
+.heroSection2 {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/setup.jpg") 50% no-repeat;
+  background-size: cover;
+  height: 60vh;
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
+.heroSection2 .heroSectionText2 {
+  color: #fefefe;
+  padding: 200px;
+}
+
+.calendarcontainer {
+  margin: 20px;
+  padding: 20px;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+.modal-header {
+  text-align: center;
+}
+
