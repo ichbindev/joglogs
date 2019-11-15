@@ -52,12 +52,15 @@ const SignUpForm = (props) => {
           <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox" name="terms" value="1" />{' '}
-                By checking this box, I agree to our terms and conditions
+                By checking this box, I agree to Train Method's terms and conditions
+                <br />
               </Label>
             </FormGroup>
           
         </Form>
+        <br />
         <button type="button" class="btn btn-dark" onClick={props.onClick}>Sign Up</button>
+        <br />
       
     </div>
   );

@@ -11,7 +11,7 @@ const Footer = (props) => {
           <Row>
             <Col>
               <div className="footerLogo">
-                <strong>train method</strong>
+                <strong>training method</strong>
               </div>
               <br />
               <a className="icon" href="/">
@@ -53,7 +53,7 @@ const Footer = (props) => {
                 Privacy
           </a>
               <br />
-              <a href="/">
+              <a href="Terms">
                 Terms
           </a>
               <br />

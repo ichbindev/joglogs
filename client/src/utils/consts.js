@@ -2,6 +2,7 @@ export const SIGN_UP = "sign-up";
 export const LOG_IN = "log-in";
 export const START = "start";
 export const GOAL = "goal";
+export const TERMS = "terms";
 export const CONTACT = "contact";
 
 

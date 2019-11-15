@@ -9,6 +9,7 @@ import Setup from "./pages/Setup";
 import NotFound from "./pages/NotFound";
 import Navbar from './components/NavbarComponent';
 import Footer from  './components/Footer'
+import Terms from  './pages/Terms'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/contact" component={Contact}/>
           <Route exact path="/setup" component={Setup}/>
           <Route exact path="/calendar" component={Calendar}/>
+          <Route exact path="/terms" component={Terms}/>
           <Route path="*" component={NotFound}/>
         </Switch>
         <Footer/>
