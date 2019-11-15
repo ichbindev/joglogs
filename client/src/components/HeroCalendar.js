@@ -2,10 +2,10 @@ import React from 'react';
 // import bgimage from "";
 // style={{ backgroundImage: `url(${bgimage})`, backgroundSize: 'cover' }}
 
-const Hero = (props) => {
+const HeroCalendar = (props) => {
   return (
-    <div className="heroSection2">
-    <div className="heroSectionText2">
+    <div className="heroCalendar">
+    <div className="heroCalendarText">
       <h1>Your Training Calendar</h1>
       <h5>Nothing worthwhile ever came easy.  This is your training calendar.  Now, it's time to log some miles!</h5>
     </div>
@@ -13,4 +13,4 @@ const Hero = (props) => {
   );
 };
 
-export default Hero;
+export default HeroCalendar;

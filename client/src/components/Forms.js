@@ -37,8 +37,8 @@ export default Forms;
 
 const SignUpForm = (props) => {
   return ( 
-    <div className="card-body" id="sign-up-body">
-      
+    <div className="card">
+      <CardBody id="sign-up-body">
         <Form>
           <FormGroup>
             <Label htmlFor="signupEmail">Email</Label>
@@ -48,20 +48,16 @@ const SignUpForm = (props) => {
             <Label htmlFor="signup-password">Password</Label>
             <Input type="password" name="signupPassword" id="signupPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
-          
           <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox" name="terms" value="1" />{' '}
                 By checking this box, I agree to Train Method's terms and conditions
-                <br />
-              </Label>
+                 <br />
+               </Label>
             </FormGroup>
-          
         </Form>
-        <br />
-        <button type="button" class="btn btn-dark" onClick={props.onClick}>Sign Up</button>
-        <br />
-      
+        <button type="button" className="btn btn-dark" onClick={props.onClick}>Sign Up</button>
+      </CardBody> 
     </div>
   );
 }
@@ -69,8 +65,8 @@ const SignUpForm = (props) => {
 
 const LogInForm = (props) => {
   return ( 
-    <div className="card-body" id="login-body">
-      
+    <div className="card">
+      <CardBody id="login-body">
         <Form>
           <FormGroup>
             <Label htmlFor="loginEmail">Email</Label>
@@ -81,8 +77,8 @@ const LogInForm = (props) => {
             <Input type="password" name="loginPassword" id="loginPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
         </Form>
-        <button type="button" class="btn btn-dark" onClick={props.onClick}>Login</button>
-     
+        <button type="button" className="btn btn-dark" onClick={props.onClick}>Login</button>
+      </CardBody> 
     </div>
   );
 }
@@ -221,29 +217,29 @@ const GoalForm = (props) => {
 }
 const ContactForm = (props) => {
   return ( 
-    <div class="card">
-          <div class="card-header">Contact</div>
-          <div class="card-body">
+    <div className="card">
+          <div className="card-header">Contact</div>
+          <div className="card-body">
             <Form>
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Your Name</label>
-                <Input type="name" class="form-control" id="exampleFormControlInput1" placeholder=""></Input>
+              <div className="form-group">
+                <label for="nameInput">Your Name</label>
+                <Input type="name" className="form-control" id="nameInput" placeholder=""></Input>
               </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
-                <Input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></Input>
+              <div className="form-group">
+                <label for="emailInput">Email address</label>
+                <Input type="email" className="form-control" id="emailInput" placeholder="name@example.com"></Input>
               </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Subject</label>
-                <Input type="subject" class="form-control" id="exampleFormControlInput1" placeholder=""></Input>
+              <div className="form-group">
+                <label for="subjectInput">Subject</label>
+                <Input type="subject" className="form-control" id="subjectInput" placeholder=""></Input>
               </div>
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1">Message</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+              <div className="form-group">
+                <label for="messageInput">Message</label>
+                <textarea className="form-control" id="messageInput" rows="5"></textarea>
               </div>
             </Form>
              
-              <button type="submit" class="btn btn-dark" value="Submit">Submit</button>
+              <button type="submit" className="btn btn-dark" value="Submit">Submit</button>
             
           </div>
         </div>
