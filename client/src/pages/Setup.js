@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Forms from '../components/Forms';
 import { START, GOAL } from '../utils/consts';
-import Hero from '../components/HeroSetup';
+import Hero from '../components/Hero';
 import API from '../utils/API';
 
 class Setup extends Component {
@@ -50,7 +50,8 @@ class Setup extends Component {
 
   render() { 
     return ( <div>
-      <Hero/>
+      <Hero heroNameClass="heroSetup" heroTextClass="heroSetupText" heroTitle="Setup" heroText="Every runner has different training needs. Fill out your information below. Once you hit submit, we'll
+        generate a custom training plan to suit your needs."/>
       <br />
       <div className="container">
         <div className="row">

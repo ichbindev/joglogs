@@ -1,11 +1,11 @@
 import React from 'react';
 import '../App.css'
-import Hero from '../components/HeroAbout';
+import Hero from '../components/Hero';
 
 const About = () => {
   return (
     <div>
-      <Hero />
+      <Hero heroNameClass="heroAbout" heroTextClass="heroAboutText" heroTitle="About" heroText="Learn more about our mission and our team."/>
       <div className="aboutcontainer">
         <div className="row">
           <div className="col-md-2"></div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CalendarComponent from '../components/CalendarComponent';
-import Hero from '../components/HeroCalendar';
+import Hero from '../components/Hero';
 import API from '../utils/API';
 
 class Calendar extends Component {
@@ -24,7 +24,7 @@ class Calendar extends Component {
   render() {
     return (
     <div>
-      <Hero />
+      <Hero heroNameClass="heroCalendar" heroTextClass="heroCalendarText" heroTitle="Calendar" heroText="Nothing worthwhile ever came easy.  This is your training calendar.  Now, it's time to log some miles!"/>
       <div className="container">
         <div className="row">
           <div className="col-md-12">

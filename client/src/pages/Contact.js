@@ -1,13 +1,13 @@
 import React from 'react';
 import '../App.css'
-import Hero from '../components/HeroContact';
+import Hero from '../components/Hero';
 import Forms from '../components/Forms';
 import { CONTACT } from '../utils/consts';
 
 const Contact = () => {
   return (
     <div>
-      <Hero />
+      <Hero heroNameClass="heroContact" heroTextClass="heroContactText" heroTitle="Contact" heroText="If you run, then you are part of the running community.  We love hearing from the community.  Shoot us a message!"/>
       <div className="aboutcontainer">
         <div className="row">
           <div className="col-md-2"></div>
