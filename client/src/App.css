@@ -124,7 +124,7 @@ a:hover, a:visited {
   border-radius: none;
 }
 
-.heroSection {
+.heroSetup {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run5.jpg") 50% no-repeat;
   background-size: cover;
   height: 60vh;
@@ -140,12 +140,12 @@ a:hover, a:visited {
           justify-content: center;
 }
 
-.heroSection .heroSectionText {
+.heroSetup .heroSetupText {
   color: #fefefe;
   padding: 200px;
 }
 
-.heroSection2 {
+.heroCalendar {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run7.jpg") 50% no-repeat;
   background-size: cover;
   height: 60vh;
@@ -161,12 +161,12 @@ a:hover, a:visited {
           justify-content: center;
 }
 
-.heroSection2 .heroSectionText2 {
+.heroCalendar .heroCalendarText {
   color: #fefefe;
   padding: 200px;
 }
 
-.heroSection3 {
+.heroAbout {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run6.jpg") 50% no-repeat;
   background-size: cover;
   height: 60vh;
@@ -182,12 +182,12 @@ a:hover, a:visited {
           justify-content: center;
 }
 
-.heroSection3 .heroSectionText3 {
+.heroAbout .heroAboutText {
   color: #fefefe;
   padding: 200px;
 }
 
-.heroSection4 {
+.heroContact {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/setup.jpg") 50% no-repeat;
   background-size: cover;
   height: 60vh;
@@ -203,7 +203,7 @@ a:hover, a:visited {
           justify-content: center;
 }
 
-.heroSection4 .heroSectionText4 {
+.heroContact .heroContactText {
   color: #fefefe;
   padding: 200px;
 }

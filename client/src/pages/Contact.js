@@ -4,7 +4,7 @@ import Hero from '../components/HeroContact';
 import Forms from '../components/Forms';
 import { CONTACT } from '../utils/consts';
 
-const About = () => {
+const Contact = () => {
   return (
     <div>
       <Hero />
@@ -25,4 +25,4 @@ const About = () => {
   );
 }
 
-export default About;
+export default Contact;
