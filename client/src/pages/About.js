@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css'
-import Hero from '../components/Hero3';
+import Hero from '../components/HeroAbout';
 
 const About = () => {
   return (

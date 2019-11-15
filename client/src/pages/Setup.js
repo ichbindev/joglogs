@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Forms from '../components/Forms';
 import { START, GOAL } from '../utils/consts';
-import Hero from '../components/Hero';
+import Hero from '../components/HeroSetup';
 import API from '../utils/API';
 
 class Setup extends Component {

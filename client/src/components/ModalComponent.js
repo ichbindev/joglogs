@@ -14,7 +14,7 @@ const ModalComponent = (props) => {
 
   return (
     <div>
-      <a className="nav-link active" onClick={toggle}>{buttonLabel}</a>
+      <a href="#" className="nav-link active" onClick={toggle}>{buttonLabel}</a>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>{props.title}</ModalHeader>
         {props.children}

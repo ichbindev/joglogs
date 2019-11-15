@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css'
-import Hero from '../components/Hero4';
+import Hero from '../components/HeroContact';
 import Forms from '../components/Forms';
 import { CONTACT } from '../utils/consts';
 
