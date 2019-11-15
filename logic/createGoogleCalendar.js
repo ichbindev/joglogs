@@ -142,7 +142,7 @@ function createGoogleCalendar(eventData, cb) {
             res.data.etag
         );
         calendarInfo.calendarId = res.data.id;
-        //        respond(calendarInfo.calendarId);
+        respond(calendarInfo.calendarId);
         calendarInfo.etag = res.data.etag;
 
         shareCalendar(auth, calendarInfo);
