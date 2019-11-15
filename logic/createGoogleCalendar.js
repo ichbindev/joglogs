@@ -5,7 +5,7 @@ let respond;
 showLogs = true; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
 function logthis(stuff) {
   if (showLogs || stuff.includes("ERROR")) {
-    console.log(stuff);
+    logthis(stuff);
   }
 }
 
@@ -43,17 +43,12 @@ events.push(
       "Speed Development.  Developing speed will set you up for success on race day.  They serve as both physical and mental conditioning. Speed workouts should be executed at harder effort than race pace."
   }
 );
-
-//test data:
-//let gmailAddress; // = "perrywilliams@800appliance.com";
 let eventData = [];
 eventData.gmailAddress = "perrywilliams@800appliance.com";
 eventData.raceName = "Test Race " + Date.now();
 eventData.events = events;
-//logthis("Test eventData:");
-//logthis(eventData);
 
-//createGoogleCalendar(eventData);
+createGoogleCalendar(eventData);
 
 function createGoogleCalendar(eventData, cb) {
   respond = cb;
@@ -71,31 +66,11 @@ function createGoogleCalendar(eventData, cb) {
   logthis("Test eventData AGAIN:");
   logthis(eventData);
 
-  // if AccountInteger is out of range, use default # 1:
-  // if (
-  //   calendarInfo.whichGoogleAccountInteger < 1 ||
-  //   calendarInfo.whichGoogleAccountInteger > 3
-  // ) {
-  //calendarInfo.whichGoogleAccountInteger = 1;
-  //  }
-  // const readline = require("readline");
   const { google } = require("googleapis"); // just downloads the 'google' part out of this large googleaplis (destructuring)
   // const SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
-  // Assign the proper Google Auth account based on 'whichGoogleAccountInteger'
   const token = process.env.TOKEN1 || "No Token Found in env file";
   const credentials = process.env.CREDENTIALS1 || "No Token Found in env file";
-
-  // if (calendarInfo.whichGoogleAccountInteger === 2) {
-  //   token = process.env.TOKEN2 || "No Token Found in env file";
-  //   credentials = process.env.CREDENTIALS2 || "No Token Found in env file";
-  // } else if (calendarInfo.whichGoogleAccountInteger === 3) {
-  //   token = process.env.TOKEN3 || "No Token Found in env file";
-  //   credentials = process.env.CREDENTIALS3 || "No Token Found in env file";
-  // } else {
-  //   token = process.env.TOKEN1 || "No Token Found in env file";
-  //   credentials = process.env.CREDENTIALS1 || "No Token Found in env file";
-  // }
 
   function authorize(credentials, callback) {
     // eslint-disable-next-line camelcase
@@ -128,12 +103,10 @@ function createGoogleCalendar(eventData, cb) {
       function(err, res) {
         if (err) {
           respond(null);
-          return console.log("The API returned an error: " + err);
+          return logthis("The API returned an error: " + err);
         }
-        // var calenderInfo = calendarInfo;
 
-        // calenderInfo.summary= res.data.summary;
-        console.log(
+        logthis(
           "\n\nSuccessfully created Calendar Named : " +
             res.data.summary +
             "\n  with id # " +
@@ -153,7 +126,7 @@ function createGoogleCalendar(eventData, cb) {
 
   function shareCalendar(auth, calendarInfo) {
     if (gmailAddress) {
-      console.log("Now trying to share Calendar with: " + gmailAddress);
+      logthis("Now trying to share Calendar with: " + gmailAddress);
     } else {
       gmailAddress = "joglog@gmail.com";
       logthis("ERROR: gmailAddress was blank, so using " + gmailAddress);
@@ -174,7 +147,7 @@ function createGoogleCalendar(eventData, cb) {
       },
       err => {
         if (err) {
-          return console.log("Calendar API failed on calendar#aclRule: " + err);
+          return logthis("Calendar API failed on calendar#aclRule: " + err);
         }
 
         logthis(
@@ -195,16 +168,16 @@ function createGoogleCalendar(eventData, cb) {
       // Start of inserting events into calendar
       //****************************************************************  REDUCE Function *************************
       //****************************************************************  REDUCE Function *************************
-      console.log("start of reduce strategy");
+      logthis("start of reduce strategy");
       // var eventCount = 0;
       // var makeEvents = makeEvents;
       let arrItems = events;
-      //    console.log("arrItems = ", arrItems)
+      //    logthis("arrItems = ", arrItems)
       function methodThatReturnsAPromise(anEvent) {
         return new Promise(resolve => {
           setTimeout(() => {
-            // console.log(`Creating event at ${anEvent}`+nextId);
-            //        console.log("makeEvents[i] = ", anEvent);
+            // logthis(`Creating event at ${anEvent}`+nextId);
+            //        logthis("makeEvents[i] = ", anEvent);
             addThisEvent(anEvent).then(function() {
               resolve();
             });
@@ -257,14 +230,14 @@ function createGoogleCalendar(eventData, cb) {
         },
         function(err, event) {
           if (err) {
-            console.log(
+            logthis(
               "calender.events.insert failed in Calendar service: " + err
             );
             reject(err);
           }
           eventCount++;
-          console.log("Event " + eventCount + " Successfully Created");
-          //    console.log('\n\n event.data = ', event.data);
+          logthis("Event " + eventCount + " Successfully Created");
+          //    logthis('\n\n event.data = ', event.data);
 
           resolve(event.data);
         }
