@@ -78,14 +78,14 @@ footer {
 
 h1 {
   font-weight: 900;
-  margin: 0px 0px 0px 20px;
+  margin: 0px 0px 0px 15px;
 }
 .icon {
  align: left;
 }
 
 #footersection {
- padding: 50px 10px 50px 10px;
+ padding: 40px 10px 40px 10px;
 }
 
 a { 
@@ -142,7 +142,7 @@ a:hover, a:visited {
 }
 
 .heroSection2 {
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/setup.jpg") 50% no-repeat;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run7.jpg") 50% no-repeat;
   background-size: cover;
   height: 60vh;
   text-align: center;
@@ -184,7 +184,7 @@ a:hover, a:visited {
 }
 
 .heroSection4 {
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run7.jpg") 50% no-repeat;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/setup.jpg") 50% no-repeat;
   background-size: cover;
   height: 60vh;
   text-align: center;
