@@ -10,7 +10,7 @@ class Setup extends Component {
     this.state = { 
       mpw: 0,
       days: [],
-      longRun: "Sunday",
+      longRun: "0",
       goalDistance: 3.1,
       raceName: "",
       raceDate: "2020-01-01"
