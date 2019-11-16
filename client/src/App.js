@@ -31,15 +31,15 @@ class App extends Component {
     return (
       <Router>
         <div>
-        <Navbar/>
+        <Navbar loggedIn={this.state.loggedIn}/>
           <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/about" component={About}/>
-            <Route exact path="/contact" component={Contact}/>
-            <Route exact path="/setup" component={Setup}/>
-            <Route exact path="/calendar" component={Calendar}/>
-            <Route exact path="/terms" component={Terms}/>
-            <Route path="*" component={NotFound}/>
+            <Route exact path="/" render={(props) => <Home {...props} loggedIn={this.state.loggedIn} />}/>
+            <Route exact path="/about" render={(props) => <About {...props} loggedIn={this.state.loggedIn} />}/>
+            <Route exact path="/contact" render={(props) => <Contact {...props} loggedIn={this.state.loggedIn} />}/>
+            <Route exact path="/setup" render={(props) => <Setup {...props} loggedIn={this.state.loggedIn} />}/>
+            <Route exact path="/calendar" render={(props) => <Calendar {...props} loggedIn={this.state.loggedIn} />}/>
+            <Route exact path="/terms" render={(props) => <Terms {...props} loggedIn={this.state.loggedIn} />}/>
+            <Route path="*" render={(props) => <NotFound {...props} loggedIn={this.state.loggedIn} />}/>
           </Switch>
           <Footer/>
         </div>
