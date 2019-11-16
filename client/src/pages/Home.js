@@ -3,7 +3,7 @@ import SideImage from '../components/SideImage';
 import SideText from '../components/SideText';
 import '../App.css'
 
-const Home = (props) => {
+const Home = () => {
   return (
     <div>
       <div className="videocontainer">
