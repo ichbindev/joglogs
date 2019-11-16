@@ -62,32 +62,26 @@ class NavbarComponent extends Component {
 
   handleLogout = () => {
     API.logout()
-    .then(function() {
-      window.location.href = "/";
-    })
+      .then(function() {
+        window.location.href = "/";
+      })
   }
-
-  // conditionally render login/signup vs logout
-  renderUserButtons = () => {
-    if (this.props.loggedIn) {
-      return (<NavItem><a href="#top" className="nav-link active" onClick={this.handleLogout}>Log Out</a></NavItem>);
-      
-    }
-    return (
-      <div>
-        <NavItem>
-          <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword} />
-          </ModalComponent>
-        </NavItem>
-        <NavItem>
-          <ModalComponent buttonLabel="Sign Up" title="Sign Up"><Forms formType={SIGN_UP} onChange={this.handleInputChange} onClick={this.handleSignupFormSubmit} emailValue={this.state.signupEmail} passwordValue={this.state.signupPassword} />
-          </ModalComponent>
-        </NavItem>
-      </div>);
-  }
-
 
   render() {
+    let logout = <NavItem><a href="#top" className="nav-link active" onClick={this.handleLogout}><strong>Log Out</strong></a></NavItem>;
+    let login = undefined;
+    let signup = undefined;
+    if (!this.props.loggedIn) {
+      logout = undefined;
+      login =  <NavItem>
+          <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword} /></ModalComponent>
+        </NavItem>; 
+      signup =  <NavItem>
+          <ModalComponent buttonLabel="Sign Up" title="Sign Up"><Forms formType={SIGN_UP} onChange={this.handleInputChange} onClick={this.handleSignupFormSubmit} emailValue={this.state.signupEmail} passwordValue={this.state.signupPassword} /></ModalComponent>
+        </NavItem>;
+    }
+
+
     return (
       <div>
         <Navbar className="bignav" color="light" light expand="md">
@@ -100,8 +94,9 @@ class NavbarComponent extends Component {
               <NavItem>
                 <NavLink className="active" href="#"><strong>Blog</strong></NavLink>
               </NavItem>
-              {console.log(this.props.loggedIn)}
-              {this.renderUserButtons()}
+              {logout}
+              {login}
+              {signup}
             </Nav>
           </Collapse>
         </Navbar>
