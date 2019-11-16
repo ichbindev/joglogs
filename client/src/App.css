@@ -67,8 +67,7 @@ footer {
 
 .footerLogo {
   font-family: 'DM Sans', sans-serif;
-  font: grey;
-  font-size: 25px;
+  font-size: 28px;
   text-align: left;
 }
 
@@ -77,8 +76,7 @@ footer {
 }
 
 h1 {
-  font-weight: 900;
-  margin: 0px 0px 0px 15px;
+  margin: 0px 0px 0px 5px;
 }
 .icon {
  align: left;
