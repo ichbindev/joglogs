@@ -39,19 +39,21 @@ class NavbarComponent extends Component {
     API.login(user)
       // check if user has any plans
       .then(() => API.hasPlan())
+      .catch(err => {
+        // something went wrong with login
+        // display vague error
+      })
       .then(plan => {
-        if (plan) {
-          // if they do, show them
-          window.location.href = "/calendar"
-        } else {
-          // if not, have them create one
-          window.location.href = "/setup"
-        }
+        // if they do, show them
+        window.location.href = "/calendar"
+      }).catch(err => {
+        // 404 no plan, redirect them to setup 
+        window.location.href = "/setup"
       });
   };
 
   handleSignupFormSubmit = event => {
-    event.preventDefault();
+    event.preventDeffr78xzault();
     const { signupEmail: username, signupPassword: password } = this.state;
     const user = { username, password };
     API.signUp(user)
