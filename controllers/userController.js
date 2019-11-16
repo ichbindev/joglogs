@@ -20,7 +20,10 @@ module.exports = {
       });
   },
   getUser: function(req, res) {
-    res.status(501).json("Not yet implemented.");
+    if (!req.isAuthenticated()) {
+      return res.status(401).json(false);
+    }
+    return res.json(true);
   },
   updateUser: function(req, res) {
     res.status(501).json("Not yet implemented.");

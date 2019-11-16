@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardBody, Input, Form, FormGroup, Label } from 'reactstrap';
-import { SIGN_UP, LOG_IN, START, GOAL } from '../utils/consts';
-import Button from './Button';
+import { CardBody, Input, Form, FormGroup, Label } from 'reactstrap';
+import { SIGN_UP, LOG_IN, START, GOAL, CONTACT } from '../utils/consts';
 
 class Forms extends Component {
 
@@ -15,6 +14,8 @@ class Forms extends Component {
         return <StartForm onChange={props.onChange}/>
       case GOAL:
         return <GoalForm onChange={props.onChange}/>
+      case CONTACT:
+        return <ContactForm onChange={props.onChange}/>
       default:
         return (
           <div>
@@ -26,9 +27,7 @@ class Forms extends Component {
 
   render() { return(
       <div>
-        <Card>        
           {this.chooseForm(this.props)}
-        </Card>
       </div>
     );
   };
@@ -38,7 +37,7 @@ export default Forms;
 
 const SignUpForm = (props) => {
   return ( 
-    <div>
+    <div className="card">
       <CardBody id="sign-up-body">
         <Form>
           <FormGroup>
@@ -49,8 +48,15 @@ const SignUpForm = (props) => {
             <Label htmlFor="signup-password">Password</Label>
             <Input type="password" name="signupPassword" id="signupPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
+          <FormGroup check className="form-check-inline">
+              <Label check>
+                <Input  onChange={props.onChange} type="checkbox" name="terms" value="1" />{' '}
+                By checking this box, I agree to Train Method's terms and conditions
+                 <br />
+               </Label>
+            </FormGroup>
         </Form>
-        <Button onClick={props.onClick}>Sign Up</Button>
+        <button type="button" className="btn btn-dark" onClick={props.onClick}>Sign Up</button>
       </CardBody> 
     </div>
   );
@@ -59,7 +65,7 @@ const SignUpForm = (props) => {
 
 const LogInForm = (props) => {
   return ( 
-    <div>
+    <div className="card">
       <CardBody id="login-body">
         <Form>
           <FormGroup>
@@ -71,7 +77,7 @@ const LogInForm = (props) => {
             <Input type="password" name="loginPassword" id="loginPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
         </Form>
-        <Button onClick={props.onClick}>Login</Button>
+        <button type="button" className="btn btn-dark" onClick={props.onClick}>Login</button>
       </CardBody> 
     </div>
   );
@@ -81,11 +87,11 @@ const LogInForm = (props) => {
 const StartForm = (props) => {
   return ( 
     <div className="card">
-      <div className="card-header">
-      <CardTitle id="start-title">Your Information</CardTitle>
+      <div className="card-header" id="start-title">
+      Your Information
       </div>
-      <div className="card-body">
-      <CardBody id="start-body">
+      <div className="card-body" id="start-body">
+      
         <Form>
           <FormGroup>
             <h3>Current Fitness Level:</h3>
@@ -112,43 +118,44 @@ const StartForm = (props) => {
           <FormGroup>
             <h3>Your Schedule:</h3>
             <Label htmlFor="sched">What days of the week are you able to run?</Label>
-            <FormGroup check>
+            <br />
+            <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox" name="days" value="0"/>{' '}
                 Sunday
               </Label>
             </FormGroup>
-            <FormGroup check>
+            <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox" name="days" value="1" />{' '}
                 Monday
               </Label>
             </FormGroup>
-            <FormGroup check>
+            <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox"  name="days" value="2"/>{' '}
                 Tuesday
               </Label>
             </FormGroup>
-            <FormGroup check>
+            <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox"  name="days" value="3"/>{' '}
                 Wednesday
               </Label>
             </FormGroup>
-            <FormGroup check>
+            <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox"  name="days" value="4"/>{' '}
                 Thursday
               </Label>
             </FormGroup>
-            <FormGroup check>
+            <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox"  name="days" value="5"/>{' '}
                 Friday
               </Label>
             </FormGroup>
-            <FormGroup check>
+            <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox"  name="days" value="6"/>{' '}
                 Saturday
@@ -169,7 +176,6 @@ const StartForm = (props) => {
             </Input>
           </FormGroup>
         </Form>
-      </CardBody> 
       </div>
     </div>
   );
@@ -179,11 +185,10 @@ const StartForm = (props) => {
 const GoalForm = (props) => {
   return ( 
     <div className="card">
-      <div className="card-header">
-      <CardTitle id="goal-title">Your Goals</CardTitle>
+      <div className="card-header" id="goal-title">
+      Your Goals
       </div>
-      <div className="card-body">
-      <CardBody id="goal-body">
+      <div className="card-body" id="goal-body">
         <Form>
           <FormGroup>
             <h3>Goal Distance:</h3>
@@ -206,9 +211,37 @@ const GoalForm = (props) => {
             <Input  onChange={props.onChange} type="date" name="raceDate" id="raceDate"/>
           </FormGroup>
         </Form>
-      </CardBody> 
       </div>
     </div>
   );
 }
- 
+const ContactForm = (props) => {
+  return ( 
+    <div className="card">
+          <div className="card-header">Contact</div>
+          <div className="card-body">
+            <Form>
+              <div className="form-group">
+                <label for="nameInput">Your Name</label>
+                <Input type="name" className="form-control" id="nameInput" placeholder=""></Input>
+              </div>
+              <div className="form-group">
+                <label for="emailInput">Email address</label>
+                <Input type="email" className="form-control" id="emailInput" placeholder="name@example.com"></Input>
+              </div>
+              <div className="form-group">
+                <label for="subjectInput">Subject</label>
+                <Input type="subject" className="form-control" id="subjectInput" placeholder=""></Input>
+              </div>
+              <div className="form-group">
+                <label for="messageInput">Message</label>
+                <textarea className="form-control" id="messageInput" rows="5"></textarea>
+              </div>
+            </Form>
+             
+              <button type="submit" className="btn btn-dark" value="Submit">Submit</button>
+            
+          </div>
+        </div>
+  );
+}
