@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Forms from '../components/Forms';
 import { START, GOAL } from '../utils/consts';
 import Hero from '../components/Hero';
-import Button from '../components/Button';
 import API from '../utils/API';
 
 class Setup extends Component {
@@ -51,7 +50,8 @@ class Setup extends Component {
 
   render() { 
     return ( <div>
-      <Hero/>
+      <Hero heroNameClass="heroSetup" heroTextClass="heroSetupText" heroTitle="Setup" heroText="Every runner has different training needs. Fill out your information below. Once you hit submit, we'll
+        generate a custom training plan to suit your needs."/>
       <br />
       <div className="container">
         <div className="row">
@@ -62,9 +62,9 @@ class Setup extends Component {
       <Forms formType={GOAL} onChange={this.handleInputChange}/>
       <br />
       <div className="text-center">
-      <button className="btn btn-secondary btn-lg btn-block">
-      <Button onClick={this.handleFormSubmit}>Submit</Button>
-      </button>
+      
+      <button className="btn btn-dark btn-lg btn-block" onClick={this.handleFormSubmit}>Submit</button>
+      
       </div>
       <br />
       </div>
