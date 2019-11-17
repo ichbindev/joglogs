@@ -20,7 +20,7 @@ export default {
   // TODO: refactor out legacy name
   createCalendar: function(calendarData) {
     console.log("create with", calendarData)
-    return axios.post("/api/calendar", calendarData);
+    return axios.post("/api/plans", calendarData);
   },
   // get the users first plan with hydrated events
   getPlan: function() {
@@ -29,5 +29,8 @@ export default {
   // checks if the user has any plans
   hasPlan: function() {
     return axios.get("/api/plans/check");
+  },
+  syncCalendar: function(calendarInfo) {
+    return axios.post("/api/sync", calendarInfo);
   }
 };
