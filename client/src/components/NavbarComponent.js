@@ -22,6 +22,7 @@ class NavbarComponent extends Component {
     signupPassword: "",
     loginEmail: "",
     loginPassword: "",
+    errors: new Set()
   }
 
 
@@ -45,6 +46,7 @@ class NavbarComponent extends Component {
       })
       .then(plan => {
         // if they do, show them
+        this.setState({ errors: new Set() });
         window.location.href = "/calendar"
       }).catch(err => {
         // 404 no plan, redirect them to setup 
@@ -53,13 +55,16 @@ class NavbarComponent extends Component {
   };
 
   handleSignupFormSubmit = event => {
-    event.preventDeffr78xzault();
+    event.preventDefault();
     const { signupEmail: username, signupPassword: password } = this.state;
     const user = { username, password };
     API.signUp(user)
       .then(() => API.login(user))
       // new users don't have calendars, so send to setup page
-      .then(() => window.location.href = "/setup");
+      .then(() => {
+        this.setState({ errors: new Set() });
+        window.location.href = "/setup"
+      });
   };
 
   handleLogout = () => {

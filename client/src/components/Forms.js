@@ -10,11 +10,11 @@ class Forms extends Component {
   chooseForm = (props) => {
     switch (props.formType) {
       case SIGN_UP:
-        return <SignUpForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue}/>
+        return <SignUpForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue} errors={props.errors}/>
       case LOG_IN:
-        return <LogInForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue}/>
+        return <LogInForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue} errors={props.errors}/>
       case START:
-        return <StartForm onChange={props.onChange}/>
+        return <StartForm onChange={props.onChange}errors={props.errors}/>
       case GOAL:
         return <GoalForm onChange={props.onChange}/>
       case CONTACT:
@@ -47,7 +47,7 @@ const SignUpForm = (props) => {
             <Label htmlFor="signupEmail">Email</Label>
             <Input type="email" name="signupEmail" id="signup-email" onChange={props.onChange} value={props.emailValue} placeholder="Email Address" />
           </FormGroup>
-          <Error listeningFor={USERNAME_ERROR} errors={this.state.erros} />
+          <Error listeningFor={USERNAME_ERROR} errors={props.errors} />
           <FormGroup>
             <Label htmlFor="signup-password">Password</Label>
             <Input type="password" name="signupPassword" id="signupPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />

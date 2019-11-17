@@ -13,7 +13,8 @@ class Setup extends Component {
       longRun: "0",
       goalDistance: 3.1,
       raceName: "",
-      raceDate: "2020-01-01"
+      raceDate: "2020-01-01",
+      errors: new Set()
      }
   }
 
