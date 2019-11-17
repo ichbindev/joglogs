@@ -22,9 +22,9 @@ class NavbarComponent extends Component {
     signupPassword: "",
     loginEmail: "",
     loginPassword: "",
-    // loggedIn: how do I tell?
+    errors: new Set()
   }
-  
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -36,37 +36,59 @@ class NavbarComponent extends Component {
   handleLoginFormSubmit = event => {
     event.preventDefault();
     const { loginEmail: username, loginPassword: password } = this.state;
-    const user = {username, password};
+    const user = { username, password };
     API.login(user)
       // check if user has any plans
       .then(() => API.hasPlan())
-        .then(plan => {
-          if (plan) {
-            // if they do, show them
-            window.location.href="/calendar"
-          } else {
-            // if not, have them create one
-            window.location.href="/setup"
-          }
-        });
+      .catch(err => {
+        // something went wrong with login
+        // display vague error
+      })
+      .then(plan => {
+        // if they do, show them
+        this.setState({ errors: new Set() });
+        window.location.href = "/calendar"
+      }).catch(err => {
+        // 404 no plan, redirect them to setup 
+        window.location.href = "/setup"
+      });
   };
 
   handleSignupFormSubmit = event => {
     event.preventDefault();
     const { signupEmail: username, signupPassword: password } = this.state;
-    const user = {username, password};
+    const user = { username, password };
     API.signUp(user)
       .then(() => API.login(user))
-        // new users don't have calendars, so send to setup page
-        .then(() => window.location.href="/setup");
+      // new users don't have calendars, so send to setup page
+      .then(() => {
+        this.setState({ errors: new Set() });
+        window.location.href = "/setup"
+      });
   };
 
   handleLogout = () => {
-    API.logout();
+    API.logout()
+      .then(function() {
+        window.location.href = "/";
+      })
   }
 
-
   render() {
+    let logout = <NavItem><a href="#top" className="nav-link active" onClick={this.handleLogout}><strong>Log Out</strong></a></NavItem>;
+    let login = undefined;
+    let signup = undefined;
+    if (!this.props.loggedIn) {
+      logout = undefined;
+      login =  <NavItem>
+          <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword} /></ModalComponent>
+        </NavItem>; 
+      signup =  <NavItem>
+          <ModalComponent buttonLabel="Sign Up" title="Sign Up"><Forms formType={SIGN_UP} onChange={this.handleInputChange} onClick={this.handleSignupFormSubmit} emailValue={this.state.signupEmail} passwordValue={this.state.signupPassword} /></ModalComponent>
+        </NavItem>;
+    }
+
+
     return (
       <div>
         <Navbar className="bignav" color="light" light expand="md">
@@ -79,14 +101,9 @@ class NavbarComponent extends Component {
               <NavItem>
                 <NavLink className="active" href="#"><strong>Blog</strong></NavLink>
               </NavItem>
-              {/* Only display these two if user is not logged in */}
-              <NavItem>
-                <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword}/></ModalComponent>
-              </NavItem>
-              <NavItem>
-              <ModalComponent buttonLabel="Sign Up" title="Sign Up"><Forms formType={SIGN_UP} onChange={this.handleInputChange} onClick={this.handleSignupFormSubmit}emailValue={this.state.signupEmail} passwordValue={this.state.signupPassword}/></ModalComponent>
-              </NavItem>
-              {/* Log out button goes here! Display only if user is logged in */}
+              {logout}
+              {login}
+              {signup}
             </Nav>
           </Collapse>
         </Navbar>
