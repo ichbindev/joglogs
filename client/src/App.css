@@ -53,6 +53,13 @@ video {
   font-size: 35px;
 }
 
+img {
+  width: 50%;
+  height: 100%;
+  margin: 0px 0px 0px 0px;
+  flex-grow: 1;
+}
+
 @media (max-width: 640px) {
   .overlayText {
   display: none;
@@ -67,8 +74,7 @@ footer {
 
 .footerLogo {
   font-family: 'DM Sans', sans-serif;
-  font: grey;
-  font-size: 25px;
+  font-size: 28px;
   text-align: left;
 }
 
@@ -77,8 +83,7 @@ footer {
 }
 
 h1 {
-  font-weight: 900;
-  margin: 0px 0px 0px 15px;
+  margin: 0px 0px 0px 5px;
 }
 .icon {
  align: left;
@@ -110,17 +115,66 @@ a:hover, a:visited {
   border-radius: none;
 }
 
-.text {
+.rowName {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  height: 100%;
+}
+/* Text for index file */
+.textDiv {
+  width: 50%;
+  flex-grow: 1;
+}
+/* Media query for index page */
+@media only screen and (max-width: 990px) {
+  img {
+    width: 100%;
+  }
+  .textDiv {
+    border-style: solid;
+  border-width: 5px;
+  }
+  .subtitle {
+    margin: 50px;
+  }
+  .subtext {
+    margin: 0px;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  img {
+    width: 100%;
+  }
+  .textDiv {
+    border-style: solid;
+  border-width: 5px;
+  }
+  .subtitle {
+    margin: 50px;
+  }
+  .subtext {
+    margin: 0px;
+  }
+}
+
+@media (max-width: 640px) {
+  .overlayText {
+  display: none;
+}
+}
+
+.subtext {
   text-align: center;
   margin: 10px 100px 100px 100px;
   border-radius: none;
 }
 
-.sideImage {
-  border-radius: 0px;
-}
-
-.textCard {
+.text {
+  text-align: center;
+  margin: 10px 100px 100px 100px;
   border-radius: none;
 }
 
@@ -233,3 +287,7 @@ a:hover, a:visited {
   font-weight: bold;
   font-size: 25px;
 }
+
+#footersection {
+  padding: 40px 0px 40px 0px;
+ }

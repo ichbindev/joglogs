@@ -1,7 +1,6 @@
 import React from 'react';
-import SideImage from '../components/SideImage';
-import SideText from '../components/SideText';
 import '../App.css'
+import FunnelContent from '../components/FunnelContent';
 
 const Home = () => {
   return (
@@ -14,33 +13,9 @@ const Home = () => {
           Instant custom training plans that seamlessly sync to your calendar
             </div>
       </div>
-
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "50%" }}>
-          <SideImage image={"/media/run1.jpg"} />
-        </div>
-        <div style={{ width: "50%" }}>
-          <SideText subtitle={"Custom"} text={"Whether you're going from couch to 5k or looking to set a Personal Record at your 10th marathon, every runner is unique and has different training needs. Jog Log's algorithm creates a custom training plan to suit your fitness level and schedule."} />
-        </div>
-      </div>
-
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "50%" }}>
-          <SideText subtitle={"Instant"} text={"Enter your details are submitted, Jog Log instantly generates a dynamic training plan for your race. Less time waiting, more time running."} />
-        </div>
-        <div style={{ width: "50%" }}>
-          <SideImage image={"/media/run2.jpg"} />
-        </div>
-      </div>
-
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "50%" }}>
-          <SideImage image={"/media/run3.jpg"} />
-        </div>
-        <div style={{ width: "50%" }}>
-          <SideText subtitle={"Easy to Access"} text={"Jog Logs easily syncs your training plan to your calendar so you don't have to go digging through spreadsheets, combing your email, or surfing the web for that training plan you found once."} />
-        </div>
-      </div>
+<FunnelContent textFirst={false} subtitle="Custom" subtext="Whether you're going from couch to 5k or looking to PR at your next marathon, every runner is unique and has different training needs. Train Method's algorithm creates a custom training plan to suit your fitness level and schedule." img="/media/run1.jpg" alt="run1"/>
+<FunnelContent textFirst={true} subtitle="Instant" subtext="On the set up page, enter your details about your background and your goal.  Once your details are submitted, Train Method instantly generates a dynamic training plan for your race. Less time waiting, more time running." img="/media/run2.jpg" alt="run2"/>
+<FunnelContent textFirst={false} subtitle="Easy to Access" subtext="Train Method easily syncs your training plan to your calendar so you don't have to go digging through spreadsheets, combing your email, or surfing the web for that training plan you found once." img="/media/run3.jpg" alt="run3"/>
     </div>
   );
 }
