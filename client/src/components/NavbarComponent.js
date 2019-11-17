@@ -25,7 +25,8 @@ class NavbarComponent extends Component {
     loginEmail: "",
     loginPassword: "",
     terms: false,
-    errors: new Set()
+    errors: new Set(),
+    loggedIn: this.props.loggedIn
   }
 
   handleInputChange = event => {
@@ -50,7 +51,7 @@ class NavbarComponent extends Component {
       })
       .then(() => {
         // if they do, show them
-        this.setState({ errors: new Set() });
+        this.setState({ loggedIn: true, errors: new Set() });
         window.location.href = "/calendar"
       }).catch(() => {
         // 404 no plan, redirect them to setup 
@@ -81,7 +82,7 @@ class NavbarComponent extends Component {
       })
       // new users don't have calendars, so send to setup page
       .then(() => {
-        this.setState({ errors: new Set() });
+        this.setState({ loggedIn: true, errors: new Set() });
         window.location.href = "/setup"
       });
     }
@@ -90,6 +91,7 @@ class NavbarComponent extends Component {
   handleLogout = () => {
     API.logout()
       .then(function() {
+        this.setState({ loggedIn: false });
         window.location.href = "/";
       });
   }
@@ -98,7 +100,7 @@ class NavbarComponent extends Component {
     let logout = <NavItem><a href="#top" className="nav-link active" onClick={this.handleLogout}><strong>Log Out</strong></a></NavItem>;
     let login = undefined;
     let signup = undefined;
-    if (!this.props.loggedIn) {
+    if (!this.state.loggedIn) {
       logout = undefined;
       login =  <NavItem>
           <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword} errors={this.state.errors}/></ModalComponent>
