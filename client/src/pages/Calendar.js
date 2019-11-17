@@ -11,7 +11,7 @@ class Calendar extends Component {
 
   getPlan = () => {
     API.getPlan().then(result => {
-      const events = result.data.events.map(e => ({ title: e.runDistance + " Mile " + e.description.split(" ")[0] + " Run", start: e.dateTime, end: e.dateTime, allDay: true }));
+      const events = result.data.events.map(e => ({ title: e.runDistance + " Mile " + e.description.split(" ")[0] + " Run", start: this.fixDate(e.dateTime), end: this.fixDate(e.dateTime), allDay: true }));
       const raceName = result.data.name;
       const { events: syncEvents, calendarRef } = result.data;
       syncEvents.forEach(e => e.title = e.runDistance + " Mile " + e.description.split(" ")[0] + " Run");
@@ -20,6 +20,14 @@ class Calendar extends Component {
       .catch(() => { // no calendar found, take them to setup
         window.location.href = "/setup"
       });
+  }
+
+  // for some reason we're shifting all the dates by 1
+  // add one to the date
+  fixDate(date) {
+    date = date.split("-");
+    date[0] = parseInt(date[0]) + 1;
+    return date.join("");
   }
 
   componentDidMount() {
