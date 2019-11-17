@@ -3,13 +3,10 @@ import {
   Collapse,
   Navbar,
   NavbarBrand,
+  NavbarToggler,
   Nav,
   NavItem,
-  NavLink,
-  // UncontrolledDropdown,
-  // DropdownToggle,
-  // DropdownMenu,
-  // DropdownItem 
+  NavLink
 } from 'reactstrap';
 import ModalComponent from './ModalComponent';
 import Forms from './Forms';
@@ -19,16 +16,14 @@ import { SIGN_UP, LOG_IN,
 import API from '../utils/API';
 
 class NavbarComponent extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      signupEmail: "",
-      signupPassword: "",
-      loginEmail: "",
-      loginPassword: "",
-      terms: false,
-      errors: new Set()
-    }
+  state = {
+    signupEmail: "",
+    signupPassword: "",
+    loginEmail: "",
+    loginPassword: "",
+    terms: false,
+    errors: new Set(),
+    isOpen: false
   }
 
 
@@ -101,9 +96,12 @@ class NavbarComponent extends Component {
       });
   }
 
-
+  toggle = () => {
+    this.setState({ isOpen: !this.state.isOpen })
+  }
 
   render() {
+
     let logout = <NavItem><a href="#top" className="nav-link active" onClick={this.handleLogout}><strong>Log Out</strong></a></NavItem>;
     let login = null;
     let signup = null;
@@ -117,12 +115,12 @@ class NavbarComponent extends Component {
         </NavItem>;
     }
 
-
     return (
       <div>
         <Navbar className="bignav" color="light" light expand="md">
           <NavbarBrand href="/"><h1><strong>training method</strong></h1></NavbarBrand>
-          <Collapse isOpen={true} navbar>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink className="active" href="/about"><strong>About</strong></NavLink>

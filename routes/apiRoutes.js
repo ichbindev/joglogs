@@ -15,7 +15,11 @@ module.exports = function(app) {
   // create a calendar with createCalendar then save it in the database
   // NOTE: createCalendar will continue running after the calendar is
   // returned, it will make events for the calendar
-  app.post("/api/calendar", function(req, res) {
+  app.post("/api/plans", function(req, res) {
     return planController.createPlan(req, res);
+  });
+
+  app.post("/api/sync", function(req, res) {
+    return planController.sync(req, res);
   });
 };
