@@ -9,7 +9,7 @@ const Error = (props) => {
   
   if (props.errors.has(props.listeningFor)) {
   return ( 
-    <Alert color="danger">
+    <Alert color="danger" style={{display: "block"}}>
         {text}
     </Alert>
    );

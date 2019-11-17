@@ -224,6 +224,7 @@ const GoalForm = (props) => {
     </div>
   );
 }
+
 const ContactForm = () => {
   return ( 
     <div className="card">

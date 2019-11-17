@@ -30,7 +30,6 @@ class NavbarComponent extends Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
-    console.log(name, value);
     this.setState({
       [name]: value
     });
@@ -47,7 +46,7 @@ class NavbarComponent extends Component {
         // something went wrong with login
         const errors = this.state.errors;
         errors.add(LOGIN_ERROR);
-        this.setState({ errors })
+        this.setState({ errors });
       })
       .then(() => {
         // if they do, show them
@@ -78,7 +77,7 @@ class NavbarComponent extends Component {
         // username already exists
         const errors = this.state.errors;
         errors.add(USERNAME_ERROR);
-        this.setState({ errors })
+        this.setState({ errors });
       })
       // new users don't have calendars, so send to setup page
       .then(() => {
