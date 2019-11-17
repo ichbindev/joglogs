@@ -15,11 +15,15 @@ module.exports = {
       })
       .catch(function(err) {
         console.log(err);
-        res.status(500).json(false);
+        // username already exists
+        res.status(400).json("An account already exists with that email.");
       });
   },
   getUser: function(req, res) {
-    res.status(501).json("Not yet implemented.");
+    if (!req.isAuthenticated()) {
+      return res.status(401).json(false);
+    }
+    return res.json(true);
   },
   updateUser: function(req, res) {
     res.status(501).json("Not yet implemented.");

@@ -4,11 +4,10 @@ import React from 'react';
 
 const Hero = (props) => {
   return (
-    <div className="heroSection">
-    <div className="heroSectionText">
-      <h1>Set Up</h1>
-      <h5>Every runner has different training needs. Fill out your information below. Once you hit submit, we'll
-        generate a custom training plan to suit your needs.</h5>
+      <div className={props.heroNameClass}>
+      <div className={props.heroTextClass}>
+      <h1>{props.heroTitle}</h1>
+      <h5>{props.heroText}</h5>
     </div>
   </div>
   );

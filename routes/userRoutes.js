@@ -2,6 +2,10 @@ const passport = require("../config/passport");
 const userController = require("../controllers/userController");
 
 module.exports = function(app) {
+  app.get("/api/user", function(req, res) {
+    return userController.getUser(req, res);
+  });
+
   // create a new user
   app.post("/api/user/signup", function(req, res) {
     return userController.createUser(req, res);

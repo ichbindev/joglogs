@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader } from 'reactstrap';
+import { Modal, ModalHeader } from 'reactstrap';
 
 const ModalComponent = (props) => {
   const {
@@ -14,7 +14,9 @@ const ModalComponent = (props) => {
 
   return (
     <div>
-      <Button color="light" onClick={toggle}>{buttonLabel}</Button>
+      <strong>
+      <a href="#top" className="nav-link active" onClick={toggle}>{buttonLabel}</a>
+      </strong>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>{props.title}</ModalHeader>
         {props.children}

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const NotFound = () => {
-  return ( <div>404</div> );
+const NotFound = (props) => {
+  return ( <div id="error-hook">Uh Oh</div> );
 }
  
 export default NotFound;
