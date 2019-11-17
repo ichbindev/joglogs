@@ -14,6 +14,7 @@ const Error = (props) => {
     </Alert>
    );
   }
+  return "";
 }
  
 export default Error;

@@ -58,9 +58,9 @@ class Setup extends Component {
         <div className="row">
       <div className="col-md-2"></div>
       <div className="col-md-8">
-      <Forms formType={START} onChange={this.handleInputChange}/>
+      <Forms formType={START} onChange={this.handleInputChange}  errors={this.state.errors}/>
       <br />
-      <Forms formType={GOAL} onChange={this.handleInputChange}/>
+      <Forms formType={GOAL} onChange={this.handleInputChange} errors={this.state.errors}/>
       <br />
       <div className="text-center">
       
