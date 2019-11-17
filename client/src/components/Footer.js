@@ -5,13 +5,11 @@ const Footer = (props) => {
   return (
     <footer id="sticky-footer" className="py-4 text-white">
       <Container>
-
-
         <div id="footersection">
           <Row>
             <Col>
               <div className="footerLogo">
-                <strong>training method</strong>
+                <strong>train method<sup>tm</sup></strong>
               </div>
               <br />
               <a className="icon" href="/">
@@ -68,22 +66,13 @@ const Footer = (props) => {
           </Row>
         </div>
         </Container> 
-          
-
             <div className="container text-center text-white-50">
               <div className="row">
                 <div className="col-md-12">
-                  <small>Copyright &copy; 2019 Jog Log</small>
+                  <small>Copyright &copy; 2019 training method<sup>tm</sup></small>
                 </div>
               </div>
             </div>
-            
-          
-        
-
-
-
-      
     </footer>
   );
 }

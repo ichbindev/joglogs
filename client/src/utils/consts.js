@@ -7,7 +7,7 @@ export const CONTACT = "contact";
 // login errors
 export const LOGIN_ERROR = "Username and password did not match, please make sure you have an account and double-check your password.";
 // signup errors
-export const USERNAME_ERROR = "That username is unavailable";
+export const USERNAME_ERROR = "That username is invalid or unavailable. Please double check your email or choose a different email address.";
 export const PASSWORD_ERROR = "Password must be at least 6 characters.";
 export const TC_ERROR = "You must agree to our Terms & Conditions to sign up";
 // setup form validation errors

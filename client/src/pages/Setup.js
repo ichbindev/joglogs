@@ -66,7 +66,7 @@ class Setup extends Component {
   }
 
   render() { 
-    return ( <div>
+    const page = ( <div>
       <Hero heroNameClass="heroSetup" heroTextClass="heroSetupText" heroTitle="Setup" heroText="Every runner has different training needs. Fill out your information below. Once you hit submit, we'll
         generate a custom training plan to suit your needs."/>
       <br />
@@ -90,6 +90,12 @@ class Setup extends Component {
       </div>
       </div>
     </div> );
+
+    if (this.props.loggedIn) {
+      return page;
+    } else {
+      return <p>Please log in to view this page</p>;
+    }
   }
 }
  
