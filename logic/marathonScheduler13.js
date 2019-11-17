@@ -349,7 +349,6 @@ function marathonScheduler13(data) {
       weekToIncrementNumber++;
       milesThisWeek =
         weeklyIncrement * weekToIncrementNumber + runnerData.startMilesPerWeek;
-      specialComment = "";
     } else {
       // for every 3rd week, the 'Recovery weeks', Miles drop 15% and we do not increment the weekToIncrementNumber (not an uptick week)
       milesThisWeek = 0.85 * milesThisWeek;
@@ -431,10 +430,6 @@ function marathonScheduler13(data) {
         } else {
           taperMilesPerWeek = peakMiles;
         }
-        specialComment =
-          daysTillRaceDay +
-          " days til race day. You are in final prep stage : ";
-        milesThisWeek = 0.5 * taperMilesPerWeek;
       }
 
       let remainingWeeks = Math.floor(
@@ -465,9 +460,8 @@ function marathonScheduler13(data) {
           event.milesToRunToday +
           " mile run today. " +
           remainingWeeks +
-          " weeks til Marathon. " +
-          specialComment;
-        event.description = specialComment + mileTest[i].description;
+          " weeks til Marathon.";
+        event.description = mileTest[i].description;
         events.push(event);
         event = [];
       }
