@@ -115,7 +115,7 @@ a:hover, a:visited {
   border-radius: none;
 }
 
-.row {
+.rowName {
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
@@ -131,6 +131,32 @@ a:hover, a:visited {
 @media only screen and (max-width: 990px) {
   img {
     width: 100%;
+  }
+  .textDiv {
+    border-style: solid;
+  border-width: 5px;
+  }
+  .subtitle {
+    margin: 50px;
+  }
+  .subtext {
+    margin: 0px;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  img {
+    width: 100%;
+  }
+  .textDiv {
+    border-style: solid;
+  border-width: 5px;
+  }
+  .subtitle {
+    margin: 50px;
+  }
+  .subtext {
+    margin: 0px;
   }
 }
 
