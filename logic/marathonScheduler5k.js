@@ -349,7 +349,7 @@ function marathonScheduler5(data) {
       weekToIncrementNumber++;
       milesThisWeek =
         weeklyIncrement * weekToIncrementNumber + runnerData.startMilesPerWeek;
-      specialComment = "";
+ 
     } else {
       // for every 3rd week, the 'Recovery weeks', Miles drop 15% and we do not increment the weekToIncrementNumber (not an uptick week)
       milesThisWeek = 0.85 * milesThisWeek;
@@ -462,9 +462,8 @@ function marathonScheduler5(data) {
           event.milesToRunToday +
           " mile run today. " +
           remainingWeeks +
-          " weeks til Marathon. " +
-          specialComment;
-        event.description = specialComment + mileTest[i].description;
+          " weeks til Marathon.";
+        event.description = mileTest[i].description;
         events.push(event);
         event = [];
       }
