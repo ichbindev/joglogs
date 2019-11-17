@@ -47,6 +47,7 @@ module.exports = {
       order: [["id", "DESC"]]
     })
       .then(function(planData) {
+        planData = planData[0];
         if (!planData) {
           // nothing found
           return res.status(404).json(false);
