@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { CardBody, Input, Form, FormGroup, Label } from 'reactstrap';
-import { SIGN_UP, LOG_IN, START, GOAL, CONTACT } from '../utils/consts';
+import { SIGN_UP, LOG_IN, START, GOAL, CONTACT,
+         LOGIN_ERROR, USERNAME_ERROR, PASSWORD_ERROR,
+         TC_ERROR, NUM_DAYS_ERROR, LONG_RUN_ERROR } from '../utils/consts';
+import Error from './Error'
 
 class Forms extends Component {
 
   chooseForm = (props) => {
     switch (props.formType) {
       case SIGN_UP:
-        return <SignUpForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue}/>
+        return <SignUpForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue} errors={props.errors}/>
       case LOG_IN:
-        return <LogInForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue}/>
+        return <LogInForm onClick={props.onClick} onChange={props.onChange} emailValue={props.emailValue} passwordValue={props.passwordValue} errors={props.errors}/>
       case START:
-        return <StartForm onChange={props.onChange}/>
+        return <StartForm onChange={props.onChange}errors={props.errors}/>
       case GOAL:
         return <GoalForm onChange={props.onChange}/>
       case CONTACT:
@@ -44,16 +47,19 @@ const SignUpForm = (props) => {
             <Label htmlFor="signupEmail">Email</Label>
             <Input type="email" name="signupEmail" id="signup-email" onChange={props.onChange} value={props.emailValue} placeholder="Email Address" />
           </FormGroup>
+          <Error listeningFor={USERNAME_ERROR} errors={props.errors} />
           <FormGroup>
             <Label htmlFor="signup-password">Password</Label>
             <Input type="password" name="signupPassword" id="signupPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
+          <Error listeningFor={PASSWORD_ERROR} errors={this.state.erros} />
           <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox" name="terms" value="1" />{' '}
                 By checking this box, I agree to Train Method's terms and conditions
                  <br />
                </Label>
+               <Error listeningFor={TC_ERROR} errors={this.state.erros} />
             </FormGroup>
         </Form>
         <button type="button" className="btn btn-dark" onClick={props.onClick}>Sign Up</button>
@@ -77,6 +83,7 @@ const LogInForm = (props) => {
             <Input type="password" name="loginPassword" id="loginPassword" onChange={props.onChange} value={props.passwordValue} placeholder="Password" />
           </FormGroup>
         </Form>
+        <Error listeningFor={LOGIN_ERROR} errors={this.state.erros} />
         <button type="button" className="btn btn-dark" onClick={props.onClick}>Login</button>
       </CardBody> 
     </div>
@@ -162,6 +169,7 @@ const StartForm = (props) => {
               </Label>
             </FormGroup>
           </FormGroup>
+          <Error listeningFor={NUM_DAYS_ERROR} errors={this.state.erros} />
           <FormGroup>
             <h3>Long Run:</h3>
             <Label htmlFor="days-of-week">Which day of the week would you like to do your long run?</Label>
@@ -175,6 +183,7 @@ const StartForm = (props) => {
               <option value="6">Saturday</option>
             </Input>
           </FormGroup>
+          <Error listeningFor={LONG_RUN_ERROR} errors={this.state.erros} />
         </Form>
       </div>
     </div>
