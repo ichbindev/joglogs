@@ -39,12 +39,15 @@ module.exports = {
     if (!req.isAuthenticated()) {
       return res.status(401).json(false);
     }
-    db.Plan.findOne({
+    db.Plan.findAll({
+      limit: 1,
       where: {
         UserId: req.user.id
-      }
+      },
+      order: [["id", "DESC"]]
     })
       .then(function(planData) {
+        planData = planData[0];
         if (!planData) {
           // nothing found
           return res.status(404).json(false);
