@@ -8,12 +8,12 @@ function logthis(stuff) {
 }
 
 // tester = {
-//   mpw: 2,
+//   mpw: 1,
 //   days: ["1", "3", "4", "6"],
 //   longRun: "6",
 //   goalDistance: 6.2,
 //   raceName: "Tester6.2 " + Date.now(),
-//   raceDate: "2020-01-01"
+//   raceDate: "2020-11-01"
 // };
 // marathonScheduler10(tester);
 
@@ -455,9 +455,13 @@ function marathonScheduler10(data) {
         event.date = new Date(tempEventDate);
         event.percentMilesPerWeek = mileTest[i].percentMilesPerWeek;
         event.milesToRunToday =
-          Math.round(
+          Math.ceil(
             milesThisWeek * (mileTest[i].percentMilesPerWeek / 100) * 10
           ) / 10;
+        //make run at least .5 miles if less.
+        if (event.milesToRunToday < 0.5) {
+          event.milesToRunToday = 0.5;
+        }
         event.mileTotalThisWeek = Math.ceil(milesThisWeek);
         event.title =
           event.milesToRunToday +

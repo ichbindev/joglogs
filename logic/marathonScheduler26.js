@@ -460,7 +460,10 @@ function marathonScheduler26(data) {
         event.milesToRunToday = Math.ceil(
           milesThisWeek * (mileTest[i].percentMilesPerWeek / 100)
         );
-
+        //make run at least .5 miles if less.
+        if (event.milesToRunToday < 0.5) {
+          event.milesToRunToday = 0.5;
+        }
         event.mileTotalThisWeek = Math.ceil(milesThisWeek);
         event.title =
           event.milesToRunToday +
