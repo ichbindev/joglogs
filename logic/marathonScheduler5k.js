@@ -353,7 +353,6 @@ function marathonScheduler5(data) {
     } else {
       // for every 3rd week, the 'Recovery weeks', Miles drop 15% and we do not increment the weekToIncrementNumber (not an uptick week)
       milesThisWeek = 0.85 * milesThisWeek;
-      specialComment = "Recovery Week : ";
     }
 
     const maxMilesPerDay = 2.5;
