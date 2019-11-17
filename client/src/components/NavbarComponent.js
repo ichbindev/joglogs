@@ -13,7 +13,9 @@ import {
 } from 'reactstrap';
 import ModalComponent from './ModalComponent';
 import Forms from './Forms';
-import { LOG_IN, SIGN_UP } from '../utils/consts';
+import { SIGN_UP, LOG_IN,
+  LOGIN_ERROR, USERNAME_ERROR, PASSWORD_ERROR,
+  TC_ERROR } from '../utils/consts';
 import API from '../utils/API';
 
 class NavbarComponent extends Component {
@@ -22,9 +24,9 @@ class NavbarComponent extends Component {
     signupPassword: "",
     loginEmail: "",
     loginPassword: "",
+    terms: false,
     errors: new Set()
   }
-
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -42,13 +44,15 @@ class NavbarComponent extends Component {
       .then(() => API.hasPlan())
       .catch(err => {
         // something went wrong with login
-        // display vague error
+        const errors = this.state.errors;
+        errors.add(LOGIN_ERROR);
+        this.setState({ errors });
       })
-      .then(plan => {
+      .then(() => {
         // if they do, show them
         this.setState({ errors: new Set() });
         window.location.href = "/calendar"
-      }).catch(err => {
+      }).catch(() => {
         // 404 no plan, redirect them to setup 
         window.location.href = "/setup"
       });
@@ -58,20 +62,36 @@ class NavbarComponent extends Component {
     event.preventDefault();
     const { signupEmail: username, signupPassword: password } = this.state;
     const user = { username, password };
-    API.signUp(user)
+    if (password.length < 6) {
+      const errors = this.state.errors;
+      errors.add(PASSWORD_ERROR);
+      this.setState({ errors });
+    } else if (!this.state.terms) {
+      const errors = this.state.errors;
+      errors.add(TC_ERROR);
+      this.setState({ errors });
+    } else {
+      API.signUp(user)
       .then(() => API.login(user))
+      .catch(() => {
+        // username already exists
+        const errors = this.state.errors;
+        errors.add(USERNAME_ERROR);
+        this.setState({ errors });
+      })
       // new users don't have calendars, so send to setup page
       .then(() => {
         this.setState({ errors: new Set() });
         window.location.href = "/setup"
       });
+    }
   };
 
   handleLogout = () => {
     API.logout()
       .then(function() {
         window.location.href = "/";
-      })
+      });
   }
 
   render() {
@@ -81,10 +101,10 @@ class NavbarComponent extends Component {
     if (!this.props.loggedIn) {
       logout = undefined;
       login =  <NavItem>
-          <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword} /></ModalComponent>
+          <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword} errors={this.state.errors}/></ModalComponent>
         </NavItem>; 
       signup =  <NavItem>
-          <ModalComponent buttonLabel="Sign Up" title="Sign Up"><Forms formType={SIGN_UP} onChange={this.handleInputChange} onClick={this.handleSignupFormSubmit} emailValue={this.state.signupEmail} passwordValue={this.state.signupPassword} /></ModalComponent>
+          <ModalComponent buttonLabel="Sign Up" title="Sign Up"><Forms formType={SIGN_UP} onChange={this.handleInputChange} onClick={this.handleSignupFormSubmit} emailValue={this.state.signupEmail} passwordValue={this.state.signupPassword}  errors={this.state.errors}/></ModalComponent>
         </NavItem>;
     }
 
