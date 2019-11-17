@@ -3,13 +3,10 @@ import {
   Collapse,
   Navbar,
   NavbarBrand,
+  NavbarToggler,
   Nav,
   NavItem,
-  NavLink,
-  // UncontrolledDropdown,
-  // DropdownToggle,
-  // DropdownMenu,
-  // DropdownItem 
+  NavLink
 } from 'reactstrap';
 import ModalComponent from './ModalComponent';
 import Forms from './Forms';
@@ -25,8 +22,10 @@ class NavbarComponent extends Component {
     loginEmail: "",
     loginPassword: "",
     terms: false,
-    errors: new Set()
+    errors: new Set(),
+    isOpen: false
   }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -41,21 +40,23 @@ class NavbarComponent extends Component {
     const user = { username, password };
     API.login(user)
       // check if user has any plans
-      .then(() => API.hasPlan())
+      .then(() => {
+        API.hasPlan()
+        .then(() => {
+          // if they do, show them
+          this.setState({ errors: new Set() });
+          window.location.href = "/calendar"
+        }).catch(() => {
+          // 404 no plan, redirect them to setup 
+          window.location.href = "/setup"
+        });
+      })
       .catch(err => {
         // something went wrong with login
         const errors = this.state.errors;
         errors.add(LOGIN_ERROR);
         this.setState({ errors });
-      })
-      .then(() => {
-        // if they do, show them
-        this.setState({ errors: new Set() });
-        window.location.href = "/calendar"
-      }).catch(() => {
-        // 404 no plan, redirect them to setup 
-        window.location.href = "/setup"
-      });
+      });  
   };
 
   handleSignupFormSubmit = event => {
@@ -72,18 +73,19 @@ class NavbarComponent extends Component {
       this.setState({ errors });
     } else {
       API.signUp(user)
-      .then(() => API.login(user))
+      .then(() => {
+        API.login(user)
+        // new users don't have calendars, so send to setup page
+        .then(() => {
+          window.location.href = "/setup"
+      });
+      })
       .catch(() => {
         // username already exists
         const errors = this.state.errors;
         errors.add(USERNAME_ERROR);
         this.setState({ errors });
       })
-      // new users don't have calendars, so send to setup page
-      .then(() => {
-        this.setState({ errors: new Set() });
-        window.location.href = "/setup"
-      });
     }
   };
 
@@ -94,12 +96,17 @@ class NavbarComponent extends Component {
       });
   }
 
+  toggle = () => {
+    this.setState({ isOpen: !this.state.isOpen })
+  }
+
   render() {
+
     let logout = <NavItem><a href="#top" className="nav-link active" onClick={this.handleLogout}><strong>Log Out</strong></a></NavItem>;
-    let login = undefined;
-    let signup = undefined;
+    let login = null;
+    let signup = null;
     if (!this.props.loggedIn) {
-      logout = undefined;
+      logout = null;
       login =  <NavItem>
           <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword} errors={this.state.errors}/></ModalComponent>
         </NavItem>; 
@@ -108,12 +115,12 @@ class NavbarComponent extends Component {
         </NavItem>;
     }
 
-
     return (
       <div>
         <Navbar className="bignav" color="light" light expand="md">
-          <NavbarBrand href="/"><h1><strong>train method<sup>tm</sup></strong></h1></NavbarBrand>
-          <Collapse isOpen={true} navbar>
+          <NavbarBrand href="/"><h1><strong>training method</strong></h1></NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink className="active" href="/about"><strong>About</strong></NavLink>
