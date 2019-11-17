@@ -8,12 +8,12 @@ function logthis(stuff) {
 }
 
 // tester = {
-//   mpw: 2,
+//   mpw: 1,
 //   days: ["1", "3", "4", "6"],
 //   longRun: "6",
 //   goalDistance: 6.2,
 //   raceName: "Tester6.2 " + Date.now(),
-//   raceDate: "2020-01-01"
+//   raceDate: "2020-11-01"
 // };
 // marathonScheduler10(tester);
 
@@ -54,8 +54,12 @@ function marathonScheduler10(data) {
   // add trainingStartDate in anticipation of this being an option in future, currently starts "tomorrow"
   runnerData.startDate = calculateStartDate;
   logthis("runnerData = " + JSON.stringify(runnerData));
-  // convert incoming number strings to numbers:
-  runnerData.startMilesPerWeek = parseFloat(runnerData.mpw);
+  // beginning mpw must not === 0, start with min 1 mile, to stop divide by zero error.
+  if (parseFloat(runnerData.mpw) < 1) {
+    runnerData.startMilesPerWeek = 1;
+  } else {
+    runnerData.startMilesPerWeek = parseFloat(runnerData.mpw);
+  }
   runnerData.raceMiles = parseFloat(runnerData.goalDistance);
   runnerData.longRunDay = parseInt(runnerData.longRun);
   if (runnerData.raceName === "") {
@@ -88,7 +92,7 @@ function marathonScheduler10(data) {
   let runDays = runnerData.days;
   runDays.sort();
 
-  //shift the longRunDay to the end of the 'week' of runs by moving later days to beginning (day -7) of the week array (runnderData.days[]).
+  //shift the longRunDay to the end of the 'week' of runs by moving later days to beginning (day -7) of the week array (runnerData.days[]).
   while (runDays[runDays.length - 1] > runnerData.longRunDay) {
     runDays[runDays.length - 1] = runDays[runDays.length - 1] - 7;
     runDays.sort();
@@ -349,7 +353,6 @@ function marathonScheduler10(data) {
     } else {
       // for every 3rd week, the 'Recovery weeks', Miles drop 15% and we do not increment the weekToIncrementNumber (not an uptick week)
       milesThisWeek = 0.85 * milesThisWeek;
-      specialComment = "Recovery Week : ";
     }
 
     const maxMilesPerDay = 5;
@@ -451,9 +454,13 @@ function marathonScheduler10(data) {
         event.date = new Date(tempEventDate);
         event.percentMilesPerWeek = mileTest[i].percentMilesPerWeek;
         event.milesToRunToday =
-          Math.round(
+          Math.ceil(
             milesThisWeek * (mileTest[i].percentMilesPerWeek / 100) * 10
           ) / 10;
+        //make run at least .5 miles if less.
+        if (event.milesToRunToday < 0.5) {
+          event.milesToRunToday = 0.5;
+        }
         event.mileTotalThisWeek = Math.ceil(milesThisWeek);
         event.title =
           event.milesToRunToday +

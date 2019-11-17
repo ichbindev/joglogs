@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import CalendarComponent from '../components/CalendarComponent';
+import Hero from '../components/Hero';
 import API from '../utils/API';
 
 class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = { events: [], raceName: "", syncEvents: [], calendarRef: "" }
-
   }
 
   getPlan = () => {
@@ -15,6 +15,9 @@ class Calendar extends Component {
       const raceName = result.data.name;
       const { events: syncEvents, calendarRef  } = result.data;
       this.setState({ events, raceName, syncEvents, calendarRef });
+    })
+    .catch(() => { // no calendar found, take them to setup
+      window.location.href = "/setup"
     });
   }
 
@@ -47,23 +50,24 @@ class Calendar extends Component {
 
   render() {
     return (
-    <div>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
-            <div className="calendarcontainer">
-              <CalendarComponent events={this.state.events} />
-            </div>
-            <h1>Sync to your Google Calendar</h1>
-            <p>Like your plan?  You can sync it to your Google Calendar in one click.  Press the button.  It's that easy.
-              <button type="button" onClick={this.syncCalendar} className="btn btn-dark btn-lg btn-block">Sync to Google Calendar</button>
-              {this.displayCalendarRef()}
-            </p>
-          </div> 
+      <div>
+        <Hero heroNameClass="heroCalendar" heroTextClass="heroCalendarText" heroTitle="Calendar" heroText="Nothing worthwhile ever came easy.  This is your training calendar.  Now, it's time to log some miles!"/>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="calendarcontainer">
+                <CalendarComponent events={this.state.events} />
+              </div>
+              <h1>Sync to your Google Calendar</h1>
+              <p>Like your plan?  You can sync it to your Google Calendar in one click.  Press the button.  It's that easy.
+                <button type="button" onClick={this.syncCalendar} className="btn btn-dark btn-lg btn-block">Sync to Google Calendar</button>
+                {this.displayCalendarRef()}
+              </p>
+            </div> 
+          </div>
         </div>
       </div>
-    </div>);
-  }
+  )};
 }
 
 export default Calendar;

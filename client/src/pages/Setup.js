@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Forms from '../components/Forms';
 import { START, GOAL } from '../utils/consts';
 import Hero from '../components/Hero';
-import Button from '../components/Button';
 import API from '../utils/API';
+import { NUM_DAYS_ERROR, LONG_RUN_ERROR, SERVER_ERROR } from '../utils/consts';
+import Error from '../components/Error';
 
 class Setup extends Component {
   constructor(props) {
@@ -11,10 +12,11 @@ class Setup extends Component {
     this.state = { 
       mpw: 0,
       days: [],
-      longRun: "Sunday",
+      longRun: "0",
       goalDistance: 3.1,
       raceName: "",
-      raceDate: "2020-01-01"
+      raceDate: "2020-01-01",
+      errors: new Set()
      }
   }
 
@@ -42,29 +44,45 @@ class Setup extends Component {
   };
 
   handleFormSubmit = event => {
-    console.log("about to call API")
     event.preventDefault();
     const calendarData = this.state;
-    API.createCalendar(calendarData)
-      .then(() => window.location.href="/calendar");
+    if (this.state.days.length < 3 || this.state.days.length > 6) {
+      const errors = this.state.errors;
+      errors.add(NUM_DAYS_ERROR);
+      this.setState({ errors });
+    } else if(!this.state.days.includes(this.state.longRun)) {
+      const errors = this.state.errors;
+      errors.add(LONG_RUN_ERROR);
+      this.setState({ errors });
+    } else {
+      API.createCalendar(calendarData)
+      .then(() => window.location.href="/calendar")
+      .catch((() => {
+        const errors = this.state.errors;
+        errors.add(SERVER_ERROR);
+        this.setState({ errors });
+      }));
+    }
   }
 
   render() { 
     return ( <div>
-      <Hero/>
+      <Hero heroNameClass="heroSetup" heroTextClass="heroSetupText" heroTitle="Setup" heroText="Every runner has different training needs. Fill out your information below. Once you hit submit, we'll
+        generate a custom training plan to suit your needs."/>
       <br />
       <div className="container">
         <div className="row">
       <div className="col-md-2"></div>
       <div className="col-md-8">
-      <Forms formType={START} onChange={this.handleInputChange}/>
+      <Forms formType={START} onChange={this.handleInputChange}  errors={this.state.errors}/>
       <br />
-      <Forms formType={GOAL} onChange={this.handleInputChange}/>
+      <Forms formType={GOAL} onChange={this.handleInputChange} errors={this.state.errors}/>
       <br />
       <div className="text-center">
-      <button className="btn btn-secondary btn-lg btn-block">
-      <Button onClick={this.handleFormSubmit}>Submit</Button>
-      </button>
+      
+      <button className="btn btn-dark btn-lg btn-block" onClick={this.handleFormSubmit}>Submit</button>
+      <Error listeningFor={SERVER_ERROR} errors={this.state.errors} />
+      
       </div>
       <br />
       </div>

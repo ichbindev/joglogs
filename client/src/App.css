@@ -1,6 +1,8 @@
 /* All our CSS is gonna go here */
 
-
+h1 {
+  font-family: 'DM Sans', sans-serif;
+}
 body {
   font-family: 'DM Sans', sans-serif;
 }
@@ -60,24 +62,38 @@ video {
 footer {
   background-color: rgb(19, 19, 19);
   font: white;
-  padding: 100px;
+  /* padding: 100px; */
 }
 
 .footerLogo {
- font: grey;
- font-size: 65px;
- text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  font: grey;
+  font-size: 25px;
+  text-align: left;
 }
 
+.bignav {
+  padding: 25px;
+}
+
+h1 {
+  font-weight: 900;
+  margin: 0px 0px 0px 15px;
+}
 .icon {
  align: left;
 }
 
+.calendarcontainer {
+  margin: 20px 20px 20px 20px;
+}
+
 #footersection {
- height: 260px;
+ padding: 40px 0px 40px 0px;
 }
 
 a { 
+  cursor: pointer;
   color: white; 
 }
 
@@ -86,6 +102,7 @@ a:hover, a:visited {
 }
 
 .subtitle {
+  font-family: 'DM Sans', sans-serif;
   font-size: 40px;
   text-align: center;
   margin: 200px 100px 0px 100px;
@@ -107,7 +124,7 @@ a:hover, a:visited {
   border-radius: none;
 }
 
-.heroSection {
+.heroSetup {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run5.jpg") 50% no-repeat;
   background-size: cover;
   height: 60vh;
@@ -123,11 +140,96 @@ a:hover, a:visited {
           justify-content: center;
 }
 
-.heroSection .heroSectionText {
+.heroSetup .heroSetupText {
   color: #fefefe;
   padding: 200px;
 }
 
-.card {
-  box-shadow: 2px 2px 4px lightgrey;
+.heroCalendar {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run7.jpg") 50% no-repeat;
+  background-size: cover;
+  height: 60vh;
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.heroCalendar .heroCalendarText {
+  color: #fefefe;
+  padding: 200px;
+}
+
+.heroAbout {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/run6.jpg") 50% no-repeat;
+  background-size: cover;
+  height: 60vh;
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.heroAbout .heroAboutText {
+  color: #fefefe;
+  padding: 200px;
+}
+
+.heroContact {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../src/setup.jpg") 50% no-repeat;
+  background-size: cover;
+  height: 60vh;
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.heroContact .heroContactText {
+  color: #fefefe;
+  padding: 200px;
+}
+
+.calendarcontainer {
+  margin: 20px;
+  padding: 20px;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+.modal-header {
+  text-align: center;
+}
+
+.aboutcontainer {
+  margin: 50px;
+}
+
+.abouttitle {
+  margin: 0px 50px 50px 50px;
+}
+
+.card-header {
+  font-weight: bold;
+  font-size: 25px;
 }

@@ -1,6 +1,9 @@
 import axios from "axios";
 
 export default {
+  getUser: function() {
+    return axios.get("/api/user");
+  },
   // Signs a user up
   signUp: function(user) {
     return axios.post("/api/user/signup", user);
