@@ -101,7 +101,6 @@ module.exports = {
       raceName: req.body.raceName,
       calendarRef: req.body.calendarRef
     };
-
     if (!eventData.calendarRef) {
       function cb(result) {
         if (!result) {

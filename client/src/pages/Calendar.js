@@ -14,6 +14,7 @@ class Calendar extends Component {
       const events = result.data.events.map(e => ({ title: e.runDistance + " Mile " + e.description.split(" ")[0] + " Run", start: e.dateTime, end: e.dateTime, allDay: true }));
       const raceName = result.data.name;
       const { events: syncEvents, calendarRef  } = result.data;
+      syncEvents.forEach(e => e.title = e.runDistance + " Mile " + e.description.split(" ")[0] + " Run");
       this.setState({ events, raceName, syncEvents, calendarRef });
     })
     .catch(() => { // no calendar found, take them to setup
@@ -27,6 +28,8 @@ class Calendar extends Component {
 
   syncCalendar = () => {
     const { raceName, syncEvents, calendarRef } = this.state;
+    // convert sync events to what perry wants
+    // check events above, if that works then just use those
     if (!this.state.calendarRef) {
       const calendarInfo = {
         raceName,
