@@ -19,15 +19,19 @@ import { SIGN_UP, LOG_IN,
 import API from '../utils/API';
 
 class NavbarComponent extends Component {
-  state = {
-    signupEmail: "",
-    signupPassword: "",
-    loginEmail: "",
-    loginPassword: "",
-    terms: false,
-    errors: new Set(),
-    loggedIn: this.props.loggedIn
+  constructor(props) {
+    super(props)
+    this.state = {
+      signupEmail: "",
+      signupPassword: "",
+      loginEmail: "",
+      loginPassword: "",
+      terms: false,
+      errors: new Set()
+    }
+    console.log("Logged in Navbar:", this.props.loggedIn);
   }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -42,21 +46,23 @@ class NavbarComponent extends Component {
     const user = { username, password };
     API.login(user)
       // check if user has any plans
-      .then(() => API.hasPlan())
+      .then(() => {
+        API.hasPlan()
+        .then(() => {
+          // if they do, show them
+          this.setState({ errors: new Set() });
+          window.location.href = "/calendar"
+        }).catch(() => {
+          // 404 no plan, redirect them to setup 
+          window.location.href = "/setup"
+        });
+      })
       .catch(err => {
         // something went wrong with login
         const errors = this.state.errors;
         errors.add(LOGIN_ERROR);
         this.setState({ errors });
-      })
-      .then(() => {
-        // if they do, show them
-        this.setState({ loggedIn: true, errors: new Set() });
-        window.location.href = "/calendar"
-      }).catch(() => {
-        // 404 no plan, redirect them to setup 
-        window.location.href = "/setup"
-      });
+      });  
   };
 
   handleSignupFormSubmit = event => {
@@ -73,35 +79,37 @@ class NavbarComponent extends Component {
       this.setState({ errors });
     } else {
       API.signUp(user)
-      .then(() => API.login(user))
+      .then(() => {
+        API.login(user)
+        // new users don't have calendars, so send to setup page
+        .then(() => {
+          window.location.href = "/setup"
+      });
+      })
       .catch(() => {
         // username already exists
         const errors = this.state.errors;
         errors.add(USERNAME_ERROR);
         this.setState({ errors });
       })
-      // new users don't have calendars, so send to setup page
-      .then(() => {
-        this.setState({ loggedIn: true, errors: new Set() });
-        window.location.href = "/setup"
-      });
     }
   };
 
   handleLogout = () => {
     API.logout()
       .then(function() {
-        this.setState({ loggedIn: false });
         window.location.href = "/";
       });
   }
 
+
+
   render() {
     let logout = <NavItem><a href="#top" className="nav-link active" onClick={this.handleLogout}><strong>Log Out</strong></a></NavItem>;
-    let login = undefined;
-    let signup = undefined;
-    if (!this.state.loggedIn) {
-      logout = undefined;
+    let login = null;
+    let signup = null;
+    if (!this.props.loggedIn) {
+      logout = null;
       login =  <NavItem>
           <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword} errors={this.state.errors}/></ModalComponent>
         </NavItem>; 

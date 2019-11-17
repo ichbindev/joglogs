@@ -15,18 +15,20 @@ import API from './utils/API';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedIn: false }
+    this.state = { loggedIn: null }
   }
 
   componentDidMount() {
     API.getUser()
     .then(response => {
       if (response) {
+        console.log("User is logged in");
         this.setState({ loggedIn: true });
       }
     })
     .catch(() => {
       this.setState({ loggedIn: false });
+      console.log("User is logged out");
     });
   }
 
@@ -35,6 +37,7 @@ class App extends Component {
       <Router>
         <div>
         <Navbar loggedIn={this.state.loggedIn}/>
+        {console.log("Logged in app", this.state.loggedIn)}
           <Switch>
             <Route exact path="/" render={(props) => <Home {...props} loggedIn={this.state.loggedIn} />}/>
             <Route exact path="/about" render={(props) => <About {...props} loggedIn={this.state.loggedIn} />}/>
