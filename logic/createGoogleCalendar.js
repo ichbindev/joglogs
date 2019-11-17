@@ -8,7 +8,6 @@ function logthis(stuff) {
     console.log(stuff);
   }
 }
-
 // //sample data:
 // let events = [];
 // events.push(
