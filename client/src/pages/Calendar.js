@@ -11,7 +11,10 @@ class Calendar extends Component {
 
   getPlan = () => {
     API.getPlan().then(result => {
-      const events = result.data.events.map(e => ({ title: e.runDistance + " Mile " + e.description.split(" ")[0] + " Run", start: this.fixDate(e.dateTime), end: this.fixDate(e.dateTime), allDay: true }));
+      const events = result.data.events.map(e => ({ title: e.runDistance + " Mile " + e.description.split(" ")[0] + " Run", start: e.dateTime, end: e.dateTime, allDay: true }));
+      let fixedDate = this.fixDate(events[events.length - 1].start);
+      events[events.length - 1].start = fixedDate;
+      events[events.length - 1].end = fixedDate;
       const raceName = result.data.name;
       const { events: syncEvents, calendarRef } = result.data;
       syncEvents.forEach(e => e.title = e.runDistance + " Mile " + e.description.split(" ")[0] + " Run");
@@ -26,10 +29,11 @@ class Calendar extends Component {
   // add one to the date
   fixDate(date) {
     date = date.split("-");
-    date[0] = parseInt(date[0]) + 1;
-    return date.join("");
+    date[2] = parseInt(date[2]) + 1;
+    console.log(date);
+    return date.join("-");
   }
-
+  
   componentDidMount() {
     this.getPlan();
   }
