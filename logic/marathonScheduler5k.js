@@ -431,10 +431,6 @@ function marathonScheduler5(data) {
         } else {
           taperMilesPerWeek = peakMiles;
         }
-        specialComment =
-          daysTillRaceDay +
-          " days til race day. You are in final prep stage : ";
-        milesThisWeek = 0.5 * taperMilesPerWeek;
       }
 
       let remainingWeeks = Math.floor(
