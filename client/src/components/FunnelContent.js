@@ -2,10 +2,10 @@ import React from 'react';
 
 const FunnelContent = (props) => {
 
-  renderContent = textFirst => {
+  const renderContent = textFirst => {
     
 
-    const image = <img src="{props.img}" alt={props.alt} />;
+    const image = <img src={props.img} alt={props.alt} />;
     const text = (
       <div className="textDiv">
         <div className="subtitle"><strong>{props.subtitle}</strong></div>
