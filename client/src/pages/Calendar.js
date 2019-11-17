@@ -13,6 +13,9 @@ class Calendar extends Component {
     API.getPlan().then(result => {
       const events = result.data.events.map(e => ({ title: e.runDistance + " Mile " + e.description.split(" ")[0] + " Run", start: e.dateTime, end: e.dateTime, allDay: true }));
       this.setState({ events });
+    })
+    .catch(() => { // no calendar found, take them to setup
+      window.location.href = "/setup"
     });
   }
 

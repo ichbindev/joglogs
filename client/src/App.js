@@ -24,6 +24,9 @@ class App extends Component {
       if (response) {
         this.setState({ loggedIn: true });
       }
+    })
+    .catch(() => {
+      this.setState({ loggedIn: false });
     });
   }
 
