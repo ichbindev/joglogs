@@ -105,7 +105,7 @@ const StartForm = (props) => {
             <Label htmlFor="mpw">How many Miles Per Week (MPW) do you currently
                   run?</Label>
             <Input  onChange={props.onChange} type="select" name="mpw">
-              <option value="1">1</option>
+              <option value="0">0</option>
               <option value="5">5</option>
               <option value="10">10</option>
               <option value="15">15</option>
