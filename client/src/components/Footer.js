@@ -5,8 +5,6 @@ const Footer = (props) => {
   return (
     <footer id="sticky-footer" className="py-4 text-white">
       <Container>
-
-
         <div id="footersection">
           <Row>
             <Col>
@@ -68,8 +66,6 @@ const Footer = (props) => {
           </Row>
         </div>
         </Container> 
-          
-
             <div className="container text-center text-white-50">
               <div className="row">
                 <div className="col-md-12">
@@ -77,13 +73,6 @@ const Footer = (props) => {
                 </div>
               </div>
             </div>
-            
-          
-        
-
-
-
-      
     </footer>
   );
 }
