@@ -29,7 +29,6 @@ class NavbarComponent extends Component {
       terms: false,
       errors: new Set()
     }
-    console.log("Logged in Navbar:", this.props.loggedIn);
   }
 
 
