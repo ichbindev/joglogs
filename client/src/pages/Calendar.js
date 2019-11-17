@@ -13,13 +13,13 @@ class Calendar extends Component {
     API.getPlan().then(result => {
       const events = result.data.events.map(e => ({ title: e.runDistance + " Mile " + e.description.split(" ")[0] + " Run", start: e.dateTime, end: e.dateTime, allDay: true }));
       const raceName = result.data.name;
-      const { events: syncEvents, calendarRef  } = result.data;
+      const { events: syncEvents, calendarRef } = result.data;
       syncEvents.forEach(e => e.title = e.runDistance + " Mile " + e.description.split(" ")[0] + " Run");
       this.setState({ events, raceName, syncEvents, calendarRef });
     })
-    .catch(() => { // no calendar found, take them to setup
-      window.location.href = "/setup"
-    });
+      .catch(() => { // no calendar found, take them to setup
+        window.location.href = "/setup"
+      });
   }
 
   componentDidMount() {
@@ -31,7 +31,7 @@ class Calendar extends Component {
       window.location.href = "/"
     }
   }
-  
+
   syncCalendar = () => {
     const { raceName, syncEvents, calendarRef } = this.state;
     // convert sync events to what perry wants
@@ -43,10 +43,10 @@ class Calendar extends Component {
         calendarRef
       }
       API.syncCalendar(calendarInfo)
-      .then(function(resultCalendarRef) {
-        this.setState({calendarRef: resultCalendarRef});
-        this.displayCalendarRef();
-      });
+        .then(function(resultCalendarRef) {
+          this.setState({ calendarRef: resultCalendarRef });
+          this.displayCalendarRef();
+        });
     }
   }
 
@@ -58,9 +58,9 @@ class Calendar extends Component {
   }
 
   render() {
-    return (
+    const page = (
       <div>
-        <Hero heroNameClass="heroCalendar" heroTextClass="heroCalendarText" heroTitle="Calendar" heroText="Nothing worthwhile ever came easy.  This is your training calendar.  Now, it's time to log some miles!"/>
+        <Hero heroNameClass="heroCalendar" heroTextClass="heroCalendarText" heroTitle="Calendar" heroText="Nothing worthwhile ever came easy.  This is your training calendar.  Now, it's time to log some miles!" />
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -72,11 +72,19 @@ class Calendar extends Component {
                 <button type="button" onClick={this.syncCalendar} className="btn btn-dark btn-lg btn-block">Sync to Google Calendar</button>
                 {this.displayCalendarRef()}
               </p>
-            </div> 
+            </div>
           </div>
         </div>
       </div>
-  )};
+    )
+    if (this.props.loggedIn) {
+      return page;
+    } else {
+      return <p>Please log in to view this page</p>;
+    }
+  };
+
+
 }
 
 export default Calendar;
