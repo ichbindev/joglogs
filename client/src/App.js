@@ -15,7 +15,7 @@ import API from './utils/API';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedIn: false }
+    this.state = { loggedIn: null }
   }
 
   componentDidMount() {

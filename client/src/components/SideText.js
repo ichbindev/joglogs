@@ -12,7 +12,7 @@ const SideText = (props) => {
           <CardSubtitle className="subtitle">{props.subtitle}</CardSubtitle>
           <CardText className="text">{props.text}</CardText>
         </CardBody>
-      
+
     </div>
   );
 };
