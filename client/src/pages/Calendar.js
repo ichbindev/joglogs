@@ -23,9 +23,16 @@ class Calendar extends Component {
     this.getPlan();
   }
 
+  checkLogin = () => {
+    if (!this.props.loggedIn) {
+      window.location.href = "/"
+    }
+  }
+
   render() {
     return (
     <div>
+      {this.checkLogin()}
       <Hero heroNameClass="heroCalendar" heroTextClass="heroCalendarText" heroTitle="Calendar" heroText="Nothing worthwhile ever came easy.  This is your training calendar.  Now, it's time to log some miles!"/>
       <div className="container">
         <div className="row">
