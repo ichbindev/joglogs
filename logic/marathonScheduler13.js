@@ -490,7 +490,7 @@ function marathonScheduler13(data) {
     let eventObj = {
       number: events[i].number,
       raceName: runnerData.raceName,
-      dateTime: events[i].date.toISOString().substr(0, 10),
+      dateTime: events[i].date.toISOString().substr(0, 10) + "T12:00:00",
       percentMilesPerWeek: events[i].percentMilesPerWeek,
       mileTotalThisWeek: events[i].mileTotalThisWeek,
       runDistance: events[i].milesToRunToday,
