@@ -26,6 +26,12 @@ class Calendar extends Component {
     this.getPlan();
   }
 
+  checkLogin = () => {
+    if (!this.props.loggedIn) {
+      window.location.href = "/"
+    }
+  }
+  
   syncCalendar = () => {
     const { raceName, syncEvents, calendarRef } = this.state;
     // convert sync events to what perry wants
