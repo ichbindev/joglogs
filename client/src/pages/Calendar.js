@@ -11,7 +11,10 @@ class Calendar extends Component {
 
   getPlan = () => {
     API.getPlan().then(result => {
-      const events = result.data.events.map(e => ({ title: e.runDistance + " Mile " + e.description.split(" ")[0] + " Run", start: e.dateTime+"T12:00:00", end: e.dateTime + "T13:00:00", allDay: false }));
+      // const events = result.data.events.map(e => ({ title: e.runDistance + " Mile " + e.description.split(" ")[0] + " Run", start: e.dateTime + "T12:00:00", end: e.dateTime + "T13:00:00", allDay: false }));
+      const events = result.data.events.map(e => ({ title: e.runDistance + " Mile " + e.description.split(" ")[0] + " Run", start: this.fixDate(e.dateTime, false) + "T12:00:00", end: this.fixDate(e.dateTime, false) + "T13:00:00", allDay: false }));
+      events[events.length - 1].start = this.fixDate(events[events.length - 1].start, true);
+      events[events.length - 1].end = this.fixDate(events[events.length - 1].end, true); 
       const raceName = result.data.name;
       const { events: syncEvents, calendarRef } = result.data;
       syncEvents.forEach(e => e.title = e.runDistance + " Mile " + e.description.split(" ")[0] + " Run");
@@ -24,11 +27,19 @@ class Calendar extends Component {
 
   // for some reason we're shifting all the dates by 1
   // add one to the date
-  fixDate(date) {
-    date = date.split("-");
-    date[2] = parseInt(date[2]) + 1;
-    console.log(date);
-    return date.join("-");
+  fixDate(date, plus) {
+    if (plus) {
+      date = date.split("-");
+      date[2] = parseInt(date[2]) + 2;
+      console.log(date);
+      return date.join("-");
+    } else {
+      date = date.split("-");
+      date[2] = parseInt(date[2]) - 1;
+      console.log(date);
+      return date.join("-");
+    }
+    
   }
   
   componentDidMount() {
