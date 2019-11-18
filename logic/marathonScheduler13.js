@@ -508,5 +508,3 @@ function marathonScheduler13(data) {
 
   return eventsArr;
 }
-
-// marathonScheduler13();
