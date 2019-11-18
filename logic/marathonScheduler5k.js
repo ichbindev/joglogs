@@ -335,7 +335,11 @@ function marathonScheduler5(data) {
     "Calendar Calculations start the Sunday prior to training start date = " +
       new Date(scheduleWeekStart)
   );
-  let tempEventDate = new Date().getTime();
+  //let tempEventDate = new Date().getTime();
+
+  let tempEventDate = new Date(
+    new Date().toISOString().substr(0, 10) + "T12:00:00"
+  ).getTime();
 
   // ************************** Start creating Events *********************************************
   // ************************** Start creating Events *********************************************
