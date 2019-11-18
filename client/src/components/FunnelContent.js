@@ -32,5 +32,3 @@ const FunnelContent = (props) => {
 }
 
 export default FunnelContent;
-
-{/* <FunnelContent textFirst={true} subtitle="Subtitle Text" subtext="Subtext Text" alt="alt text"/> */ }
