@@ -446,7 +446,7 @@ function marathonScheduler5(data) {
         // create the actual event ****************************************** create the days event *****************************************
         eventCounter++;
         event.number = eventCounter;
-        event.date = new Date(tempEventDate - 24 * 60 * 60 * 1000);
+        event.date = new Date(tempEventDate);
         event.percentMilesPerWeek = mileTest[i].percentMilesPerWeek;
         event.milesToRunToday =
           Math.ceil(
