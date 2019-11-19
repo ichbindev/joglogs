@@ -1,6 +1,6 @@
 module.exports = marathonScheduler26;
 
-showLogs = false; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
+showLogs = true; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
 function logthis(stuff) {
   if (showLogs || stuff.includes("ERROR")) {
     console.log(stuff);
@@ -9,8 +9,8 @@ function logthis(stuff) {
 
 // tester = {
 //   mpw: 10,
-//   days: ["1", "3", "4", "6"],
-//   longRun: "6",
+//   days: ["1", "2", "3"],
+//   longRun: "2",
 //   goalDistance: 26.2,
 //   raceName: "Fun Run",
 //   raceDate: "2020-01-01"
@@ -451,7 +451,7 @@ function marathonScheduler26(data) {
         // create the actual event ****************************************** create the days event *****************************************
         eventCounter++;
         event.number = eventCounter;
-        event.date = new Date(tempEventDate);
+        event.date = new Date(tempEventDate - 24 * 60 * 60 * 1000);
         event.percentMilesPerWeek = mileTest[i].percentMilesPerWeek;
         event.milesToRunToday = Math.ceil(
           milesThisWeek * (mileTest[i].percentMilesPerWeek / 100)
