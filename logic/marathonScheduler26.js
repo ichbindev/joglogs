@@ -7,15 +7,15 @@ function logthis(stuff) {
   }
 }
 
-tester = {
-  mpw: 10,
-  days: ["1", "2", "3"],
-  longRun: "2",
-  goalDistance: 26.2,
-  raceName: "mTw 0101",
-  raceDate: "2020-01-01"
-};
-marathonScheduler26(tester);
+// tester = {
+//   mpw: 10,
+//   days: ["1", "2", "3"],
+//   longRun: "2",
+//   goalDistance: 26.2,
+//   raceName: "mTw 0101",
+//   raceDate: "2020-01-01"
+// };
+// marathonScheduler26(tester);
 
 function marathonScheduler26(data) {
   let dayOfMilliseconds = 24 * 60 * 60 * 1000; // 24hrs X 60min X 60secs X 1,000 milliseconds  = 1 day.
