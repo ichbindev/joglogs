@@ -12,45 +12,54 @@ function logthis(stuff) {
 //   days: ["1", "2", "3"],
 //   longRun: "2",
 //   goalDistance: 26.2,
-//   raceName: "Fun Run",
+//   raceName: "mTw 0101",
 //   raceDate: "2020-01-01"
 // };
 // marathonScheduler26(tester);
 
 function marathonScheduler26(data) {
-  //set trainingStartDate as tomorrow in format "2019-11-30"
-  let calculateStartDate = new Date().setDate(new Date().getDate() + 1);
-  calculateStartDate =
-    new Date(calculateStartDate).toJSON().substr(0, 10) + "T12:00:00";
+  let dayOfMilliseconds = 24 * 60 * 60 * 1000; // 24hrs X 60min X 60secs X 1,000 milliseconds  = 1 day.
+  let event = [];
+  let events = [];
+  let eventCounter = 0;
+
+  let weekNumber = 0;
+  let weekToIncrementNumber = 0;
+  let todayNoon = YYYYMMDD(new Date()) + "T12:00:00";
+  logthis("let todayNoon = " + todayNoon);
+  //scheduleWeekStart = last sundays date.
+  let scheduleWeekStart = new Date(todayNoon).setDate(
+    new Date(todayNoon).getDate() - new Date(todayNoon).getDay()
+  );
+  let tempEventDate = new Date(todayNoon).getTime();
+  logthis(
+    "let scheduleWeekStart = " +
+      scheduleWeekStart +
+      " " +
+      new Date(scheduleWeekStart)
+  );
+  logthis(
+    "let tempEvenDate = " + tempEventDate + " " + new Date(tempEventDate)
+  );
 
   let runnerData = [];
   let day = [];
 
   if (data === undefined) {
     logthis(
-      "ERROR! ***** data for runner was undefined, using sample data *****"
+      "ERROR! ***** marathonScheduler?? (data) for runner was undefined  ************** "
     );
-    // setup sample data
-    // sample Race date is today + ??? days *********************************************************************
-    // let sampleRaceDate = new Date().setDate(new Date().getDate() + 125);
-    // sampleRaceDate = new Date(sampleRaceDate).toJSON().substr(0, 10);
-    //console.log("date = "+new Date(Date.now()).toJSON().substr(0, 10) );
-    let sampleData = [];
-
-    sampleData = {
-      mpw: 10,
-      days: ["1", "3", "4", "6"],
-      longRun: "6",
-      goalDistance: 26.2,
-      raceName: "sample26",
-      raceDate: "2020-01-01"
-    };
-    // use sampleDate
-
-    runnerData = sampleData;
   } else {
     runnerData = data;
   }
+
+  let milesThisWeek = runnerData.startMilesPerWeek;
+  //set trainingStartDate as tomorrow in format "2019-11-30"
+  let calculateStartDate = new Date().setDate(new Date().getDate() + 1);
+  calculateStartDate =
+    new Date(calculateStartDate).toJSON().substr(0, 10) + "T12:00:00";
+  logthis("calculateStartDate = " + calculateStartDate);
+
   // add trainingStartDate in anticipation of this being an option in future, currently starts "tomorrow"
   runnerData.startDate = calculateStartDate;
   logthis("runnerData = " + JSON.stringify(runnerData));
@@ -63,8 +72,7 @@ function marathonScheduler26(data) {
   runnerData.raceMiles = parseFloat(runnerData.goalDistance);
   runnerData.longRunDay = parseInt(runnerData.longRun);
   if (runnerData.raceName === "") {
-    runnerData.raceName =
-      "Run Calendar Created " + new Date().toISOString().substr(0, 15);
+    runnerData.raceName = "Run Calendar Created " + YYYYMMDD(new Date());
   }
 
   // Time for some calculations!! What Fun!
@@ -93,6 +101,7 @@ function marathonScheduler26(data) {
   runDays.sort();
 
   //shift the longRunDay to the end of the 'week' of runs by moving later days to beginning (day -7) of the week array (runnerData.days[]).
+  // compare last item in list (length-1) to the longRunDay, if it's greater, then minus 7 days from the number and sort again.
   while (runDays[runDays.length - 1] > runnerData.longRunDay) {
     runDays[runDays.length - 1] = runDays[runDays.length - 1] - 7;
     runDays.sort();
@@ -104,7 +113,7 @@ function marathonScheduler26(data) {
   logthis("runDays.length = " + runDays.length);
   // Calculate how many weeks of training:
 
-  // Take off Last 14 days for pre-marathon taper (only 26.2 mile marathons have 2 week taper)
+  // Take off Last x days for pre-marathon taper (only 26.2 mile marathons have 2 week taper)
   // milliseconds in one day = 24hrs X 60 minutes X 60 Seconds X 1,000 milliseconds
   let lastRegularTrainingDay =
     new Date(runnerData.raceDate + "T12:00:00").getTime() -
@@ -115,7 +124,9 @@ function marathonScheduler26(data) {
   );
 
   //convert the other date values to time in milliseconds javascript native..
-  runnerData.startDate = new Date(runnerData.startDate).getTime();
+  runnerData.startDate = new Date(
+    YYYYMMDD(new Date(runnerData.startDate))
+  ).getTime();
   logthis(
     "startDate in ms = " +
       runnerData.startDate +
@@ -319,24 +330,6 @@ function marathonScheduler26(data) {
 
   logthis("Last training day=" + new Date(lastRegularTrainingDay));
 
-  //scheduleWeekStart= new Date(scheduleWeekStart).toISOString().substr(0,10)+"T12:00:00";
-  let dayOfMilliseconds = 24 * 60 * 60 * 1000; // 24hrs X 60min X 60secs X 1,000 milliseconds  = 1 day.
-  let event = [];
-  let events = [];
-  let weekNumber = 0;
-  let weekToIncrementNumber = 0;
-  let milesThisWeek = runnerData.startMilesPerWeek;
-  let eventCounter = 0;
-  let todayNoon = new Date().toISOString().substr(0, 10) + "T12:00:00";
-  let scheduleWeekStart = new Date(todayNoon).setDate(
-    new Date().getDate() - new Date(todayNoon).getDay() + 1
-  );
-  logthis(
-    "Calendar Calculations start the Sunday prior to training start date = " +
-      new Date(scheduleWeekStart)
-  );
-  let tempEventDate = new Date().getTime();
-
   // ************************** Start creating Events *********************************************
   // ************************** Start creating Events *********************************************
 
@@ -496,21 +489,36 @@ function marathonScheduler26(data) {
     let eventObj = {
       number: events[i].number,
       raceName: runnerData.raceName,
-      dateTime: events[i].date.toISOString().substr(0, 10),
+      dateTime: YYYYMMDD(events[i].date),
       percentMilesPerWeek: events[i].percentMilesPerWeek,
       mileTotalThisWeek: events[i].mileTotalThisWeek,
       runDistance: events[i].milesToRunToday,
       title: events[i].title,
       description: events[i].description
     };
+    logthis(
+      "Date = " +
+        YYYYMMDD(events[i].date) +
+        " Descrip = " +
+        events[i].description.substr(0, 15)
+    );
+
     eventsArr.push(eventObj);
   }
 
   //logthis("\n\nEventArray:\n\n");
   //logthis(events);
 
-  logthis("\n\nEventObject:\n\n");
-  logthis(eventsArr);
+  //logthis("\n\nEventObject:\n\n");
+  //  logthis(eventsArr);
 
   return eventsArr;
+}
+function YYYYMMDD(aDate) {
+  let dateString = new Date(
+    aDate.getTime() - aDate.getTimezoneOffset() * 60 * 1000
+  )
+    .toISOString()
+    .split("T")[0];
+  return dateString;
 }
