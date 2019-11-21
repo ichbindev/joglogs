@@ -1,4 +1,4 @@
-module.exports = marathonScheduler26;
+module.exports = marathonScheduler;
 
 showLogs = true; //true = shows lots of console log stuff, false shows "ERROR containing messages only"
 function logthis(stuff) {
@@ -8,9 +8,17 @@ function logthis(stuff) {
 }
 
 // COMMENT OUT THE NEXT LINE IF NOT TESTING:
-marathonScheduler26();
+// data = {
+//   mpw: 0,
+//   days: ["1", "2", "3", "4"],
+//   longRun: "2",
+//   goalDistance: 26.2,
+//   raceName: "TEST Data, comment out function called if production",
+//   raceDate: "2020-07-01"
+// };
+//marathonScheduler();
 
-function marathonScheduler26(data) {
+function marathonScheduler(data) {
   let runnerData = [];
   // if no data received with function.
   if (data === undefined) {
@@ -25,7 +33,7 @@ function marathonScheduler26(data) {
       mpw: 0,
       days: ["1", "2", "3", "4"],
       longRun: "2",
-      goalDistance: 13.1,
+      goalDistance: 26.2,
       raceName: "TEST Data, comment out function called if production",
       raceDate: "2020-07-01"
     };
@@ -549,6 +557,7 @@ function marathonScheduler26(data) {
 
   return eventsArr;
 }
+
 function YYYYMMDD(aDate) {
   let dateString = new Date(
     aDate.getTime() - aDate.getTimezoneOffset() * 60 * 1000
