@@ -11,7 +11,7 @@ const Terms = () => {
           <div className="col-md-2"></div>
           <div className="col-md-8">
             <div className="abouttitle">
-              <h2><strong><center>Terms and Conditions</center></strong></h2>
+              <h1><strong><center>Terms and Conditions</center></strong></h1>
             </div>
             Terms of Service
 Last updated September 11, 2019

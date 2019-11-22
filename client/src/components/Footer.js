@@ -47,7 +47,7 @@ const Footer = (props) => {
 
               <h3>Helpful Links</h3>
 
-              <a href="/">
+              <a href="/Privacy">
                 Privacy
           </a>
               <br />

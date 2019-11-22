@@ -10,7 +10,7 @@ import {
 } from 'reactstrap';
 import ModalComponent from './ModalComponent';
 import Forms from './Forms';
-import { SIGN_UP, LOG_IN, CALENDAR, 
+import { SIGN_UP, LOG_IN, 
   LOGIN_ERROR, USERNAME_ERROR, PASSWORD_ERROR,
   TC_ERROR } from '../utils/consts';
 import API from '../utils/API';

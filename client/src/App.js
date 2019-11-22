@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Calendar from "./pages/Calendar";
+import Privacy from "./pages/Privacy";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -42,6 +43,7 @@ class App extends Component {
             <Route exact path="/setup" render={(props) => <Setup {...props} loggedIn={this.state.loggedIn} />}/>
             <Route exact path="/calendar" render={(props) => <Calendar {...props} loggedIn={this.state.loggedIn} />}/>
             <Route exact path="/terms" render={(props) => <Terms {...props} loggedIn={this.state.loggedIn} />}/>
+            <Route exact path="/privacy" render={(props) => <Privacy {...props} loggedIn={this.state.loggedIn} />}/>
             <Route path="*" render={(props) => <NotFound {...props} loggedIn={this.state.loggedIn} />}/>
           </Switch>
           <Footer/>
