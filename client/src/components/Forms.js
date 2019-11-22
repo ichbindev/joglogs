@@ -56,7 +56,7 @@ const SignUpForm = (props) => {
           <FormGroup check className="form-check-inline">
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox" name="terms" value="1"/>{' '}
-                By checking this box, I agree to Train Method's terms and conditions
+                By checking this box, I agree to Train Method's <a id="signupmodaltext" href="/terms">Terms and Conditions</a>
                  <br />
                </Label>
                <Error listeningFor={TC_ERROR} errors={props.errors} />
@@ -103,7 +103,7 @@ const StartForm = (props) => {
           <FormGroup>
             <h3>Current Fitness Level:</h3>
             <Label htmlFor="mpw">How many Miles Per Week (MPW) do you currently
-                  run?</Label>
+                  run on average?</Label>
             <Input  onChange={props.onChange} type="select" name="mpw">
               <option value="0">0</option>
               <option value="5">5</option>
@@ -205,7 +205,7 @@ const GoalForm = (props) => {
             <Input  onChange={props.onChange} type="select" name="goalDistance" id="goalDistance">
               <option value="3.1">5k (3.1 Miles)</option>
               <option value="6.2">10k (6.2 Miles)</option>
-              <option value="13.1">Half Marathons (13.1 mile)</option>
+              <option value="13.1">Half Marathons (13.1 miles)</option>
               <option value="26.2">Marathon (26.2 miles)</option> 
             </Input>
           </FormGroup>

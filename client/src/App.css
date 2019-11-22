@@ -105,6 +105,9 @@ a {
 a:hover, a:visited { 
   color: white; 
 }
+#signupmodaltext {
+  color: black;
+}
 
 .subtitle {
   font-family: 'DM Serif Display', serif;

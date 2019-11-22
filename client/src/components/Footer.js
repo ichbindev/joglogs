@@ -69,7 +69,7 @@ const Footer = (props) => {
             <div className="container text-center text-white-50">
               <div className="row">
                 <div className="col-md-12">
-                  <small>Copyright &copy; 2019 training method<sup>tm</sup></small>
+                  <small>Copyright &copy; 2019 Train Method<sup>tm</sup></small>
                 </div>
               </div>
             </div>

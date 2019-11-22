@@ -11,7 +11,7 @@ const About = () => {
           <div className="col-md-2"></div>
           <div className="col-md-8">
             <div className="abouttitle">
-              <h2><strong><center>It will invade your life. It will haunt your dreams. It will control you. Say YES to running.</center></strong></h2>
+              <h2><strong><center><q>Only those who risk going too far, can possibly find out how far one can go.</q><br /><cite>-T.S. Elliot</cite></center></strong></h2>
             </div>
             <p>There are plenty of one-size-fits-all
               marathon training plans available online but they don't take into account the runner's fitness and are only
