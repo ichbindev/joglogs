@@ -55,11 +55,11 @@ const Footer = (props) => {
                 Terms
           </a>
               <br />
-              <a href="/contact">
+              <a href="/Contact">
                 Support
           </a>
               <br />
-              <a href="/contact">
+              <a href="/Contact">
                 Contact
           </a>
             </Col>
