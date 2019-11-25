@@ -12,15 +12,15 @@ const Footer = (props) => {
                 <strong>train method<sup>tm</sup></strong>
               </div>
               <br />
-              <a className="icon" href="/">
+              <a className="icon" href="https://www.facebook.com/trainmethod">
                 <i className="fa fa-facebook fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
               </a>
 
-              <a className="icon" href="/">
+              <a className="icon" href="https://twitter.com/TrainMethod">
                 <i className="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
               </a>
 
-              <a className="icon" href="/">
+              <a className="icon" href="https://www.instagram.com/trainmethod/">
                 <i className="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
               </a>
             </Col>
@@ -74,15 +74,15 @@ const Footer = (props) => {
               </Col>
               <Col>
               
-              <a className="icon" href="/">
+              <a className="icon" href="https://www.facebook.com/trainmethod">
                 <i className="fa fa-facebook fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
               </a>
 
-              <a className="icon" href="/">
+              <a className="icon" href="https://twitter.com/TrainMethod">
                 <i className="fa fa-twitter fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
               </a>
 
-              <a className="icon" href="/">
+              <a className="icon" href="https://www.instagram.com/trainmethod/">
                 <i className="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
               </a>
               </Col>
