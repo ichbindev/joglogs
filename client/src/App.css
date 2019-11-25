@@ -63,9 +63,25 @@ img {
 @media (max-width: 640px) {
   .overlayText {
   display: none;
+  }
+  .desktoplogo {
+    display: none;
+  }
+  h5 {
+    display: none;
+  }
+  #footersectiondesktop {
+    display: none;
+  }
 }
+@media (min-width: 640px) {
+  #footersectionmobile {
+    display: none;
+  }
+  .mobilelogo {
+    display: none;
+  }
 }
-
 footer {
   background-color: rgb(19, 19, 19);
   font: white;
@@ -93,7 +109,7 @@ h1 {
   margin: 20px 20px 20px 20px;
 }
 
-#footersection {
+#footersectiondesktop {
  padding: 40px 0px 40px 0px;
 }
 
@@ -131,35 +147,23 @@ a:hover, a:visited {
   flex-grow: 1;
 }
 /* Media query for index page */
-@media only screen and (max-width: 990px) {
-  img {
-    width: 100%;
-  }
-  .textDiv {
-    border-style: solid;
-  border-width: 5px;
-  }
-  .subtitle {
-    margin: 50px;
-  }
-  .subtext {
-    margin: 0px;
-  }
+@media only screen and (min-width: 990px) {
+  .mobile {
+  display: none;
 }
-
+}
 @media only screen and (max-width: 990px) {
   img {
     width: 100%;
-  }
-  .textDiv {
-    border-style: solid;
-  border-width: 5px;
   }
   .subtitle {
     margin: 50px;
   }
   .subtext {
     margin: 0px;
+  }
+  .desktop {
+    display: none;
   }
 }
 
@@ -290,10 +294,6 @@ a:hover, a:visited {
   font-weight: bold;
   font-size: 25px;
 }
-
-#footersection {
-  padding: 40px 0px 40px 0px;
- }
 
 .fourohfour {
   padding: 100px;

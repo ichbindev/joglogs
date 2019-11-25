@@ -119,7 +119,12 @@ class NavbarComponent extends Component {
     return (
       <div>
         <Navbar className="bignav" color="light" light expand="md">
+          <div className="desktoplogo">
           <NavbarBrand href="/"><h1><strong>train method<sup>tm</sup></strong></h1></NavbarBrand>
+          </div>
+          <div className="mobilelogo">
+          <NavbarBrand href="/"><h2><strong>train method<sup>tm</sup></strong></h2></NavbarBrand>
+          </div>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

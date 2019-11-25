@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css'
 import CalendarComponent from '../components/CalendarComponent';
 import Hero from '../components/Hero';
 import API from '../utils/API';
