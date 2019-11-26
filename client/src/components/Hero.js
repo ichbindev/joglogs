@@ -4,14 +4,15 @@ import React from 'react';
 
 const Hero = (props) => {
   return (
-      <div className={props.heroNameClass}>
+    <div className={props.heroNameClass}>
       <div className={props.heroTextClass}>
-      <h1>{props.heroTitle}</h1>
-      <div className="herosubtext">
-      <h5>{props.heroText}</h5>
+        <h1>{props.heroTitle}</h1>
+        <div className="herosubtext">
+          <h5>{props.heroText}</h5>
+        </div>
       </div>
     </div>
-  </div>
+    
   );
 };
 

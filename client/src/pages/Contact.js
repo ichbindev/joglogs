@@ -3,11 +3,14 @@ import '../App.css'
 import Hero from '../components/Hero';
 import Forms from '../components/Forms';
 import { CONTACT } from '../utils/consts';
+// import ScrollAnimation from 'react-animate-on-scroll';
 
 const Contact = () => {
   return (
     <div>
+      {/* <ScrollAnimation animateIn="fadeIn"> */}
       <Hero heroNameClass="heroContact" heroTextClass="heroContactText" heroTitle="Contact" heroText="We want to hear from you.  Shoot us a message!"/>
+      {/* </ScrollAnimation> */}
       <div className="aboutcontainer">
         <div className="row">
           <div className="col-md-2"></div>

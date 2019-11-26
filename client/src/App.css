@@ -45,12 +45,13 @@ video {
 .overlayText {
   background: rgba(0,0,0,0);
   position: absolute;
-  top: 35%; right: 15%; bottom: 20%; left: 15%;
+  top: 50%; right: 15%; bottom: 20%; left: 15%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 35px;
+  
 }
 
 img {
@@ -105,9 +106,9 @@ h1 {
  align: left;
 }
 
-.calendarcontainer {
+/* .calendarcontainer {
   margin: 20px 20px 20px 20px;
-}
+} */
 
 #footersectiondesktop {
  padding: 40px 0px 40px 0px;
@@ -126,12 +127,17 @@ a:hover, a:visited {
 }
 
 .subtitle {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Alata', sans-serif;
   font-size: 40px;
   text-align: center;
   margin: 200px 100px 0px 100px;
   font-weight: bold;
   border-radius: none;
+}
+
+.synccontainer {
+  margin: 20px;
+  padding: 20px;
 }
 
 .rowName {
@@ -270,8 +276,8 @@ a:hover, a:visited {
 }
 
 .calendarcontainer {
-  margin: 20px;
-  padding: 20px;
+  margin: 20px 20px 0px 20px;
+  padding: 20px 20px 0px 20px;
 }
 
 .modal-title {
