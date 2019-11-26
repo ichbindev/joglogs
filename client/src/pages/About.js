@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import Hero from '../components/Hero';
-// import ScrollAnimation from 'react-animate-on-scroll';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const About = () => {
   return (
@@ -14,7 +14,9 @@ const About = () => {
           <div className="col-md-2"></div>
           <div className="col-md-8">
             <div className="abouttitle">
+            <ScrollAnimation animateIn="fadeIn">
               <h2><strong><center><q>Only those who risk going too far, can possibly find out how far one can go.</q><br /><cite>-T.S. Elliot</cite></center></strong></h2>
+              </ScrollAnimation>
             </div>
             <p>Train Method was born out necessity.  It all started with a lofty goal: going from couch to marathon in 7 months.  </p>
             <p>There are plenty of one-size-fits-all

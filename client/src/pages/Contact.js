@@ -3,7 +3,7 @@ import '../App.css'
 import Hero from '../components/Hero';
 import Forms from '../components/Forms';
 import { CONTACT } from '../utils/consts';
-// import ScrollAnimation from 'react-animate-on-scroll';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const Contact = () => {
   return (
@@ -19,7 +19,9 @@ const Contact = () => {
               <h2><strong><center>Get in Touch!</center></strong></h2>
             </div>
             <p>Questions about your plan?  Got suggestions?  Want to join our team?  Send us a message and we'll get back to you pronto.</p>
+            <ScrollAnimation animateIn="fadeInUp">
             <Forms formType={CONTACT} ></Forms>
+            </ScrollAnimation>
           </div>
         </div>
       </div>

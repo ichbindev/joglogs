@@ -1,6 +1,7 @@
 import React from 'react';
 // import bgimage from "";
 // style={{ backgroundImage: `url(${bgimage})`, backgroundSize: 'cover' }}
+// import ScrollAnimation from 'react-animate-on-scroll';
 
 const Hero = (props) => {
   return (

@@ -3,6 +3,7 @@ import '../App.css'
 import CalendarComponent from '../components/CalendarComponent';
 import Hero from '../components/Hero';
 import API from '../utils/API';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 class Calendar extends Component {
   constructor(props) {
@@ -82,6 +83,7 @@ class Calendar extends Component {
           <div className="synccontainer">
             <div className="row">
               <div className="col-md-12">
+              <ScrollAnimation animateIn="flipInX">
                 <div className="card">
                   <div className="card-header">
                     <h1>Sync to your Google Calendar</h1>
@@ -92,6 +94,7 @@ class Calendar extends Component {
                     {this.displayCalendarRef()}
                   </div>
                 </div>
+                </ScrollAnimation>
               </div>
             </div>
           </div>
