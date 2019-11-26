@@ -6,6 +6,7 @@ const Privacy = () => {
   return (
     <div>
       {/* <Hero /> */}
+      <div className="blackbar"></div>
       <div className="aboutcontainer">
         <div className="row">
           <div className="col-md-2"></div>

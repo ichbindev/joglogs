@@ -1,11 +1,11 @@
 import React from 'react';
 import '../App.css'
-// import Hero from '../components/HeroAbout';
 
 const Terms = () => {
   return (
+    
     <div>
-      {/* <Hero /> */}
+      <div className="blackbar"></div>
       <div className="aboutcontainer">
         <div className="row">
           <div className="col-md-2"></div>

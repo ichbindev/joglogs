@@ -57,8 +57,14 @@ video {
 img {
   width: 50%;
   height: 100%;
-  margin: 0px 0px 0px 0px;
+  /* margin: 0px 0px 0px 0px; */
   flex-grow: 1;
+}
+
+.blackbar {
+  background-color: rgb(19, 19, 19);
+  width: 100%;
+  height: 3px;
 }
 
 @media (max-width: 640px) {

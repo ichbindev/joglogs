@@ -40,7 +40,7 @@ export default Forms;
 
 const SignUpForm = (props) => {
   return ( 
-    <div className="card">
+    // <div className="card">
       <CardBody id="sign-up-body">
         <Form>
           <FormGroup>
@@ -57,21 +57,21 @@ const SignUpForm = (props) => {
               <Label check>
                 <Input  onChange={props.onChange} type="checkbox" name="terms" value="1"/>{' '}
                 By checking this box, I agree to Train Method's <a id="signupmodaltext" href="/terms">Terms and Conditions</a>
-                 <br />
                </Label>
                <Error listeningFor={TC_ERROR} errors={props.errors} />
             </FormGroup>
         </Form>
+        <br />
         <button type="button" className="btn btn-dark" onClick={props.onClick}>Sign Up</button>
       </CardBody> 
-    </div>
+    // </div>
   );
 }
  
 
 const LogInForm = (props) => {
   return ( 
-    <div className="card">
+    // <div className="card">
       <CardBody id="login-body">
         <Form>
           <FormGroup>
@@ -86,7 +86,7 @@ const LogInForm = (props) => {
         <Error listeningFor={LOGIN_ERROR} errors={props.errors} />
         <button type="button" className="btn btn-dark" onClick={props.onClick}>Login</button>
       </CardBody> 
-    </div>
+    // </div>
   );
 }
  
