@@ -34,8 +34,8 @@ const FunnelContent = (props) => {
 
     return (
       <div className="rowName">
-        {text2}
         {image}
+        {text2}
       </div>);
   }
 

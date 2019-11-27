@@ -10,7 +10,7 @@ import {
 } from 'reactstrap';
 import ModalComponent from './ModalComponent';
 import Forms from './Forms';
-import { SIGN_UP, LOG_IN,
+import { SIGN_UP, LOG_IN, 
   LOGIN_ERROR, USERNAME_ERROR, PASSWORD_ERROR,
   TC_ERROR } from '../utils/consts';
 import API from '../utils/API';
@@ -101,11 +101,12 @@ class NavbarComponent extends Component {
   }
 
   render() {
-
+    let calendar = <NavItem><a href="/calendar" className="nav-link active"><strong>Calendar</strong></a></NavItem>;
     let logout = <NavItem><a href="#top" className="nav-link active" onClick={this.handleLogout}><strong>Log Out</strong></a></NavItem>;
     let login = null;
     let signup = null;
     if (!this.props.loggedIn) {
+      calendar = null;
       logout = null;
       login =  <NavItem>
           <ModalComponent buttonLabel="Login" title="Login"><Forms formType={LOG_IN} onChange={this.handleInputChange} onClick={this.handleLoginFormSubmit} emailValue={this.state.loginEmail} passwordValue={this.state.loginPassword} errors={this.state.errors}/></ModalComponent>
@@ -118,7 +119,12 @@ class NavbarComponent extends Component {
     return (
       <div>
         <Navbar className="bignav" color="light" light expand="md">
+          <div className="desktoplogo">
           <NavbarBrand href="/"><h1><strong>train method<sup>tm</sup></strong></h1></NavbarBrand>
+          </div>
+          <div className="mobilelogo">
+          <NavbarBrand href="/"><h2><strong>train method<sup>tm</sup></strong></h2></NavbarBrand>
+          </div>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -128,6 +134,7 @@ class NavbarComponent extends Component {
               <NavItem>
                 <NavLink className="active" href="#"><strong>Blog</strong></NavLink>
               </NavItem>
+              {calendar}
               {logout}
               {login}
               {signup}
