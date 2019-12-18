@@ -17,6 +17,8 @@
   "author": "Perry Williams, Sager Williams (no relation), Chris Mlinac, Aaron Phillips",
   "license": "ISC",
   "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "animate.css": "^3.7.2",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -24,12 +26,17 @@
     "express-session": "^1.17.0",
     "googleapis": "^44.0.0",
     "if-env": "^1.0.4",
+    "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "mysql2": "^1.6.5",
     "nodemailer": "^6.3.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "react-animate-on-scroll": "^2.1.5",
+    "react-loader": "^2.4.6",
+    "react-loader-spinner": "^3.1.5",
+    "react-spinners": "^0.6.1",
     "sequelize": "^5.21.2"
   },
   "devDependencies": {

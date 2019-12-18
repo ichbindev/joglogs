@@ -10,14 +10,14 @@ const FunnelContent = (props) => {
     const image = <img src={props.img} alt={props.alt} />;
     const text = (
       <div className="textDiv">
-        <ScrollAnimation animateIn="slideInRight faster">
+        <ScrollAnimation offset="10" animateOnce animateIn="slideInRight faster">
         <div className="subtitle"><strong>{props.subtitle}</strong></div>
         <div className="subtext">{props.subtext}</div>
         </ScrollAnimation>
       </div>);
     const text2 = (
       <div className="textDiv">
-        <ScrollAnimation animateIn="slideInLeft faster">
+        <ScrollAnimation offset="10" animateOnce animateIn="slideInLeft faster">
         <div className="subtitle"><strong>{props.subtitle}</strong></div>
         <div className="subtext">{props.subtext}</div>
         </ScrollAnimation>

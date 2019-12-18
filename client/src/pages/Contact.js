@@ -19,7 +19,7 @@ const Contact = () => {
               <h2><strong><center>Get in Touch!</center></strong></h2>
             </div>
             <p>Questions about your plan?  Got suggestions?  Want to join our team?  Send us a message and we'll get back to you pronto.</p>
-            <ScrollAnimation animateIn="fadeIn">
+            <ScrollAnimation animateOnce animateIn="fadeIn">
             <Forms formType={CONTACT} ></Forms>
             </ScrollAnimation>
           </div>

@@ -7,9 +7,9 @@ import ScrollAnimation from 'react-animate-on-scroll';
 const Home = () => {
   return (
     <div>
-      <ScrollAnimation animateIn="fadeIn">
+      <ScrollAnimation animateOnce animateIn="fadeIn">
         <div className="videocontainer">
-          <video autoPlay muted loop id="myVideo" width="1300">
+          <video playsinline autoPlay muted loop id="myVideo" width="1300">
             <source src="run.mp4" type="video/mp4" />
           </video>
           <div className="overlayText">

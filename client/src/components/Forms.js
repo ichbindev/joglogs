@@ -3,7 +3,8 @@ import { CardBody, Input, Form, FormGroup, Label } from 'reactstrap';
 import { SIGN_UP, LOG_IN, START, GOAL, CONTACT,
          LOGIN_ERROR, USERNAME_ERROR, PASSWORD_ERROR,
          TC_ERROR, NUM_DAYS_ERROR, LONG_RUN_ERROR } from '../utils/consts';
-import Error from './Error'
+import Error from './Error';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 class Forms extends Component {
 
@@ -93,6 +94,7 @@ const LogInForm = (props) => {
 
 const StartForm = (props) => {
   return ( 
+    <ScrollAnimation offset="10" animateOnce animateIn="fadeIn">
     <div className="card">
       <div className="card-header" id="start-title">
       Your Information
@@ -187,12 +189,14 @@ const StartForm = (props) => {
         </Form>
       </div>
     </div>
+    </ScrollAnimation>
   );
 }
  
 
 const GoalForm = (props) => {
   return ( 
+    <ScrollAnimation offset="10" animateOnce animateIn="fadeIn">
     <div className="card">
       <div className="card-header" id="goal-title">
       Your Goals
@@ -222,6 +226,7 @@ const GoalForm = (props) => {
         </Form>
       </div>
     </div>
+    </ScrollAnimation>
   );
 }
 

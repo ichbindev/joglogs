@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import ScrollAnimation from 'react-animate-on-scroll';
+// import ScrollAnimation from 'react-animate-on-scroll';
 
 const Footer = (props) => {
   return (
@@ -12,7 +12,7 @@ const Footer = (props) => {
               <div className="footerLogo">
                 <strong>train method<sup>tm</sup></strong>
               </div>
-              <ScrollAnimation animateIn="flipInX">
+              {/* <ScrollAnimation offset="10" animateOnce animateIn="flipInX"> */}
               <br />
               <a className="icon" href="https://www.facebook.com/trainmethod">
                 <i className="fa fa-facebook fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
@@ -25,12 +25,12 @@ const Footer = (props) => {
               <a className="icon" href="https://www.instagram.com/trainmethod/">
                 <i className="fa fa-instagram fa-md white-text mr-md-5 mr-3 fa-2x"> </i>
               </a>
-              </ScrollAnimation>
+              {/* </ScrollAnimation> */}
             </Col>
             <Col>
            
               <h3>Navigation</h3>
-              <ScrollAnimation animateIn="flipInX">
+              {/* <ScrollAnimation offset="50" animateOnce animateIn="flipInX"> */}
               <a href="/about">
                 About
           </a>
@@ -46,12 +46,12 @@ const Footer = (props) => {
               <a href="/">
                 Jobs
           </a>
-          </ScrollAnimation>
+          {/* </ScrollAnimation> */}
             </Col>
             <Col>
 
               <h3>Helpful Links</h3>
-              <ScrollAnimation animateIn="flipInX">
+              {/* <ScrollAnimation offset="150" animateOnce animateIn="flipInX"> */}
               <a href="/Privacy">
                 Privacy
           </a>
@@ -67,7 +67,7 @@ const Footer = (props) => {
               <a href="/Contact">
                 Contact
           </a>
-          </ScrollAnimation>
+          {/* </ScrollAnimation> */}
             </Col>
           </Row>
         </div>
@@ -99,7 +99,7 @@ const Footer = (props) => {
             <Col>
            
               <h3>Navigation</h3>
-              <ScrollAnimation animateIn="flipInX">
+              {/* <ScrollAnimation offset="10" animateOnce animateIn="flipInX"> */}
               <a href="/about">
                 About
           </a>
@@ -115,12 +115,12 @@ const Footer = (props) => {
               <a href="/">
                 Jobs
           </a>
-          </ScrollAnimation>
+          {/* </ScrollAnimation> */}
             </Col>
             <Col>
 
               <h3>Helpful Links</h3>
-              <ScrollAnimation animateIn="flipInX">
+              {/* <ScrollAnimation offset="10" animateOnce animateIn="flipInX"> */}
               <a href="/Privacy">
                 Privacy
           </a>
@@ -136,7 +136,7 @@ const Footer = (props) => {
               <a href="/Contact">
                 Contact
           </a>
-          </ScrollAnimation>
+          {/* </ScrollAnimation> */}
             </Col>
           </Row>
         </div>
