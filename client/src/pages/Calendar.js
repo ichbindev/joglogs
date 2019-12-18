@@ -83,7 +83,7 @@ class Calendar extends Component {
           <div className="synccontainer">
             <div className="row">
               <div className="col-md-12">
-              <ScrollAnimation animateIn="flipInX">
+              <ScrollAnimation offset="10" animateOnce animateIn="flipInX">
                 <div className="card">
                   <div className="card-header">
                     <h1>Sync to your Google Calendar</h1>
